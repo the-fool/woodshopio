@@ -8,8 +8,8 @@ from django.contrib import admin
 from django.views.generic.base import RedirectView
 from rest_framework.routers import DefaultRouter
 
-from users.views import UserViewSet
-from gems.views import GemViewSet
+from users.api import UserViewSet
+from gems.api import GemViewSet
 from bazaar import views as bazaar_views
 
 router = DefaultRouter()
