@@ -1,1 +1,14 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block page_content %}
+<div class="container">
+    <p>Inherit</p>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script src='{% static "angular/angular.js"%}'></script>
+<script src='{% static "js/bazaar.js"%}'></script>
+{% endblock %}
