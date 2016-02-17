@@ -5,22 +5,18 @@ Create and activate a virtualenv:
 virtualenv env
 source env/bin/activate
 ```
-Install dependencies:
+Install dependencies (requires NPM + Bower):
 
 ```bash
 pip install -r requirements/local.txt
+manage.py bower install
 ```
 Create the database:
 
 ```bash
 createdb woodshop
 ```
-Initialize the git repository
 
-```
-git init
-git remote add origin git@github.com:the-fool/woodshop.git
-```
 
 Migrate the database and create a superuser:
 ```bash
