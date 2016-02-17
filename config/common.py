@@ -2,7 +2,9 @@ import os
 
 from configurations import Configuration, values
 
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+APPS_DIR = os.path.join(BASE_DIR, 'woodshop')
 
 class Common(Configuration):
 
@@ -22,10 +24,10 @@ class Common(Configuration):
         'djangobower',               # frontend asset manager
 
         # My apps
-        'authentication',           # helper auth 
-        'bazaar',                   # main frontend app (i.e, not the interface to managing a store or viewing analytics) 
-        'gems',                     # manage gem assets
-        'users',                    # eponymous
+        'woodshop.authentication',           # helper auth 
+        'woodshop.bazaar',                   # main frontend app (i.e, not the interface to managing a store or viewing analytics) 
+        'woodshop.gems',                     # manage gem assets
+        'woodshop.users',                    # eponymous
     )
 
     BOWER_INSTALLED_APPS = ('angular#1.5.0',
@@ -47,7 +49,7 @@ class Common(Configuration):
         'django.middleware.security.SecurityMiddleware'
     )
 
-    ROOT_URLCONF = 'urls'
+    ROOT_URLCONF = 'config.urls'
 
     TEMPLATES = [
         {
@@ -66,7 +68,7 @@ class Common(Configuration):
     ]
 
     SECRET_KEY = 'Not a secret'
-    WSGI_APPLICATION = 'wsgi.application'
+    WSGI_APPLICATION = 'config.wsgi.application'
 
     # Allow for less strict handling of urls
     APPEND_SLASH = values.BooleanValue(True)
@@ -106,7 +108,7 @@ class Common(Configuration):
 
     # Directory structure
     PROJECT_ROOT = os.path.abspath(
-        os.path.join(os.path.dirname(__file__), "../.."),
+        os.path.join(os.path.dirname(__file__), ".."),
     )
 
     # Static Files
@@ -176,8 +178,9 @@ class Common(Configuration):
     }
 
     # Custom user app
-    AUTH_USER_MODEL = 'users.User'
 
+    AUTH_USER_MODEL = 'users.User'
+   
     # Django Rest Framework
     REST_FRAMEWORK = {
         'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',

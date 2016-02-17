@@ -8,9 +8,9 @@ from django.contrib import admin
 from django.views.generic.base import RedirectView
 from rest_framework.routers import DefaultRouter
 
-from users.api import UserViewSet
-from gems.api import GemViewSet
-from bazaar import views as bazaar_views
+from woodshop.users.api import UserViewSet
+from woodshop.gems.api import GemViewSet
+from woodshop.bazaar import views as bazaar_views
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -18,7 +18,7 @@ router.register(r'gems', GemViewSet)
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^api/', include('authentication.urls')),
+    url(r'^api/', include('woodshop.authentication.urls')),
     url(r'^api/', include(router.urls)),
 
     # the 'api-root' from django rest-frameworks default router
