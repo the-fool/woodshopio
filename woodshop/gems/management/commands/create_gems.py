@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 
 from users.models import User
-from gems.models import Gem
+from woodshop.gems.models import Gem
 
 descriptions = ['This is text', 
                'Another thing I wanted to share',
