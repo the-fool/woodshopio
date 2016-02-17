@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 
-from users.models import User
+from woodshop.users.models import User
 from woodshop.gems.models import Gem
 
 descriptions = ['This is text', 
