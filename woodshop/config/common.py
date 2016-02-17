@@ -27,7 +27,12 @@ class Common(Configuration):
         'users',
     )
 
-    BOWER_INSTALLED_APPS = ('angular#1.5.0', 'lodash')
+    BOWER_INSTALLED_APPS = ('angular#1.5.0',
+                            'bootstrap#3.3.6',
+                            'jquery#2.2.0',
+                            'lodash#4.4.0',
+                            'underscore#1.8.3',
+                            'modernizr#3.3.1',)
 
     # https://docs.djangoproject.com/en/1.8/topics/http/middleware/
     MIDDLEWARE_CLASSES = (
