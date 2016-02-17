@@ -1,6 +1,6 @@
 from django.test import TestCase
 from nose.tools import ok_
-from users.test.factories import UserFactory
+from woodshop.users.test.factories import UserFactory
 
 class AuthTokenTestCase(TestCase):
 
