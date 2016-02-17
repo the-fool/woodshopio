@@ -22,10 +22,10 @@ class Common(Configuration):
         'djangobower',               # frontend asset manager
 
         # My apps
-        'authentication',
-        'bazaar',
-        'gems',
-        'users',
+        'authentication',           # helper auth 
+        'bazaar',                   # main frontend app (i.e, not the interface to managing a store or viewing analytics) 
+        'gems',                     # manage gem assets
+        'users',                    # eponymous
     )
 
     BOWER_INSTALLED_APPS = ('angular#1.5.0',
