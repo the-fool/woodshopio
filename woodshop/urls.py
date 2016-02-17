@@ -10,6 +10,7 @@ from rest_framework.routers import DefaultRouter
 
 from users.views import UserViewSet
 from gems.views import GemViewSet
+from bazaar import views as bazaar_views
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -22,6 +23,6 @@ urlpatterns = [
 
     # the 'api-root' from django rest-frameworks default router
     # http://www.django-rest-framework.org/api-guide/routers/#defaultrouter
-    url(r'^$', RedirectView.as_view(url=reverse_lazy('api-root'), permanent=False)),
+    url(r'^$', bazaar_views.home_page, name='home'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
