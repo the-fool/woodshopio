@@ -23,6 +23,7 @@ class Common(Configuration):
 
         # My apps
         'authentication',
+        'bazaar',
         'gems',
         'users',
     )
