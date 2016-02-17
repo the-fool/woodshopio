@@ -12,6 +12,7 @@
             
             return {
                 templateUrl: baseTplUrl + 'grab_bag.html',
+                restrict: 'E',
                 scope: {},
                 controller: ctrl,
                 controllerAs: 'grabBag',
@@ -19,4 +20,4 @@
             };
     }]);
 
-}(angular);
+})(angular);

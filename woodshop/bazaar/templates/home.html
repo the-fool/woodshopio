@@ -2,8 +2,8 @@
 {% load staticfiles %}
 
 {% block page_content %}
-<div class="container">
-    <p>Inherit</p>
+<div class="container" ng-app="bazaarApp">
+    <grab-bag></grab-bag>
 </div>
 {% endblock %}
 
@@ -13,4 +13,5 @@
 <script src='{% static "angular-resource/angular-resource.js"%}'></script>
 <script src='{% static "js/bazaar.js"%}'></script>
 <script src='{% static "js/services.js"%}'></script>
+<script src='{% static "js/directives.js" %}'></script>
 {% endblock %}
