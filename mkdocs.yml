@@ -1,0 +1,10 @@
+site_name: woodshop
+site_description: wood
+repo_url: https://github.com/the-fool/woodshop
+site_dir: site
+
+pages:
+  - Home: 'index.md'
+  - API:
+    - Authentication: 'api/authentication.md'
+    - Users: 'api/users.md'
