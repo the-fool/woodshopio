@@ -4,7 +4,7 @@ from rest_framework.permissions import AllowAny
 from .models import Gem
 from .serializers import GemSerializer
 
-class GemList(mixins.RetrieveModelMixin,
+class GemViewSet(mixins.RetrieveModelMixin,
               mixins.UpdateModelMixin,
               mixins.ListModelMixin,
               viewsets.GenericViewSet):
