@@ -18,6 +18,7 @@ class Local(Common):
     TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
     NOSE_ARGS = [
         BASE_DIR,
+        '--nocapture',
         '--nologcapture',
         '--with-coverage',
         '--with-progressive',
