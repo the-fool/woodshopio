@@ -111,7 +111,7 @@ class Common(Configuration):
     PROJECT_ROOT = os.path.abspath(
         os.path.join(os.path.dirname(__file__), "../.."),
     )
-    print(PROJECT_ROOT)
+
 
     # Static Files
     BOWER_COMPONENTS_ROOT = os.path.join(PROJECT_ROOT, 'components')
