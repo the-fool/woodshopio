@@ -28,6 +28,7 @@ python woodshop/manage.py createsuperuser
 Test-it
 ```bash
 python manage.py test
+npm test
 ```
 
 Run the development server: 
