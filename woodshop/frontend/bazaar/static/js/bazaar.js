@@ -9,7 +9,7 @@
     
     bazaarApp.config(['$routeProvider', function($rp) {
     	$rp
-    	.when('/Gem/:gemId', {
+    	.when('/Gem/:id', {
     		templateUrl:'static/tpl/detail.html',
     	})
     	.when('/', {

@@ -2,10 +2,10 @@
         'use strict';
 
         var app = ng.module('bazaar.directives', ['bazaar.api']);
-        var baseTplUrl = '/static/partials/';
+        var partialUrl = '/static/partials/';
 
         app.directive('grabBag', ['Gem', function (Gem) {
-            function ctrl($scope) {
+            function ctrl() {
                 /* jshint validthis: true */
                 this.gems = [];
                 
@@ -16,13 +16,35 @@
             }
             
             return {
-                templateUrl: baseTplUrl + 'grab_bag.html',
+                templateUrl: partialUrl + 'grab_bag.html',
                 restrict: 'E',
                 scope: {},
-                controller: ['$scope', ctrl],
+                controller: ctrl,
                 controllerAs: 'grabBag',
                 bindToController: true
             };
-    }]);
+        }]);
+
+        app.directive('summary', ['Gem', '$routeParams', function(Gem, $r){
+            function ctrl() {
+                this.title = '';
+                this.description = '';
+                Gem.query({id:$r.id}).$promise.then( (data) => {
+                    console.log(data);
+                    this.title=data.title;
+                    this.description=data.description;
+                });
+            }
+
+            return {
+                templateUrl: partialUrl + 'detail_summary.html',
+                restrict: 'E',
+                scope: {},
+                controller: ctrl,
+                controllerAs: 'summary',
+                bindToController: true
+            };
+
+        }]);
 
 })(angular);

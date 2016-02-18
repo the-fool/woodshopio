@@ -10,7 +10,7 @@
     app.factory('Gem', [
         '$resource',
         function ($r) {
-            return $r('/api/gems/:id', {
+            return $r('/api/gems/:id/', {
                 id: '@id'
             }, {
                 query: {
