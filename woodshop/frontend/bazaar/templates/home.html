@@ -3,7 +3,7 @@
 
 {% block page_content %}
 <div class="container" ng-app="bazaarApp">
-    <grab-bag></grab-bag>
+    <div ng-view></div>
 </div>
 {% endblock %}
 
@@ -11,6 +11,7 @@
 {{ block.super }}
 <script src='{% static "angular/angular.js"%}'></script>
 <script src='{% static "angular-resource/angular-resource.js"%}'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js'></script>
 <script src='{% static "js/bazaar.js"%}'></script>
 <script src='{% static "js/services.js"%}'></script>
 <script src='{% static "js/directives.js" %}'></script>
