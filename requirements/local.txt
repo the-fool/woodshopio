@@ -1,12 +1,13 @@
 # dependencies that are only related to deving on your local machine
 -r test.txt
 
+# Shell helper
+django-extensions==1.6.1
+
 # Debugging
-ipdb==0.8.1
-ipython==4.0.1
+ipdb==0.8.3
+ipython==4.1.1
 
 # Docs
 mkdocs==0.14.0
 
-# Command Utils
-Fabric==1.10.2
