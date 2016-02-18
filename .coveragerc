@@ -1,6 +1,7 @@
 [run]
 branch = True
 omit = *migrations*,
+       *Envs/*,
        *urls*,
        *test*,
        *admin*,
