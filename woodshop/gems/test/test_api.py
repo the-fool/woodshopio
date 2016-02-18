@@ -11,9 +11,15 @@ class TestGemAPI(APITestCase):
     
     def setUp(self):
         self.url = reverse('gem-list')
-        self.gem_data = model_to_dict(GemFactory.build())
+        self.gem_data = model_to_dict(GemFactory.create())
+        print(self.gem_data)
         self.client = APIClient()
         
     def test_get_request_succeeds(self):
         response = self.client.get(self.url)
+        pk = response.data.get('results')[0].get('id')
         eq_(response.status_code, 200)
+        
+        gem = Gem.objects.get(pk=pk)
+        eq_(gem.title, self.gem_data.get('title'))
+        
