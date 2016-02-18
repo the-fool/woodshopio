@@ -36,7 +36,8 @@ class Common(Configuration):
                             'lodash#4.4.0',
                             'underscore#1.8.3',
                             'modernizr#3.3.1',
-                            'angular-resource#1.5.0',)
+                            'angular-resource#1.5.0',
+                            'metisMenu',)
 
     # https://docs.djangoproject.com/en/1.8/topics/http/middleware/
     MIDDLEWARE_CLASSES = (
