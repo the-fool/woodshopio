@@ -1,15 +1,15 @@
 module.exports = function(config) {
     var bowerDir = '../components/bower_components/';
-    var staticDir = '../woodshop/bazaar/static/'
+    var staticDir = '../woodshop/frontend/**/static/'
     config.set({
         basePath: '..',
         
         preprocessors: {
-            'woodshop/bazaar/static/js/*.js': ['jshint'],
-            'woodshop/bazaar/static/partials/*.html': ['ng-html2js']
+            'woodshop/frontend/**/static/js/*.js': ['jshint'],
+            'woodshop/frontend/**/static/partials/*.html': ['ng-html2js']
         },
         ngHtml2JsPreprocessor: {
-            stripPrefix: "woodshop/bazaar",
+            stripPrefix: "woodshop/frontend/bazaar",
         },
         reporters: ['progress'],
         files: [
