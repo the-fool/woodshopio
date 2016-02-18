@@ -10,9 +10,11 @@ class Gem(models.Model):
     description = models.TextField(blank=True, null=True)
 
 def image_dir_path(instance, filename):
-		return 'gem_{0}/{1}'.format(instance.gem.id, intance.id)
-    
-    
+	ext = filename.split('.')[-1]
+	path = 'gem_{0}/{1}.{2}'.format(instance.gem.id, instance.id, ext)
+	print(path)
+	return path
+
 class Picture(models.Model):
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	gem = models.ForeignKey(Gem, related_name='pictures')

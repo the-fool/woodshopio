@@ -62,7 +62,7 @@ node_modules/
 .env
 venv/
 # User-uploaded media
-woodshop/media/
+media/
 
 # Hitch directory
 tests/.hitch
@@ -73,3 +73,5 @@ mailhog
 # Bower/NPM
 node_modules/
 components/
+
+
