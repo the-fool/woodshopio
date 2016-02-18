@@ -1,5 +1,6 @@
 [run]
 branch = True
+source = woodshop/
 omit = *migrations*,
        *Envs/*,
        *urls*,
@@ -11,3 +12,4 @@ omit = *migrations*,
         *fabfile*,
         *users/views.py
         *management/*
+    

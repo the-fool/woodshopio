@@ -20,7 +20,10 @@ class Local(Common):
         BASE_DIR,
         '--nocapture',
         '--nologcapture',
-        '--with-coverage',
+       # '--with-coverage',
+       # '--cover-package=woodshop',
+       # '--cover-erase',
+       # '--cover-html',
         '--with-progressive',
         '--cover-package={}'.format(BASE_DIR)
     ]
