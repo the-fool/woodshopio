@@ -2,7 +2,7 @@
         'use strict';
 
         var app = ng.module('bazaar.directives', ['bazaar.api']);
-        var partialUrl = '/static/partials/';
+        var partialUrl = '/static/bazaar_partials/';
 
         app.directive('grabBag', ['Gem', function (Gem) {
             function ctrl() {

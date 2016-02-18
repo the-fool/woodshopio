@@ -25,7 +25,7 @@ class Common(Configuration):
 
         # My apps
         'woodshop.authentication',           # helper auth 
-        'woodshop.frontend.bazaar',                   # main frontend app (i.e, not the interface to managing a store or viewing analytics) 
+        'woodshop.frontend.bazaar',          # main frontend app (i.e, not the interface to managing a store or viewing analytics) 
         'woodshop.gems',                     # manage gem assets
         'woodshop.users',                    # eponymous
     )
@@ -114,7 +114,7 @@ class Common(Configuration):
 
     # Static Files
     BOWER_COMPONENTS_ROOT = os.path.join(PROJECT_ROOT, 'components')
-    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+    STATIC_ROOT = os.path.join(PROJECT_ROOT, '../static')
     STATIC_URL = '/static/'
     STATICFILES_FINDERS = (
         'django.contrib.staticfiles.finders.FileSystemFinder',
