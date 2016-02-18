@@ -8,7 +8,7 @@
         'bazaar.directives'
     ]);
     
-    bazaarApp.config(['$routeProvider', function($rp) {
+    bazaarApp.config(['$routeProvider', '$animateProvider', function($rp, $ap) {
     	$rp
     	.when('/Gem/:id', {
     		templateUrl:'static/bazaar_tpl/detail.html',
@@ -19,6 +19,9 @@
     	.otherwise({
     		redirectTo: '/'
     	});
+
+    	$ap.classNameFilter(/animated/);
     }]);
+
         
 })(angular);
