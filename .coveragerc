@@ -9,3 +9,4 @@ omit = *migrations*,
        *__init__*,
         *fabfile*,
         *users/views.py
+        *management/*
