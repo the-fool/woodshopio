@@ -1,5 +1,5 @@
 module.exports = function(config) {
-    var bowerDir = '../components/';
+    var bowerDir = '../components/bower_components/';
     var staticDir = '../woodshop/bazaar/static/'
     config.set({
         basePath: '..',
@@ -13,12 +13,12 @@ module.exports = function(config) {
         },
         reporters: ['progress'],
         files: [
-            bowerDir + 'bower_components/jquery/dist/jquery.js',
+            bowerDir + 'jquery/dist/jquery.js',
             '../node_modules/jasmine-jquery/lib/jasmine-jquery.js',
-            bowerDir + 'bower_components/angular/angular.js',
-            //baseDir + 'bower_components/angular-route/angular-route.js',
-            bowerDir + 'bower_components/angular-resource/angular-resource.js',
-            //baseDir + 'bower_components/angular-mocks/angular-mocks.js',
+            bowerDir + 'angular/angular.js',
+            //baseDir + 'angular-route/angular-route.js',
+            bowerDir + 'angular-resource/angular-resource.js',
+            //baseDir + 'angular-mocks/angular-mocks.js',
             staticDir + 'js/**/*.js',
             staticDir + 'partials/*.html',
             staticDir + 'partials/**/*.html',
