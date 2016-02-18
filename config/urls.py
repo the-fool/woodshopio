@@ -10,19 +10,15 @@ from rest_framework.routers import DefaultRouter
 
 from woodshop.users.api import UserViewSet
 from woodshop.gems.api import GemViewSet
-from woodshop.bazaar import views as bazaar_views
+from woodshop.frontend import urls as frontend_urls
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'gems', GemViewSet)
 
 urlpatterns = [
+    url(r'', include(frontend_urls)),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include('woodshop.authentication.urls')),
     url(r'^api/', include(router.urls)),
-
-    # the 'api-root' from django rest-frameworks default router
-    # http://www.django-rest-framework.org/api-guide/routers/#defaultrouter
-    url(r'^$', bazaar_views.home_page, name='home'),
-
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
