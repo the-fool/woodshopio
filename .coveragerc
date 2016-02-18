@@ -4,7 +4,8 @@ omit = *migrations*,
        *urls*,
        *test*,
        *admin*,
-       ./woodshop/config/*,
-       ./woodshop/manage.py,
-       ./woodshop/wsgi.py,
-       *__init__*
+       ./config/*,
+       ./manage.py,
+       *__init__*,
+        *fabfile*,
+        *users/views.py
