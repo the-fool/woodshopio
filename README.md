@@ -16,6 +16,8 @@ Create the postgres database:
 
 ```bash
 createdb woodshop
+psql: ALTER USER you CREATEDB
+$ export DATABASE_URL="postgres://you:password@127.0.0.1/woodshop"
 ```
 
 
