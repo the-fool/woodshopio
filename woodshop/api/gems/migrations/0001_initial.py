@@ -6,7 +6,7 @@ from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
 import uuid
-import woodshop.gems.models
+import woodshop.api.gems.models
 
 
 class Migration(migrations.Migration):
@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
             name='Picture',
             fields=[
                 ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('image', models.ImageField(max_length=255, upload_to=woodshop.gems.models.image_dir_path)),
+                ('image', models.ImageField(max_length=255, upload_to=woodshop.api.gems.models.image_dir_path)),
                 ('gem_stem', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='pictures', to='gems.Gem')),
             ],
         ),

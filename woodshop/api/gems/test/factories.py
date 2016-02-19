@@ -1,7 +1,7 @@
 import uuid
 import factory
 
-from woodshop.users.test.factories import UserFactory
+from woodshop.api.users.test.factories import UserFactory
 
 class GemFactory(factory.django.DjangoModelFactory):
     

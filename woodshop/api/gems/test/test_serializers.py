@@ -5,7 +5,7 @@ from nose.tools import eq_, ok_
 
 from .factories import GemFactory
 from ..serializers import GemSerializer
-from woodshop.users.test.factories import UserFactory
+from woodshop.api.users.test.factories import UserFactory
 
 class TestGemSerializer(TestCase):
     

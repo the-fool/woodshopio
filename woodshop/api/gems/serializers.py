@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from .models import Gem, Picture
-from woodshop.users.serializers import UserSerializer
+from woodshop.api.users.serializers import UserSerializer
 
 class GemSerializer(serializers.ModelSerializer):
     author = UserSerializer(required=False)

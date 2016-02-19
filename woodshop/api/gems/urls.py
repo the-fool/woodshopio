@@ -5,7 +5,7 @@ from .api import GemViewSet, GemPictureList
 from .api import PictureDetail
 
 router = DefaultRouter()
-router.register(r'gems', GemViewSet)
+router.register(r'', GemViewSet)
 
 picture_urls = [
 	url(r'^(?P<pk>.+)$', PictureDetail.as_view(), name='picture-detail')
@@ -16,7 +16,7 @@ gem_urls = [
 ]
 
 urlpatterns = [
-	url(r'^gems', include(gem_urls)),
+	url(r'gems', include(gem_urls)),
 	url(r'^pictures', include(picture_urls)),
-	url(r'', include(router.urls))
+	url(r'gems', include(router.urls))
 ]
