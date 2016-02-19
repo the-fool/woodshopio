@@ -5,6 +5,7 @@ from woodshop.users.models import User
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
+        User.objects.all().delete()
         users = ['Bob', 'Sally', 'Joe', 'Rachel']
         for user in users:
             username = user.lower()
