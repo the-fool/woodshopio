@@ -9,16 +9,16 @@ from django.views.generic.base import RedirectView
 from rest_framework.routers import DefaultRouter
 
 from woodshop.users.api import UserViewSet
-from woodshop.gems.api import GemViewSet
+from woodshop.gems import urls as gem_urls
 from woodshop.frontend import urls as frontend_urls
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
-router.register(r'gems', GemViewSet)
 
 urlpatterns = [
     url(r'', include(frontend_urls)),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include('woodshop.authentication.urls')),
     url(r'^api/', include(router.urls)),
+    url(r'^api/', include(gem_urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

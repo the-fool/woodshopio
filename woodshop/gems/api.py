@@ -16,6 +16,7 @@ class GemViewSet(mixins.RetrieveModelMixin,
     permission_classes = (AllowAny,)
 
 
+# TODO Finish picture api and register urls
 class PictureDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Picture
     serializer_class = PictureSerializer
@@ -26,6 +27,9 @@ class PictureDetail(generics.RetrieveUpdateDestroyAPIView):
 class GemPictureList(generics.ListAPIView):
 	model = Picture
 	serializer_class = PictureSerializer
+	permission_classes = [
+		AllowAny
+	]
 
 	def get_queryset(self):
 		queryset = super(GemPictureList, self).get_queryset()
