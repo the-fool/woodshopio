@@ -27,6 +27,13 @@ python woodshop/manage.py migrate
 python woodshop/manage.py createsuperuser
 ```
 
+Populate dummy data
+```bash
+python woodshop/manage.py create_users
+python woodshop/manage.py create_gems
+python woodshop/manage.py create_pictures
+```
+
 Test-it
 ```bash
 python manage.py test
