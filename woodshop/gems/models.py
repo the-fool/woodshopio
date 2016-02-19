@@ -10,6 +10,7 @@ class Gem(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name=('gems'))
     title = models.CharField(max_length=128, unique=True)
     description = models.TextField(blank=True, null=True)
+    main_picture = models.OneToOneField('Picture', related_name='gem_asset', blank=True, null=True)
 
 def image_dir_path(instance, filename):
 	ext = filename.split('.')[-1]
@@ -18,20 +19,23 @@ def image_dir_path(instance, filename):
 
 class Picture(models.Model):
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-	gem = models.ForeignKey(Gem, related_name='pictures')
+	gem = models.ForeignKey('Gem', related_name='pictures')
 	image = models.ImageField(upload_to=image_dir_path, max_length=255)
+	
 
-
+""" These methods are not for production! """
 from django.db.models.signals import post_delete
 from django.dispatch.dispatcher import receiver
 import os, shutil
 @receiver(post_delete, sender=Picture)
 def picture_delete(sender, instance, **kwargs):
-    # Pass false so FileField doesn't save the model.
-    instance.image.delete(False)
+	"""Delete picture file"""
+	# Pass false so FileField doesn't save the model.
+	instance.image.delete(False)
 
 @receiver(post_delete, sender=Gem)
 def gem_dir_delete(sender, instance, **kwargs):
+	"""Remove the gem's photo directory"""
 	if os.environ['DJANGO_CONFIGURATION'] == 'Local':
 		shutil.rmtree(os.path.join(settings.MEDIA_ROOT, 'gem_{}'.format(instance.id)), 
 			ignore_errors=True)
