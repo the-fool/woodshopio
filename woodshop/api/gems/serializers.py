@@ -12,12 +12,13 @@ class GemSerializer(serializers.ModelSerializer):
         # Need to exclude `user` since we'll add that later based off the request
         exclusions = super(GemSerializer, self).get_validation_exclusions(*args, **kwargs)
         return exclusions + ['author']
-    
+
     class Meta:
         model = Gem
 
 
-class PictureSerializer(serializers.HyperlinkedModelSerializer):
-	class Meta:
-		model = Picture
-		gem = serializers.Field(source='gem_asset.id')
+class PictureSerializer(serializers.ModelSerializer):
+    image = serializers.URLField(source='image.url')
+
+    class Meta:
+        model = Picture

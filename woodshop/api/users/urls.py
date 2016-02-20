@@ -5,4 +5,4 @@ from .api import UserViewSet
 router = DefaultRouter()
 router.register(r'', UserViewSet)
 
-urlpatterns = [ url(r'^users', include(router.urls))]
+urlpatterns = [ url(r'', include(router.urls))]
