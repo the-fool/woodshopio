@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 
-from woodshop.users.models import User
+from woodshop.api.users.models import User
 
 
 class Command(BaseCommand):
