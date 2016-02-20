@@ -25,12 +25,16 @@ class GemDetail(generics.RetrieveUpdateDestroyAPIView):
 class GemPictureList(generics.ListAPIView):
   model = Picture
   serializer_class = PictureSerializer
+  #queryset = Picture.objects.none()
+  permissions_classes = [
+    permissions.AllowAny
+  ]
 
   def get_queryset(self):
     queryset = super(GemPictureList, self).get_queryset()
     return queryset.filter(gem__pk=self.kwargs.get('pk'))
 
-# Do we need a picture view?
+
 class PictureDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Picture
     serializer_class = PictureSerializer

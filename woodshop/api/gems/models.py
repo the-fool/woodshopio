@@ -21,6 +21,7 @@ class Picture(models.Model):
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	gem = models.ForeignKey('Gem', related_name='pictures')
 	image = models.ImageField(upload_to=image_dir_path, max_length=255)
+
 	
 
 """ These methods are not for production! """
