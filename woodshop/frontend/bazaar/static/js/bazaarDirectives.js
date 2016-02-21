@@ -54,6 +54,7 @@
                         response.data.results.forEach(function (v) {
                             self.pictures.push(v);
                         });
+                        setTimeout(function() {$('#pikame').pikachoose();},0);
                     }); 
                 }
 
