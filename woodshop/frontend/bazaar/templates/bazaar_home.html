@@ -7,7 +7,7 @@
 
 {% block page_content %}
 <div class="container-fluid" ng-app="bazaarApp">
-	<div class="view-container">
+	<div class="view-container" ng-controller="bazaarController">
 		<div ng-view class="view-frame animated"></div>
 	</div>
 </div>
@@ -20,7 +20,9 @@
 <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js'></script>
 <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.js'></script>
 <script src='{% static "js/bazaarApp.js"%}'></script>
-<script src='{% static "js/bazaarServices.js"%}'></script>
+<script src='{% static "js/bazaarControllers.js" %}'></script>
+<script src='{% static "js/bazaarServices.js" %}'></script>
+<script src='{% static "js/bazaarFilters.js" %}'></script>
 <script src='{% static "js/bazaarDirectives.js" %}'></script>
 <script src='{% static "js/bazaarAnimations.js" %}'></script>
 {% endblock %}

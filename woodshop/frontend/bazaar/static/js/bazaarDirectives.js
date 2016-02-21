@@ -8,7 +8,6 @@
             function ctrl() {
 
             }
-
             return {
                 templateUrl: partialUrl + 'gem_thumb.html',
                 restrict: 'E',
@@ -26,14 +25,13 @@
             function ctrl() {
                 /* jshint validthis: true */
                 this.gems = [];
-                
+                //this.gridRowFilter = grf;
                 // fat-arrow for lexical this-binding
                 Gem.query().$promise.then( (data) => {
                     this.gems = data.results;
                     console.log(this.gems);
                 });
-            }
-            
+            }            
             return {
                 templateUrl: partialUrl + 'grab_bag.html',
                 restrict: 'E',
@@ -44,17 +42,17 @@
             };
         }]);
 
-        app.directive('summary', ['Gem', '$routeParams', function(Gem, $r){
+        app.directive('gem-summary', ['Gem', '$routeParams', function(Gem, $r){
             function ctrl() {
                 this.title = '';
                 this.description = '';
+                this.pictures = [];
                 Gem.query({id:$r.id}).$promise.then( (data) => {
                     console.log(data);
                     this.title=data.title;
                     this.description=data.description;
                 });
             }
-
             return {
                 templateUrl: partialUrl + 'detail_summary.html',
                 restrict: 'E',
