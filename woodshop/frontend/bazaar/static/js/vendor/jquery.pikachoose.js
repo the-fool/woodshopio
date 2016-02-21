@@ -480,7 +480,10 @@
 						//full frame fade
 						self.aniDiv.hide();
 						self.aniImg.height(self.image.height()).hide().attr('src',data.source);
-						self.wrap.css({height:self.image.height()});
+						/* 
+		***************  HACK ALERT!!!!! *****************/
+             //	self.wrap.css({height:self.image.height()});
+         /**********************************************/
 						$.when(
 							self.image.fadeOut(self.options.animationSpeed),
 							self.aniImg.eq(0).fadeIn(self.options.animationSpeed)).done(function(){
