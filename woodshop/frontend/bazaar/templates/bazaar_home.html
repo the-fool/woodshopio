@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% block styles %}
 {{ block.super }}
+<link rel="stylesheet" hrep="{% static "css/vendor/pikachoosebase.css" %}">
 <link rel="stylesheet" href="{% static "css/bazaarAnimations.css" %}">
 {% endblock %}
 
@@ -17,8 +18,11 @@
 {{ block.super }}
 <script src='{% static "angular/angular.js"%}'></script>
 <script src='{% static "angular-resource/angular-resource.js"%}'></script>
-<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js'></script>
-<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.js'></script>
+<script src='{% static "angular-route/angular-route.js" %}'></script>
+<script src='{% static "angular-animate/angular-animate.js" %}'></script>
+<script src="{% static "js/vendor/jquery.jcarousel.min.js" %}"></script>
+<script src="{% static "js/vendor/jquery.touchwipe.min.js" %}"></script>
+<script src="{% static "js/vendor/jquery.pikachoose.min.js" %}"></script>
 <script src='{% static "js/bazaarApp.js"%}'></script>
 <script src='{% static "js/bazaarControllers.js" %}'></script>
 <script src='{% static "js/bazaarServices.js" %}'></script>
