@@ -1,12 +1,12 @@
 /*if you just want to adjust the size of the stage and the thumbnails, you can do so by editing the following lines: */
 .pika-thumbs li{width: 144px; height:74px;}
-#pikachoose .pika-stage {height: 250px;}
+#pikachoose .pika-stage {height: 400px;}
 
 
 body{font-family: sans-serif;background:#FCFCFC;}
 
-#pikachoose {width: 500px; margin: 0 auto;}
-#pikachoose .pika-stage {height: 250px; position: relative;border: 3px solid #010101;
+#pikachoose {width: 800px; margin: 0 auto;}
+#pikachoose .pika-stage {height: 400px; position: relative;border: 3px solid #010101;
 	-moz-box-shadow: 5px 5px 2px #888;-webkit-box-shadow: 5px 5px 2px #888;box-shadow: 5px 5px 2px #888;}
 	
 	/*if you change the padding on pika-stage you must adjust the top left of this to match! */
