@@ -4,8 +4,11 @@
         var app = ng.module('bazaar.directives', ['bazaar.api']);
         var partialUrl = '/static/bazaar_partials/';
 
-        app.directive('gemThumb', ['Gem', function(Gem) {
+        app.directive('gemThumb', ['DetailGemCache', function(cache) {
             function ctrl() {
+                this.setDetail = function() {
+                    cache.setGem(this.gem);
+                };
             }
             return {
                 templateUrl: partialUrl + 'gem_thumb.html',
@@ -41,15 +44,15 @@
             };
         }]);
 
-        app.directive('gemSummary', ['Gem', '$routeParams', function(Gem, $r){
+        app.directive('gemSummary', ['Gem', 'DetailGemCache', '$routeParams', function(Gem, cache, $r){
             function ctrl() {
-                this.title = '';
-                this.description = '';
+                this.gem = cache.getGem();
                 this.pictures = [];
-                Gem.query({id:$r.id}).$promise.then( (data) => {
-                    this.title=data.title;
-                    this.description=data.description;
-                });
+                if (!Object.keys(this.gem).length) {
+                    Gem.query({id:$r.id}).$promise.then( (data) => {
+                        this.gem = data;
+                    });
+                }
             }
             return {
                 templateUrl: partialUrl + 'detail_summary.html',
