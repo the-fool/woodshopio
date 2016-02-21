@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from .models import User
+from ..gems.models import Gem
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -10,7 +11,12 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id', 'username', 'first_name', 'last_name',)
         read_only_fields = ('username', )
 
+class VendorSerializer(serializers.ModelSerializer):
+    #a vendor can be associated with multiple gems
+    gems = serializers.PrimaryKeyRelatedField(many=True, queryset=Gem.objects.all())
+    pass
 
+#creates custom Users serializer
 class CreateUserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
