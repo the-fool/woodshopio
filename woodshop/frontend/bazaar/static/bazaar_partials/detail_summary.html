@@ -3,10 +3,13 @@
 	<hr>
 	Description: {{ summary.gem.description }}
 	<hr>
-	<div id="pikachoose">
-	<ul id="pikame" class="jcarousel-skin-pika">
-        <li ng-repeat="picture in summary.pictures" >
-        	<img ng-src="{{ picture.image }}">
-        </li>
-    </ul>
+	<div class="col-md-12">
+		<div id="pikachoose">
+			<ul id="pikame" class="jcarousel-skin-pika">
+				<li ng-repeat="picture in summary.pictures" >
+					<img ng-src="{{ picture.image }}">
+				</li>
+			</ul>
+		</div>
+	</div>
 </div>

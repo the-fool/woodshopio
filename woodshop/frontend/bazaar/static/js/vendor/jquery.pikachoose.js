@@ -443,7 +443,7 @@
 				if(img.height != self.image.height() || img.width != self.image.width()){
 					//Your images are not the same height? Well you get limited on transitions
 					if(n !== 0 && n !== 1 && n !== 7){
-						//n = 1;
+						n = 1;
 					}
 				}
 				self.aniDiv.css({height:self.image.height(),width:self.image.width()});
@@ -482,7 +482,7 @@
 						self.aniImg.height(self.image.height()).hide().attr('src',data.source);
 						/* 
 		***************  HACK ALERT!!!!! *****************/
-             //	self.wrap.css({height:self.image.height()});
+             		//self.wrap.css({height:self.image.height()});
          /**********************************************/
 						$.when(
 							self.image.fadeOut(self.options.animationSpeed),

@@ -54,7 +54,7 @@
                         response.data.results.forEach(function (v) {
                             self.pictures.push(v);
                         });
-                        setTimeout(function() {$('#pikame').pikachoose();},0);
+                        setTimeout(function() {$('#pikame').pikachoose({carousel:true,carouselOptions:{wrap:'circular'}});},0);
                     }); 
                 }
 

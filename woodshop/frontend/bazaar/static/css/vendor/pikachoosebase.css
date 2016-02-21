@@ -1,5 +1,5 @@
 /* Just for the example. Fee free to delete these three lines */
-#pikachoose {width: 600px; margin: 0 auto;}
+#pikachoose {width: 800px; margin: 0 auto;}
 
 /* Style the thumbnails */
  .pika-thumbs{ padding: 0 16px; height: 75px; }
@@ -8,8 +8,9 @@
  	.pika-thumbs li .clip {position:relative;height:100%;text-align: center; vertical-align: middle; overflow: hidden;}
 	
 /* The stage is the wrapper. The image fills 100% the height of the stage */
-#pikachoose .pika-stage, #pikachoose .pika-textnav {width: 500px;}
-#pikachoose .pika-stage {position: relative; background: #fafafa; border: 1px solid #e5e5e5; padding: 10px 10px 40px 10px; text-align:center; height:250px;}
+/* TODO make the stage responsive */
+#pikachoose .pika-stage, #pikachoose .pika-textnav {width: 800px; height: 400px; }
+#pikachoose .pika-stage {position: relative; background: #fafafa; border: 1px solid #e5e5e5; padding: 10px 10px 40px 10px; text-align:center;}
 #pikachoose .pika-stage img{height:100%;}
 #pikachoose .pika-stage .caption {position: absolute; background: #000; background: rgba(0,0,0,0.75);  border: 1px solid #141414; font-size: 11px; 
 			color: #fafafa; padding: 10px; text-align: right; bottom: 50px; right: 10px;}
