@@ -24,11 +24,12 @@ class Common(Configuration):
         'djangobower',               # frontend asset manager
 
         # My apps
-        'woodshop.api.authentication',           # helper auth 
-        'woodshop.frontend.bazaar',          # main frontend app (i.e, not the interface to managing a store or viewing analytics) 
+        'woodshop.api.authentication',  # helper auth 
         'woodshop.frontend',
-        'woodshop.api.gems',                     # manage gem assets
-        'woodshop.api.users',                    # eponymous
+        'woodshop.frontend.bazaar',     # main frontend app (i.e, not the interface to managing a store or viewing analytics) 
+        'woodshop.frontend.cubicle',    # dashboard management for vendors
+        'woodshop.api.gems',            # manage gem assets
+        'woodshop.api.users',           # eponymous
     )
 
     BOWER_INSTALLED_APPS = ('angular#1.5.0',

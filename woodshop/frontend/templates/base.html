@@ -18,6 +18,7 @@
     {% block styles %}
     <link rel="stylesheet" href="{% static "bootstrap/dist/css/bootstrap.css" %}">
     <link rel="stylesheet" href="{% static "font-awesome/css/font-awesome.css" %}">
+    <link rel="stylesheet" href="{% static "css/base.css" %}">
     <script src="{% static "js/vendor/modernizr-2.8.3-respond-1.4.2.min.js" %}"></script>
     {% endblock %}
 </head>
@@ -245,7 +246,7 @@
             <!-- /.dropdown -->
         </ul>
         {% block nav_sidebar %}
-            <!-- insert sidebar div here -->
+            <!-- insert sidebar content here -->
         {% endblock %}
         
     </nav>
@@ -260,6 +261,7 @@
 {% block scripts %}
 <script src="{% static "jquery/dist/jquery.js"%}"></script>
 <script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>
+<script src="{% static "angular/angular.js"%}"></script>
 {% endblock %}
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
