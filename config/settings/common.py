@@ -26,6 +26,7 @@ class Common(Configuration):
         # My apps
         'woodshop.api.authentication',           # helper auth 
         'woodshop.frontend.bazaar',          # main frontend app (i.e, not the interface to managing a store or viewing analytics) 
+        'woodshop.frontend',
         'woodshop.api.gems',                     # manage gem assets
         'woodshop.api.users',                    # eponymous
     )

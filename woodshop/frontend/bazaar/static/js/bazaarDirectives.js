@@ -27,7 +27,6 @@
             function ctrl() {
                 /* jshint validthis: true */
                 this.gems = [];
-                //this.gridRowFilter = grf;
                 // fat-arrow for lexical this-binding
                 Gem.query().$promise.then( (data) => {
                     this.gems = data.results;
@@ -67,8 +66,6 @@
                 } else {
                     populatePictures(this.gem.pictures);
                 }
-
-
             }
             return {
                 templateUrl: partialUrl + 'detail_summary.html',

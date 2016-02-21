@@ -1,9 +1,45 @@
-{% extends 'bazaar_base.html' %}
+{% extends 'base.html' %}
 {% load staticfiles %}
 {% block styles %}
 {{ block.super }}
-
+<link rel="stylesheet" href="{% static "metisMenu/dist/metisMenu.min.css" %}">
+<!--<link rel="stylesheet" href="{% static "css/vendor/pikachoosebase.css" %}">
+<link rel="stylesheet" href="{% static "css/vendor/pikachoosebottom.css" %}">-->
+<link rel="stylesheet" href="{% static "css/vendor/pikachoosecss3.css" %}">
+<link rel="stylesheet" href="{% static "css/bazaarBase.css"%}">
 <link rel="stylesheet" href="{% static "css/bazaarAnimations.css" %}">
+{% endblock %}
+
+{% block nav_sidebar %}
+<div class="navbar-befault sidebar" role="navigation">
+	<div class="sidebar-nav navbar-collapse" aria-expanded="false" style="height: 1px;">
+		<ul id="side-menu" class="nav in">
+			<li class="sidebar-search">
+				<div class="input-group custom-search-form">
+					<input class="form-control" placeholder="Search..." type="text">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">
+							<i class="fa fa-search"></i>
+						</button>
+					</span>
+				</div>
+			</li>
+			<li><a href="#">All</a></li>
+			<li><a href="#">Category A<span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
+					<li><a href="#">Subcategory</a></li>
+					<li><a href="#">Subcategory2</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Category B<span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
+					<li><a href="#">Subcategory</a></li>
+					<li><a href="#">Subcategory2</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
 {% endblock %}
 
 {% block page_content %}
@@ -16,19 +52,21 @@
 
 {% block scripts %}
 {{ block.super }}
-<script src='{% static "angular/angular.js"%}'></script>
-<script src='{% static "angular-resource/angular-resource.js"%}'></script>
-<script src='{% static "angular-route/angular-route.js" %}'></script>
-<script src='{% static "angular-animate/angular-animate.js" %}'></script>
-<script src='{% static "js/vendor/jquery.jcarousel.min.js" %}'></script>
-<script src='{% static "js/vendor/jquery.pikachoose.js" %}'></script>
-<script src='{% static "js/vendor/jquery.touchwipe.min.js" %}'></script>
-<script src='{% static "js/bazaarApp.js"%}'></script>
-<script src='{% static "js/bazaarControllers.js" %}'></script>
-<script src='{% static "js/bazaarServices.js" %}'></script>
-<script src='{% static "js/bazaarFilters.js" %}'></script>
-<script src='{% static "js/bazaarDirectives.js" %}'></script>
-<script src='{% static "js/bazaarAnimations.js" %}'></script>
+<script src="{% static "metisMenu/dist/metisMenu.min.js" %}"></script>
+<script src="{% static "js/bazaarBase.js"%}"></script>
+<script src="{% static "angular/angular.js"%}"></script>
+<script src="{% static "angular-resource/angular-resource.js"%}"></script>
+<script src="{% static "angular-route/angular-route.js" %}"></script>
+<script src="{% static "angular-animate/angular-animate.js" %}"></script>
+<script src="{% static "js/vendor/jquery.jcarousel.min.js" %}"></script>
+<script src="{% static "js/vendor/jquery.pikachoose.js" %}"></script>
+<script src="{% static "js/vendor/jquery.touchwipe.min.js" %}"></script>
+<script src="{% static "js/bazaarApp.js"%}"></script>
+<script src="{% static "js/bazaarControllers.js" %}"></script>
+<script src="{% static "js/bazaarServices.js" %}"></script>
+<script src="{% static "js/bazaarFilters.js" %}"></script>
+<script src="{% static "js/bazaarDirectives.js" %}"></script>
+<script src="{% static "js/bazaarAnimations.js" %}"></script>
 <script>
 var app = angular.module('bazaarApp'); 
 app.config(['$httpProvider', function($httpProvider) {
