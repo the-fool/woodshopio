@@ -31,7 +31,6 @@
                 // fat-arrow for lexical this-binding
                 Gem.query().$promise.then( (data) => {
                     this.gems = data.results;
-                    console.log(this.gems);
                 });
             }            
             return {

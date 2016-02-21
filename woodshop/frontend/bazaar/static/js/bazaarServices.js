@@ -39,6 +39,7 @@
         cache.getGem = function() {
             return detailGem;
         };
+        
         return cache;
     });
 })(angular);
