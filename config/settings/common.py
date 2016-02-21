@@ -72,7 +72,7 @@ class Common(Configuration):
     WSGI_APPLICATION = 'config.wsgi.application'
 
     # Allow for less strict handling of urls
-    APPEND_SLASH = values.BooleanValue(True)
+    APPEND_SLASH = True
 
     # Migrations
     MIGRATION_MODULES = {

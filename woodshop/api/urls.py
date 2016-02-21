@@ -7,6 +7,6 @@ from .gems import urls as gem_urls
 
 urlpatterns = [
 	url(r'', include(auth_urls)),
-	url(r'^users', include(user_urls)),
-	url(r'^gems', include(gem_urls))
+	url(r'^users/?', include(user_urls)),
+	url(r'^gems/?', include(gem_urls))
 ]

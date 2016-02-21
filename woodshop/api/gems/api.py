@@ -25,8 +25,8 @@ class GemDetail(generics.RetrieveUpdateDestroyAPIView):
 class GemPictureList(generics.ListAPIView):
   model = Picture
   serializer_class = PictureSerializer
-  #queryset = Picture.objects.none()
-  permissions_classes = [
+  queryset = Picture.objects.all()
+  permission_classes = [
     permissions.AllowAny
   ]
 

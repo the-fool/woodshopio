@@ -10,8 +10,8 @@ from .api import GemPictureList, GemDetail, GemList
 ]"""
 
 gem_urls = [
-	url(r'^(?P<pk>[0-9a-zA-Z_-]+)/pictures$',  GemPictureList.as_view(), name='gempicture-list'),
-	url(r'^(?P<pk>[0-9a-zA-Z_-]+)$', GemDetail.as_view(), name='gem-detail'),
+	url(r'^(?P<pk>[0-9a-zA-Z_-]+)/pictures/?$',  GemPictureList.as_view(), name='gempicture-list'),
+	url(r'^(?P<pk>[0-9a-zA-Z_-]+)/?$', GemDetail.as_view(), name='gem-detail'),
 	url(r'^$', GemList.as_view(), name='gem-list')
 ]
 
