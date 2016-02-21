@@ -1,7 +1,6 @@
 /* Just for the example. Fee free to delete these three lines */
-body{font-family:Helvetica, sans-serif;}
-a{color:white;}
-.pikachoose {width: 520px; margin: 0 auto;}
+
+.pikachoose {width: 600px; margin: 0 auto;}
 
 /* Style the thumbnails */
 .pika-thumbs{ padding: 0 16px; height: 75px; }
