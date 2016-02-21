@@ -1,8 +1,8 @@
 <div>
 	<div class="row">
-		<img class="gem-thumb" src="{{gem.main_picture.image}}">
+		<img class="gem-thumb" ng-src="{{gemThumb.gem.main_picture.image}}">
 	</div>
 	<div class="row">
-		<a href="#/Gem/{{gem.id}}" ng-click="vm.setDetail(gem)">{{gem.title}}</a>
+		<a href="#/Gem/{{gemThumb.gem.id}}" ng-click="setDetail(gem)">{{gemThumb.gem.title}}</a>
 	</div>
 <div>

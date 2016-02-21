@@ -2,7 +2,8 @@
     <h3>grabbag</h3>
     <div ng-repeat="gem in grabBag.gems">
     	<div ng-class="row|filter:gridRowFilter(3, $index)">
-        	<div class="col-md-4"><gem-thumb gem="gem"></gem-thumb>
+        	<div class="col-md-4">
+        		<gem-thumb gem="gem"></gem-thumb>
         	</div>
         </div>
     </div>

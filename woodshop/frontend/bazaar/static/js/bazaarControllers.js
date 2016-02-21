@@ -5,6 +5,7 @@
 	app.controller('bazaarController', function() {
 		this.detail_gem = null;
 		this.setDetail = function(gem) {
+			console.log('it works');
 			console.log(gem);
 		};
 	});

@@ -6,19 +6,18 @@
 
         app.directive('gemThumb', ['Gem', function(Gem) {
             function ctrl() {
-
             }
             return {
                 templateUrl: partialUrl + 'gem_thumb.html',
                 restrict: 'E',
                 scope: {
                     img_src: '@',
-                    gem: '=gem'
+                    gem: '=',
                 },
                 controller: ctrl,
                 controllerAs: 'gemThumb',
-                //bindToController: true
-            }
+                bindToController: true
+            };
 
         }]);
         app.directive('grabBag', ['Gem', function (Gem) {
@@ -42,13 +41,12 @@
             };
         }]);
 
-        app.directive('gem-summary', ['Gem', '$routeParams', function(Gem, $r){
+        app.directive('gemSummary', ['Gem', '$routeParams', function(Gem, $r){
             function ctrl() {
                 this.title = '';
                 this.description = '';
                 this.pictures = [];
                 Gem.query({id:$r.id}).$promise.then( (data) => {
-                    console.log(data);
                     this.title=data.title;
                     this.description=data.description;
                 });
