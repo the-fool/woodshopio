@@ -43,15 +43,30 @@
             };
         }]);
 
-        app.directive('gemSummary', ['Gem', 'DetailGemCache', '$routeParams', function(Gem, cache, $r){
+        app.directive('gemSummary', ['Gem', 'DetailGemCache', '$routeParams', '$http', function(Gem, cache, $r, $http){
             function ctrl() {
+                var self = this;
                 this.gem = cache.getGem();
                 this.pictures = [];
+
+                function populatePictures(url) {
+                     $http.get(url).then( function(response) {
+                        response.data.results.forEach(function (v) {
+                            self.pictures.push(v);
+                        });
+                    }); 
+                }
+
                 if (!Object.keys(this.gem).length) {
                     Gem.query({id:$r.id}).$promise.then( (data) => {
                         this.gem = data;
+                        populatePictures(this.gem.pictures);
                     });
+                } else {
+                    populatePictures(this.gem.pictures);
                 }
+
+
             }
             return {
                 templateUrl: partialUrl + 'detail_summary.html',
