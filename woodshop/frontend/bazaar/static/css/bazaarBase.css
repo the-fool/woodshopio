@@ -25,6 +25,12 @@ body {
     }
 }
 
+.gem-thumb {
+    max-height: 200px;
+    max-width: 200px;
+    overflow: hidden;
+}
+
 .navbar-top-links {
     margin-right: 0;
 }

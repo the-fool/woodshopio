@@ -4,6 +4,24 @@
         var app = ng.module('bazaar.directives', ['bazaar.api']);
         var partialUrl = '/static/bazaar_partials/';
 
+        app.directive('gemThumb', ['Gem', function(Gem) {
+            function ctrl() {
+
+            }
+
+            return {
+                templateUrl: partialUrl + 'gem_thumb.html',
+                restrict: 'E',
+                scope: {
+                    img_src: '@',
+                    gem: '=gem'
+                },
+                controller: ctrl,
+                controllerAs: 'gemThumb',
+                //bindToController: true
+            }
+
+        }]);
         app.directive('grabBag', ['Gem', function (Gem) {
             function ctrl() {
                 /* jshint validthis: true */
@@ -12,6 +30,7 @@
                 // fat-arrow for lexical this-binding
                 Gem.query().$promise.then( (data) => {
                     this.gems = data.results;
+                    console.log(this.gems);
                 });
             }
             
