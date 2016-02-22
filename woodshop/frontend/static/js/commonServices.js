@@ -1,7 +1,8 @@
 (function (ng) {
     'use strict';
 
-    var app = ng.module('bazaar.api', ['ngResource']);
+    var app = ng.module('common.api', ['ngResource']);
+    
     app.config(['$resourceProvider', function ($resourceProvider) {
         // Don't strip trailing slashes from calculated URLs
         $resourceProvider.defaults.stripTrailingSlashes = false;

@@ -1,33 +1,25 @@
 (function (ng) {
         'use strict';
 
-        var app = ng.module('bazaar.directives', ['bazaar.api']);
+        var app = ng.module('bazaar.directives', ['common.api']);
         var partialUrl = '/static/bazaar_partials/';
 
-        app.directive('gemThumb', ['DetailGemCache', function(cache) {
-            function ctrl() {
-                this.setDetail = function() {
-                    cache.setGem(this.gem);
-                };
-            }
-            return {
-                templateUrl: partialUrl + 'gem_thumb.html',
-                restrict: 'E',
-                scope: {
-                    img_src: '@',
-                    gem: '=',
-                },
-                controller: ctrl,
-                controllerAs: 'gemThumb',
-                bindToController: true
-            };
-
-        }]);
-        app.directive('grabBag', ['Gem', function (Gem) {
+        app.directive('grabBag', ['Gem',  function (Gem) {
             function ctrl() {
                 /* jshint validthis: true */
                 this.gems = [];
                 // fat-arrow for lexical this-binding
+                this.gemRows = (num_col) => {
+                    var ret=[], i = 0;
+                    this.gems.forEach(function(val, ind) {
+                        if (ind % num_col === 0) {
+                            ret[i++] = [val];
+                        } else {
+                            ret[i - 1].push[val];
+                        }
+                    });
+                    return ret;
+                };
                 Gem.query().$promise.then( (data) => {
                     this.gems = data.results;
                 });
@@ -54,7 +46,7 @@
                             self.pictures.push(v);
                         });
                         setTimeout(function() 
-                            {  $('#pikame').pikachoose({carousel:true});},0);
+                            {  $('#pikame').pikachoose({carousel:true, autoPlay: false});},0);
                     }); 
                 }
 

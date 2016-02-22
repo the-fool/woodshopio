@@ -3,11 +3,15 @@
     
     var bazaarApp = ng.module('bazaarApp', [
     	'ngRoute',
-    	'bazaar.animations',
+    	//'bazaar.api',
+        'common.filters',
+        //'bazaar.filters',
+        'common.api',
+        'common.directives',
+        'bazaar.animations',
         'bazaar.controllers',
-        'bazaar.api',
         'bazaar.directives',
-        'bazaar.filters'
+        
     ]);
     
     bazaarApp.config(['$routeProvider', '$animateProvider', function($rp, $ap) {

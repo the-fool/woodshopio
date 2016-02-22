@@ -1,9 +1,11 @@
 <div>
     <h3>grabbag</h3>
-    <div ng-repeat="gem in grabBag.gems">
-    	<div ng-class="row|filter:gridRowFilter(3, $index)">
+    <div ng-repeat="gemRow in grabBag.gems |gridRow:3">
+    	<div class="row">
+        	<div ng-repeat="gem in gemRow"> 
         	<div class="col-md-4">
         		<gem-thumb gem="gem"></gem-thumb>
+        	</div>
         	</div>
         </div>
     </div>
