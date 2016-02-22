@@ -18,7 +18,6 @@ describe('Bazaar app', function() {
 		
 		beforeEach(inject(function(_$httpBackend_, _$rootScope_, $compile) {	
 			$httpBackend = _$httpBackend_;
-			//$httpBackend.whenGET(/^\/media\/.*/).respond({"ok":'go away'});
 			$httpBackend.when('GET', '/api/gems/').respond(
 			{
 			    "count": 6,
@@ -121,20 +120,21 @@ describe('Bazaar app', function() {
 			grabBag = $('<grab-bag></grab-bag');
 			scope = _$rootScope_.$new();
 			$compile(grabBag)(scope);
-			//scope.$digest();
+			scope.$digest();
 			$httpBackend.flush();
 			grabBagCtrl = grabBag.isolateScope().grabBag;
 		}));
 
 		afterEach(function () {
 
-           // $httpBackend.verifyNoOutstandingExpectation();
-           // $httpBackend.verifyNoOutstandingRequest();
+            $httpBackend.verifyNoOutstandingExpectation();
+            $httpBackend.verifyNoOutstandingRequest();
         });
-
+		it('should render a gem-thumb', function() {
+			expect(grabBag.find('gem-thumb').length).not.toBe(0);
+		});
         it('should have 6 gems', function() {
-
-        	expect(6).toBe(6);
+        	expect(grabBag.find('gem-thumb').length).toBe(6);
         });
 
 		

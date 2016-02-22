@@ -8,7 +8,7 @@ module.exports = function(config) {
         
         preprocessors: {
             '../woodshop/frontend/**/static/js/*.js': ['jshint'],
-            '../woodshop/frontend/bazaar/static/partials/bazaar_partials/*.html': ['ng-html2js'],
+            '../woodshop/frontend/**/static/partials/**/*.html': ['ng-html2js'],
             '../woodshop/frontend/static/partials/common_partials/*.html' : ['ng-html2js']
         },
         ngHtml2JsPreprocessor: {
@@ -32,7 +32,7 @@ module.exports = function(config) {
         },
         reporters: ['progress'],
         files: [
-            {pattern: '../media/**/*.jpg', watched: false, included: false, served: true},
+            {pattern: '../media/**/*', watched: false, included: false, served: true},
             bowerDir + 'jquery/dist/jquery.js',
             nodeDir + 'jasmine-jquery/lib/jasmine-jquery.js',
             bowerDir + 'angular/angular.js',
@@ -42,7 +42,7 @@ module.exports = function(config) {
             bowerDir + 'angular-mocks/angular-mocks.js',
             bowerDir + 'metisMenu/dist/metisMenu.js',
             commonStaticDir + 'js/*.js',
-            commonStaticDir + 'js/vendor/*.js',
+            //commonStaticDir + 'js/vendor/*.js',
             commonStaticDir + 'partials/common_partials/*.html',
             appStaticDir + 'js/*.js',
             appStaticDir + 'js/**/*.js',
