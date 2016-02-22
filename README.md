@@ -29,9 +29,7 @@ python woodshop/manage.py createsuperuser
 
 Populate dummy data
 ```bash
-python woodshop/manage.py create_users
-python woodshop/manage.py create_gems
-python woodshop/manage.py create_pictures
+make fixtures
 ```
 
 Test-it
