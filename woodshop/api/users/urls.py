@@ -2,6 +2,6 @@ from django.conf.urls import url, include
 from . import api
 
 urlpatterns = [ 
-url(r'^$', api.UserList.as_view()),
-url(r'^(?P<pk>[0-9]+)/$', api.UserDetail.as_view()),
+url(r'^$', api.UserList.as_view(), name='user-list'),
+url(r'^(?P<pk>.+)$', api.UserDetail.as_view(), name='user-detail'),
 ]
