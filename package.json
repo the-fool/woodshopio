@@ -34,6 +34,7 @@
     "phantomjs-prebuilt": "^2.1.4",
     "protractor": "^2.1.0",
     "shelljs": "^0.2.6",
-    "webdriver-manager": "~8.0.0"
+    "webdriver-manager": "~8.0.0",
+    "ng-html2js": "~2.0.0"
   }
 }

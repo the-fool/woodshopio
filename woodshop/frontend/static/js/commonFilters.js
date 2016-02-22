@@ -22,6 +22,6 @@
             cacheResults.push(result);
 
             return result;
-        }
+        };
     });
 })(angular);

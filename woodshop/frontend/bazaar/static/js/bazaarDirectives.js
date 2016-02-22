@@ -9,18 +9,7 @@
                 /* jshint validthis: true */
                 var self = this;
                 this.gems = [];
-                // fat-arrow for lexical this-binding
-                this.gemRows = function(num_col) {
-                    var ret=[], i = 0;
-                    self.gems.forEach(function(val, ind) {
-                        if (ind % num_col === 0) {
-                            ret[i++] = [val];
-                        } else {
-                            ret[i - 1].push[val];
-                        }
-                    });
-                    return ret;
-                };
+           
                 Gem.query().$promise.then( function(data) {
                     self.gems = data.results;
                 });
@@ -37,6 +26,7 @@
 
         app.directive('gemSummary', ['Gem', 'DetailGemCache', '$routeParams', '$http', function(Gem, cache, $r, $http){
             function ctrl() {
+                /* jshint validthis: true */
                 var self = this;
                 this.gem = cache.getGem();
                 this.pictures = [];
