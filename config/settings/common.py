@@ -33,16 +33,17 @@ class Common(Configuration):
     )
 
     BOWER_INSTALLED_APPS = ('angular#1.5.0',
-         'angular-animate#1.5.0',
-         'angular-resource#1.5.0',
-         'angular-route#1.5.0',
-         'bootstrap#3.3.6',
-         'font-awesome#4.5.0',
-         'jquery#2.2.0',
-         'lodash#4.4.0',
-         'metisMenu#2.4.0',
-         'modernizr#3.3.1',
-         'underscore#1.8.3')
+ 'angular-animate#1.5.0',
+ 'angular-mocks#1.5.0',
+ 'angular-resource#1.5.0',
+ 'angular-route#1.5.0',
+ 'bootstrap#3.3.6',
+ 'font-awesome#4.5.0',
+ 'jquery#2.2.0',
+ 'lodash#4.4.0',
+ 'metisMenu#2.4.0',
+ 'modernizr#3.3.1',
+ 'underscore#1.8.3')
 
 
     # https://docs.djangoproject.com/en/1.8/topics/http/middleware/

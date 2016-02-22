@@ -6,21 +6,22 @@ module.exports = function(config) {
         
         preprocessors: {
             'woodshop/frontend/**/static/js/*.js': ['jshint'],
-            'woodshop/frontend/**/static/partials/*.html': ['ng-html2js']
+            'woodshop/frontend/**/static/partials/**/*.html': ['ng-html2js'],
+            'woodshop/frontend/static/common_partials/*.html' : ['ng-html2js']
         },
         ngHtml2JsPreprocessor: {
             stripPrefix: "woodshop/frontend/bazaar",
+            stripPrefix: "woodshop/frontend"
         },
         reporters: ['progress'],
         files: [
             bowerDir + 'jquery/dist/jquery.js',
             '../node_modules/jasmine-jquery/lib/jasmine-jquery.js',
             bowerDir + 'angular/angular.js',
-            //baseDir + 'angular-route/angular-route.js',
+            bowerDir + 'angular-route/angular-route.js',
             bowerDir + 'angular-resource/angular-resource.js',
-            //baseDir + 'angular-mocks/angular-mocks.js',
+            bowerDir + 'angular-mocks/angular-mocks.js',
             staticDir + 'js/**/*.js',
-            staticDir + 'partials/*.html',
             staticDir + 'partials/**/*.html',
             'frontend/unit/**/*.js'
            ],
