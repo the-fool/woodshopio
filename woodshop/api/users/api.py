@@ -1,21 +1,28 @@
-
+from django.contrib.auth.models import User
+from .serializers import UserSerializer, CreateUserSerializer
+from rest_framework import generics
+from .permissions import IsOwnerOrReadOnly
+from django.contrib.auth import get_user_model
 from rest_framework import viewsets, mixins
 from rest_framework.permissions import AllowAny
-from rest_framework import viewsets
 
-from .models import User
-from .permissions import IsOwnerOrReadOnly
-from .serializers import CreateUserSerializer, UserSerializer
+User = get_user_model()
 
-class UserViewSet(viewsets.ReadOnlyModelViewSet):
-    #add CRUD functionality to Users API
+class UserList(generics.ListAPIView,
+               mixins.CreateModelMixin,
+               mixins.UpdateModelMixin,):
+
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (IsOwnerOrReadOnly,)
 
-
-# from tutorial. method based view for creating custom users 
+    # from tutorial. create override method
     def create(self, request, *args, **kwargs):
         self.serializer_class = CreateUserSerializer
         self.permission_classes = (AllowAny,)
-        return super(UserViewSet, self).create(request, *args, **kwargs)
+        return super(UserList, self).create(request, *args, **kwargs)
+
+class UserDetail(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (IsOwnerOrReadOnly,)

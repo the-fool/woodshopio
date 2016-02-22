@@ -1,8 +1,7 @@
 from django.conf.urls import url, include
-from rest_framework.routers import DefaultRouter
-from .api import UserViewSet
+from . import api
 
-router = DefaultRouter()
-router.register(r'', UserViewSet)
-
-urlpatterns = [ url(r'', include(router.urls))]
+urlpatterns = [ 
+url(r'^$', api.UserList.as_view()),
+url(r'^(?P<pk>[0-9]+)/$', api.UserDetail.as_view()),
+]
