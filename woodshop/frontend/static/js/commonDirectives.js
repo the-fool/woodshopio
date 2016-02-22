@@ -1,8 +1,8 @@
 (function (ng) {
         'use strict';
         /* Requires common.services */
-        var app = ng.module('common.directives', ['common.api']);
-        var partialUrl = '/static/common_partials/';
+        var app = ng.module('common.directives', ['common.services']);
+        var partialUrl = '/static/partials/common_partials/';
 
         app.directive('gemThumb', ['DetailGemCache', function(cache) {
             function ctrl() {
