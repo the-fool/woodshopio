@@ -7,11 +7,12 @@
         app.directive('grabBag', ['Gem',  function (Gem) {
             function ctrl() {
                 /* jshint validthis: true */
+                var self = this;
                 this.gems = [];
                 // fat-arrow for lexical this-binding
-                this.gemRows = (num_col) => {
+                this.gemRows = function(num_col) {
                     var ret=[], i = 0;
-                    this.gems.forEach(function(val, ind) {
+                    self.gems.forEach(function(val, ind) {
                         if (ind % num_col === 0) {
                             ret[i++] = [val];
                         } else {
@@ -20,8 +21,8 @@
                     });
                     return ret;
                 };
-                Gem.query().$promise.then( (data) => {
-                    this.gems = data.results;
+                Gem.query().$promise.then( function(data) {
+                    self.gems = data.results;
                 });
             }            
             return {
@@ -51,9 +52,9 @@
                 }
 
                 if (!Object.keys(this.gem).length) {
-                    Gem.query({id:$r.id}).$promise.then( (data) => {
-                        this.gem = data;
-                        populatePictures(this.gem.pictures);
+                    Gem.query({id:$r.id}).$promise.then( function(data) {
+                        self.gem = data;
+                        populatePictures(self.gem.pictures);
                     });
                 } else {
                     populatePictures(this.gem.pictures);

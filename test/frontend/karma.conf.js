@@ -22,11 +22,14 @@ module.exports = function(config) {
             bowerDir + 'angular/angular.js',
             bowerDir + 'angular-route/angular-route.js',
             bowerDir + 'angular-resource/angular-resource.js',
+            bowerDir + 'angular-animate/angular-animate.js',
             bowerDir + 'angular-mocks/angular-mocks.js',
-            appStaticDir + 'js/**/*.js',
-            appStaticDir + 'partials/**/*.html',
-            commonStaticDir + 'js/**/*.js',
+            commonStaticDir + 'js/*.js',
             commonStaticDir + 'partials/common_partials/*.html',
+            appStaticDir + 'js/*.js',
+            appStaticDir + 'partials/**/*.html',
+            '../woodshop/frontend/bazaar/static/js/*.js',
+            '../woodshop/frontend/static/js/*.js',
             'frontend/unit/**/*.js'
            ],
 
@@ -34,7 +37,7 @@ module.exports = function(config) {
 
         frameworks: ['jasmine'],
 
-        browsers: ['Firefox'],
+        browsers: ['PhantomJS'],
 
         plugins: [
             'karma-jshint-preprocessor',
@@ -42,6 +45,7 @@ module.exports = function(config) {
             'karma-firefox-launcher',
             'karma-jasmine',
             'karma-ng-html2js-preprocessor',
+            'karma-phantomjs-launcher'
             ],
 
         jshint: {

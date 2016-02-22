@@ -30,6 +30,8 @@
     "karma-jshint-preprocessor": "0.0.6",
     "karma-junit-reporter": "~0.3.8",
     "karma-ng-html2js-preprocessor": "~0.2.0",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "phantomjs-prebuilt": "^2.1.4",
     "protractor": "^2.1.0",
     "shelljs": "^0.2.6",
     "webdriver-manager": "~8.0.0"
