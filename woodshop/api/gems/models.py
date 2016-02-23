@@ -57,14 +57,16 @@ class Category(models.Model):
 		def cont(name, node):
 			for i in node:
 				name = name + '_' + i[0]
-				l.append(name)
 				if i[1]:
+					l.append({'name':name, 'leaf':False})
 					cont(name, i[1])
+				else:
+					l.append({'name':name, 'leaf':True})
 				name = '_'.join(name.split('_')[:-1])
 
 		for i in Category.CATS:
 			name = i[0]
-			l.append(name)
+			l.append({'name':name, 'leaf':False}) # Bad -- perhaps top-level nodes are leaves
 			cont(name, i[1])
 
 		return l
