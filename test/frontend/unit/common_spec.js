@@ -1,13 +1,10 @@
 'use strict';
 
 describe('Common app features', function() {
-	var bazaarTplDir = '/static/partials/bazaar_partials/';
 	var commonTplDir = '/static/partials/common_partials/';
 	beforeEach(module('common.services'));
 	beforeEach(module('common.filters'));
 	beforeEach(module('common.directives'));
-	//beforeEach(module('bazaar.directives'));
-	//beforeEach(module('bazaarApp'));
 
 	describe('api service', function() {
 		var $compile, $httpBackend, gemAPI;
@@ -149,19 +146,36 @@ describe('Common app features', function() {
 	});
 
 	describe('gem thumbnail directive', function() {
-		var gemThumb, scope, gemThumbCtrl, cache;
+		var gemThumb, scope, gemThumbCtrl, cache, $compile;
 
 		beforeEach(module(commonTplDir + 'gem_thumb.html'));
 		
-		beforeEach(inject(function(_$rootScope_, $compile, DetailGemCache) {
-			cache = DetailGemCache;	
-			gemThumb = $('<gem-thumb></gem-thumb>');
-			scope = _$rootScope_.$new();
-			$compile(grabBag)(scope);
+		function create(html) {
+			var gemThumb = angular.element(html);
+			$compile(gemThumb)(scope);
 			scope.$digest();
-			gemThumbCtrl = gemThumb.isolateScope().grabBag;
+			gemThumbCtrl = gemThumb.isolateScope().gemThumb;
+			return gemThumb;
+		}
+
+		beforeEach(inject(function(_$rootScope_, _$compile_, DetailGemCache) {
+			cache = DetailGemCache;	
+			$compile = _$compile_;
+			scope = _$rootScope_.$new();
+			
 		}));
-		
+
+		it('should set the cache to the gem object when clicked', function() {
+			scope.gem = {title: 'gemmy'};
+			gemThumb = create('<gem-thumb gem="gem"></gem-thumb>');
+			gemThumb.find('a.gem-title').click();
+			expect(cache.getGem().title).toBe('gemmy');
+
+			scope.gem = {title: 'gemmer'};
+			gemThumb = create('<gem-thumb gem="gem"></gem-thumb>');
+			gemThumb.find('a.gem-title').click();
+			expect(cache.getGem().title).toBe('gemmer');			
+		});
 
 	});
 

@@ -133,7 +133,6 @@ describe('Bazaar app', function() {
         it('should have 6 gems', function() {
         	expect(grabBag.find('gem-thumb').length).toBe(6);
         });
-
-		
+        		
 	});
 });
