@@ -10,11 +10,11 @@ class Category(models.Model):
 
 class Gem(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name=('gems'))
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name=("gems"))
     title = models.CharField(max_length=128, unique=True)
     description = models.TextField(blank=True, null=True)
     main_picture = models.OneToOneField('Picture', related_name='gem_asset', blank=True, null=True)
-    categories = models.ManyToManyField(Category,blank=True, related_name ="categories")
+    categories = models.ManyToManyField(Category,blank=True, related_name ="gems")
 
 def image_dir_path(instance, filename):
 	ext = filename.split('.')[-1]
