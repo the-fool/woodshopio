@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Gem, Picture
+from .models import Gem, Picture,Category
 from woodshop.api.users.serializers import UserSerializer
 
 class PictureSerializer(serializers.ModelSerializer):
@@ -10,8 +10,15 @@ class PictureSerializer(serializers.ModelSerializer):
         model = Picture
         fields = ('image',)
 
+class CategorySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Category
+        fields= ('id','name')
+
 class GemSerializer(serializers.ModelSerializer):
     author = UserSerializer(required=False)
+    categories = CategorySerializer(many=True, required=False)
     pictures = serializers.HyperlinkedIdentityField(view_name='gempicture-list')
     main_picture = PictureSerializer()
 
