@@ -6,7 +6,7 @@ if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
     os.environ.setdefault("DJANGO_CONFIGURATION", "Local")
     
-    is_testing = 'test' in sys.argv
+    """is_testing = 'test' in sys.argv
 
     if is_testing:
         import coverage
@@ -23,14 +23,14 @@ if __name__ == "__main__":
                                                             '*management/*'
                                                         ])
         cov.erase()
-        cov.start()
+        cov.start()"""
         
     from configurations.management import execute_from_command_line
 
     execute_from_command_line(sys.argv)
     
-    if is_testing:
+    """if is_testing:
         cov.stop()
         cov.save()
         cov.report()   
-        cov.html_report(directory='covhtml')
+        cov.html_report(directory='covhtml')"""
