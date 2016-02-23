@@ -11,41 +11,59 @@ class Category(models.Model):
 
 	# PS -- the reason for doing categories this way is for the sake of JSONifying the cat heirarchy for display client-side
 	CATS = [
-		{'3D Models': [
-			{'Characters' : [
-				{'Human': [
-					{'Fantasy': ''},
-					{'Sci-fi': ''},
-					{'Miltary'},
-					{'Other': ''}
-					]
-				},
-				{'Animal': [
-					{'Land':''},
-					{'Sea':''},
-					{'Other': ''}
-					]
-				},
-				{'Robot', ''},
-				{'Other': ''}
-				]
-			},
-			{'Vehicles': [
-				{'Air':''},
-				{'Land':''},
-				{'Space', ''},
-				{'Other': ''}
-				]
-			}
-			]			
-		},
-		{'Shaders': [
-			{'Landscape':''},
-			{'Camera FX':''},
-			{'Other': ''}
-			]
-		}
+	    ('3D Models', [
+	            ('Characters', [
+	                    ('Human', [
+	                            ('Fantasy', ''),
+	                            ('Sci-fi', ''),
+	                            ('Miltary', ''),
+	                            ('Other', '')
+	                            ]
+	                     ),
+	                    ('Animal', [
+	                            ('Land',''),
+	                            ('Sea',''),
+	                            ('Other', '')
+	                            ]
+	                     ),
+	                    ('Robot', ''),
+	                    ('Other', '')
+	                    ]
+	             ),
+	            ('Vehicles', [
+	                    ('Air',''),
+	                    ('Land',''),
+	                    ('Space', ''),
+	                    ('Other', '')
+	                    ]
+	            )
+	            ]
+	     ),
+	    ('Shaders', [
+	            ('Landscape',''),
+	            ('Camera FX',''),
+	            ('Other', '')
+	            ]
+	    )
 	]
+	def getnames():
+    		l = []
+	
+	    def cont(name, node):
+	        for i in node:
+	            name = name + '_' + i[0]
+	            l.append(name)
+	            if i[1]:
+	                cont(name, i[1])
+	            name = '_'.join(name.split('_')[:-1])
+	
+	    for i in CATS:
+	        name = i[0]
+	        l.append(name)
+	        cont(name, i[1])
+	
+	    return l
+
 
 	name=models.CharField(max_length=128, blank=True)
 
