@@ -6,10 +6,9 @@ from django.conf import settings
 
 
 class Category(models.Model):
-	# TODO write a function to traverse this constant enum, 
-	# and then save a category instance with a name relating to each leaf node
-
-	# PS -- the reason for doing categories this way is for the sake of JSONifying the cat heirarchy for display client-side
+	# PS -- the reason for doing categories this way is for the sake of JSONifying the cat heirarchy 
+	# Then client-side display can represent the structure
+	
 	CATS = [
 	    ('3D Models', [
 	            ('Characters', [
@@ -46,9 +45,14 @@ class Category(models.Model):
 	            ]
 	    )
 	]
-	def getnames():
-    		l = []
 	
+	def get_category_names():
+	    """ 
+	    Returns ordered list of every node on category tree.
+	    Each item separated by '_', e.g. UrParent_sub1_subOfSub1
+	    """
+	    l = []
+	    
 	    def cont(name, node):
 	        for i in node:
 	            name = name + '_' + i[0]
