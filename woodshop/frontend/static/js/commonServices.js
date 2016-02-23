@@ -34,6 +34,7 @@
     app.factory('DetailGemCache', function() {
         var cache = {};
         var detailGem = {};
+        
         cache.setGem = function(gem) {
             detailGem = gem;
         };

@@ -4,14 +4,12 @@ describe('Bazaar app', function() {
 	var bazaarTplDir = '/static/partials/bazaar_partials/';
 	var commonTplDir = '/static/partials/common_partials/';
 	beforeEach(module('common.services'));
-	beforeEach(module('common.filters'));
 	beforeEach(module('common.directives'));
 	beforeEach(module('bazaar.directives'));
 	beforeEach(module('bazaarApp'));
 
 	describe('grab bag directive', function() {
 		var scope, $compile, $httpBackend, grabBag, grabBagCtrl;
-
 
 		beforeEach(module(commonTplDir + 'gem_thumb.html'));
 		beforeEach(module(bazaarTplDir + 'grab_bag.html'));
@@ -117,7 +115,7 @@ describe('Bazaar app', function() {
 			    ]
 			}
 			);
-			grabBag = $('<grab-bag></grab-bag');
+			grabBag = $('<grab-bag></grab-bag>');
 			scope = _$rootScope_.$new();
 			$compile(grabBag)(scope);
 			scope.$digest();
@@ -126,7 +124,6 @@ describe('Bazaar app', function() {
 		}));
 
 		afterEach(function () {
-
             $httpBackend.verifyNoOutstandingExpectation();
             $httpBackend.verifyNoOutstandingRequest();
         });

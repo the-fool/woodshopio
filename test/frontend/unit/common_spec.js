@@ -6,16 +6,13 @@ describe('Common app features', function() {
 	beforeEach(module('common.services'));
 	beforeEach(module('common.filters'));
 	beforeEach(module('common.directives'));
-	beforeEach(module('bazaar.directives'));
-	beforeEach(module('bazaarApp'));
+	//beforeEach(module('bazaar.directives'));
+	//beforeEach(module('bazaarApp'));
 
 	describe('api service', function() {
-		var scope, $compile, $httpBackend, gemAPI;
+		var $compile, $httpBackend, gemAPI;
 
 
-		beforeEach(module(commonTplDir + 'gem_thumb.html'));
-		beforeEach(module(bazaarTplDir + 'grab_bag.html'));
-		
 		beforeEach(inject(function(_$httpBackend_, _$rootScope_, Gem) {	
 			$httpBackend = _$httpBackend_;
 			$httpBackend.when('GET', '/api/gems/').respond(
@@ -118,7 +115,6 @@ describe('Common app features', function() {
 			}
 			);
 			gemAPI = Gem;
-			scope = _$rootScope_.$new();
 		}));
 
 		afterEach(function () {
@@ -135,6 +131,38 @@ describe('Common app features', function() {
         	$httpBackend.flush();
         	expect(data.results).toBeDefined();
         });
+	});
+	
+	describe('gem detail cache', function() {
+		var cache;
+		beforeEach(inject(function(DetailGemCache) {
+			cache = DetailGemCache;
+		}));
+
+		it('should be initially empty', function() {
+			expect(Object.keys(cache.getGem).length).toBe(0);
+		});
+		it('should be settable', function() {
+			cache.setGem({gem:true});
+			expect(cache.getGem.gem).toBeDefined;
+		});
+	});
+
+	describe('gem thumbnail directive', function() {
+		var gemThumb, scope, gemThumbCtrl, cache;
+
+		beforeEach(module(commonTplDir + 'gem_thumb.html'));
+		
+		beforeEach(inject(function(_$rootScope_, $compile, DetailGemCache) {
+			cache = DetailGemCache;	
+			gemThumb = $('<gem-thumb></gem-thumb>');
+			scope = _$rootScope_.$new();
+			$compile(grabBag)(scope);
+			scope.$digest();
+			gemThumbCtrl = gemThumb.isolateScope().grabBag;
+		}));
+		
+
 	});
 
 	describe('grid row filter', function() {
