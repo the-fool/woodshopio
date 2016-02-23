@@ -8,7 +8,14 @@ descriptions = ['This is text',
                'Guns guns guns',
                'Particle effects',
                '5 dimensional terrain generator',
-               'Shrubs']
+               'Shrubs',
+               'Zombie vampire megamix',
+               'Fast cars',
+               'Photorealistic anime',
+               'Literary giants',
+               'Oddly shaped coins',
+               'Deep space RTS simulator 15',
+               'The entire cast of Fraiser']
 
 
 class Command(BaseCommand):

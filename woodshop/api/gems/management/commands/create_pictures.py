@@ -21,8 +21,8 @@ class Command(BaseCommand):
 		gems = Gem.objects.all()
 
 		for x in range(1,4):
-			for i, image in enumerate(sample_images):
-				Picture.objects.create(gem=gems[(i + x) % gems.count()], image=image)
+			for i, gem in enumerate(gems):
+				Picture.objects.create(gem=gem, image=sample_images[(i + x) % len(sample_images)])
 
 		for g in Gem.objects.all():
 			g.main_picture = g.pictures.all()[0]
