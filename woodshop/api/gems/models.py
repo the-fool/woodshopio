@@ -6,6 +6,47 @@ from django.conf import settings
 
 
 class Category(models.Model):
+	# TODO write a function to traverse this constant enum, 
+	# and then save a category instance with a name relating to each leaf node
+
+	# PS -- the reason for doing categories this way is for the sake of JSONifying the cat heirarchy for display client-side
+	CATS = [
+		{'3D Models': [
+			{'Characters' : [
+				{'Human': [
+					{'Fantasy': ''},
+					{'Sci-fi': ''},
+					{'Miltary'},
+					{'Other': ''}
+					]
+				},
+				{'Animal': [
+					{'Land':''},
+					{'Sea':''},
+					{'Other': ''}
+					]
+				},
+				{'Robot', ''},
+				{'Other': ''}
+				]
+			},
+			{'Vehicles': [
+				{'Air':''},
+				{'Land':''},
+				{'Space', ''},
+				{'Other': ''}
+				]
+			}
+			]			
+		},
+		{'Shaders': [
+			{'Landscape':''},
+			{'Camera FX':''},
+			{'Other': ''}
+			]
+		}
+	]
+
 	name=models.CharField(max_length=128, blank=True)
 
 class Gem(models.Model):
