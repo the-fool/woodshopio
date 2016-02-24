@@ -77,7 +77,7 @@ class Category(models.Model):
 			yield c
 
 	id=models.CharField(max_length=128, default='', primary_key=True) 	  # (Ur_sub1_sub2_leaf)
-	name=models.CharField(max_length=128, default='') 		  # simple name ('sub2')
+	name=models.CharField(max_length=128, default='') 		  			  # simple name ('sub2')
 	is_leaf=models.BooleanField(default=False)
 
 	def __repr__(self):
