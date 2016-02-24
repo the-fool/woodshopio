@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="{% static "css/bazaarAnimations.css" %}">
 {% endblock %}
 
+{% block ng_app %}bazaarApp{% endblock %}
+
 {% block nav_sidebar %}
 <div class="navbar-befault sidebar" role="navigation">
 	<div class="sidebar-nav navbar-collapse" aria-expanded="false" style="height: 1px;">
@@ -43,7 +45,7 @@
 {% endblock %}
 
 {% block page_content %}
-<div class="container-fluid" ng-app="bazaarApp">
+<div class="container-fluid">
 	<div class="view-container" ng-controller="bazaarController">
 		<div ng-view class="view-frame animated"></div>
 	</div>
