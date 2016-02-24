@@ -13,22 +13,29 @@
         function ($r) {
             return $r('/api/gems/:id/', {
                 id: '@id'
-            }, {
+            },  { 
                 query: {
                     method: 'GET',
                     isArray: false,
+                }, 
+                categorize: {
+                    url: '/api/gems/category/:category',
+                    method: 'GET',
+                    paramams: {
+                        category:'@category'
+                    }
                 }
             });
         }
-    ]);
+        ]);
 
     app.factory('User', [
-       '$resource',
-        function ($r) {
-            return $r('/api/users/:username', {
-                username: '@username'
-            });
-       }
+     '$resource',
+     function ($r) {
+        return $r('/api/users/:username', {
+            username: '@username'
+        });
+    }
     ]);
 
     app.factory('Categories', [
@@ -36,7 +43,7 @@
         function($r) {
             return $r('/static/categories.json');
         }
-    ]);
+        ]);
 
     app.factory('DetailGemCache', function() {
         var cache = {};

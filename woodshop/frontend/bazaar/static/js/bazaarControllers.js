@@ -7,9 +7,10 @@
 		
 	});
 
-	app.controller('categories',['$scope', function() {
+	app.controller('categories',['GemsCache', function(GemsCache) {
 		this.setCategory = function(name) {
 			console.log('Clicked ' + name);
+			GemsCache.getCategorical(name);
 		};
 	}]);
 

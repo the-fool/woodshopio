@@ -46,7 +46,6 @@ $(function() {
             setTimeout(function() {
                 var $others = $li.siblings();
                 $others.removeClass('active');
-                console.log($others.find('a'));
                 $others.find('a').attr('aria-expanded', false);
                 $others.find('li.active').removeClass('active');
                 $others.find('ul.in').removeClass('in').attr('aria-expanded', false);
