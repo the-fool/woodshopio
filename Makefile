@@ -4,5 +4,6 @@ syncdb:
 
 fixtures:
 	python ./manage.py create_users
+	python ./manage.py create_categories
 	python ./manage.py create_gems
 	python ./manage.py create_pictures

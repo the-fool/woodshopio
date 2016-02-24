@@ -67,9 +67,25 @@ class Category(models.Model):
 		traverse('',Category.CATS)
 
 		return l
+	
+	@staticmethod
+	def generate_parent_names(full_name):
+		sub_names = full_name.split('_')
+		for i in range(1, len(sub_names) + 1):
+			parent = '_'.join(sub_names[:i])
+			c = Category.objects.get(full_name=parent)
+			yield c
 
+	full_name=models.CharField(max_length=128, default='') 	  # (Ur_sub1_sub2_leaf)
+	name=models.CharField(max_length=128, default='') 		  # simple name ('sub2')
+	is_leaf=models.BooleanField(default=False)
 
-	name=models.CharField(max_length=128, blank=True)
+	def __repr__(self):
+		return '<Category: {}>'.format('_'.join(self.full_name.split('_')[-2:]))
+	
+	def __str__(self):
+		return self.name
+
 
 class Gem(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -77,8 +93,13 @@ class Gem(models.Model):
     title = models.CharField(max_length=128, unique=True)
     description = models.TextField(blank=True, null=True)
     main_picture = models.OneToOneField('Picture', related_name='gem_asset', blank=True, null=True)
-    categories = models.ManyToManyField(Category,blank=True, related_name ="gems")
+    categories = models.ManyToManyField(Category, blank=True, related_name ="gems")
 
+
+    def add_category(self, category):
+    	for c in Category.generate_parent_names(category.full_name):
+    		self.categories.add(c)
+    	self.save()
 
 
 def image_dir_path(instance, filename):
