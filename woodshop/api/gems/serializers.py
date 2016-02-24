@@ -11,10 +11,10 @@ class PictureSerializer(serializers.ModelSerializer):
         fields = ('image',)
 
 class CategorySerializer(serializers.ModelSerializer):
-
+    
     class Meta:
         model = Category
-        fields= ('id','name')
+        fields= ('id',)
 
 class GemSerializer(serializers.ModelSerializer):
     author = UserSerializer(required=False)

@@ -36,11 +36,9 @@ descriptions = ['This is text',
 class Command(BaseCommand):
     def handle(self, *args, **options):
         users = User.objects.all()
-        categories = list(Category.objects.filter(is_leaf__exact=True))
         Gem.objects.all().delete()
         for i, d in enumerate(descriptions):
             g = Gem.objects.create(author=users[i % users.count()], 
                                title="Title #{}".format(i + 1), 
                                description=d)
-            g.add_category(categories[i % len(categories)])
 
