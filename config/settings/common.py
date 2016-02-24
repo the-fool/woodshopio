@@ -19,6 +19,7 @@ class Common(Configuration):
         # Third party apps
         'rest_framework',            # utilities for rest apis
         'rest_framework.authtoken',  # token authentication
+        'rest_auth',                 # basic login/logout
         'django_rq',                 # asynchronous queuing
         'versatileimagefield',       # image manipulation
         'djangobower',               # frontend asset manager
