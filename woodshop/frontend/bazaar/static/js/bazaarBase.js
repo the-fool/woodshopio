@@ -37,15 +37,28 @@ $(function() {
     if (element.is('li')) {
         element.addClass('active');
     }*/
-    // TODO -- Keep menus open when hyperlink text is clicked
-    /*$('#side-menu li a span.cat-text').click(function() {
-        var self = this;
-        setTimeout(function() {      
-            if ($(self).parent('a').attr('aria-expanded')) {
-              $(self).parent('a').attr('aria-disabled', true);
-              $('#side-menu li a[aria-expanded="false"]').attr('aria-disabled', false);
-           }
-    }, 300); */
+
+    // The goal is to prevent menu toggling when it's already open
+    // TODO -- Test this bad boy, I think it's buggy
+    $('#side-menu li a span.cat-text').click(function(e) {
+        
+        function clearList($li) {
+            setTimeout(function() {
+                var $others = $li.siblings();
+                $others.removeClass('active');
+                console.log($others.find('a'));
+                $others.find('a').attr('aria-expanded', false);
+                $others.find('li.active').removeClass('active');
+                $others.find('ul.in').removeClass('in').attr('aria-expanded', false);
+            },30); // timeout for animated transitions -- 
+        }
+
+        if ($(this).parent('a').attr('aria-expanded') == 'true') {
+            e.stopPropagation();
+            clearList($(this).parent().parent());
+        } else {
+            clearList($(this).parent().parent());
+        }
 
     });
 });

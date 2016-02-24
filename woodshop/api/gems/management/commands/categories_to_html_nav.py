@@ -15,7 +15,7 @@ class Command(BaseCommand):
         	for i in node:
         		if i[1]: # if not leaf
         			l.append(
-        			   	'<li><a href=""><span ng-click="cats.setCategory()" class="cat-text">{}</span><span class="fa arrow"></span></a>'.format(i[0]) +	
+        			   	'<li><a><span ng-click="cats.setCategory()" class="cat-text">{}</span><span class="fa arrow"></span></a>'.format(i[0]) +	
         			   	'<ul class="nav nav-{}-level collapse" aria-expanded="false" style="height: 0px;">'.format(level[index])
         			   	)
         			index += 1
