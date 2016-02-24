@@ -7,4 +7,10 @@
 		
 	});
 
+	app.controller('categories',['$scope', function() {
+		this.setCategory = function(name) {
+			console.log('Clicked ' + name);
+		};
+	}]);
+
 }) (angular);

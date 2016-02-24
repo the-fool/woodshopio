@@ -13,20 +13,20 @@
 {% block ng_app %}bazaarApp{% endblock %}
 
 {% block nav_sidebar %}
-<div class="navbar-befault sidebar" role="navigation">
+<div class="navbar-befault sidebar" role="navigation" ng-controller="categories as cats">
 	<div class="sidebar-nav navbar-collapse" aria-expanded="false" style="height: 1px;">
-		<ul id="side-menu" class="nav in">
+		<ul id="side-menu" class="nav in metismenu">
 			<li class="sidebar-search">
 				<div class="input-group custom-search-form">
 					<input class="form-control" placeholder="Search..." type="text">
 					<span class="input-group-btn">
-						<button class="btn btn-default" type="button">
+						<button class="btn btn-default" type="button"> 
 							<i class="fa fa-search"></i>
 						</button>
 					</span>
 				</div>
 			</li>
-			<li><a href="#">All</a></li>
+			<li><a href="" ng-click='cats.setCategory()'>All</a></li>
 			{% include 'cat_sidebar.html' %}
 		</ul>
 	</div>

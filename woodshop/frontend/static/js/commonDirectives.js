@@ -23,11 +23,6 @@
                 controllerAs: 'gemThumb',
                 bindToController: true
             };
-
         }]);
-
-        //app.directive('categoryList');
-
-        
 
 })(angular);

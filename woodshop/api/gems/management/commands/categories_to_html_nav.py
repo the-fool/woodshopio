@@ -5,10 +5,6 @@ from woodshop.api.gems.models import Category
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-    	"""
-    	Generate static html rendering of category tree
-    	(This command must be run after every change to category tree)
-    	"""
 
         categories = Category.objects.all()
         l = []
@@ -19,7 +15,7 @@ class Command(BaseCommand):
         	for i in node:
         		if i[1]: # if not leaf
         			l.append(
-        			   	'<li><a href="#">{}<span class="fa arrow"></span></a>'.format(i[0]) +	
+        			   	'<li><a href=""><span ng-click="cats.setCategory()" class="cat-text">{}</span><span class="fa arrow"></span></a>'.format(i[0]) +	
         			   	'<ul class="nav nav-{}-level collapse" aria-expanded="false" style="height: 0px;">'.format(level[index])
         			   	)
         			index += 1

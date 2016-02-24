@@ -1,6 +1,10 @@
 $(function() {
 
-    $('#side-menu').metisMenu();
+    $('#side-menu').metisMenu({
+        onTransitionEnd: function() {
+            $('li.active ')
+        }
+    });
 
 });
 
@@ -26,11 +30,22 @@ $(function() {
         }
     });
 
-    var url = window.location;
+    /*var url = window.location;
     var element = $('ul.nav a').filter(function() {
         return this.href == url;
     }).addClass('active').parent().parent().addClass('in').parent();
     if (element.is('li')) {
         element.addClass('active');
-    }
+    }*/
+    // TODO -- Keep menus open when hyperlink text is clicked
+    /*$('#side-menu li a span.cat-text').click(function() {
+        var self = this;
+        setTimeout(function() {      
+            if ($(self).parent('a').attr('aria-expanded')) {
+              $(self).parent('a').attr('aria-disabled', true);
+              $('#side-menu li a[aria-expanded="false"]').attr('aria-disabled', false);
+           }
+    }, 300); */
+
+    });
 });

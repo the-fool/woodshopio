@@ -1,4 +1,6 @@
-
+.cat-text:hover {
+    text-decoration: underline;
+}
 .gem-thumb {
     max-height: 200px;
     max-width: 200px;
