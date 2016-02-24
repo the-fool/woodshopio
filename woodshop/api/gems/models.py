@@ -84,14 +84,13 @@ class Gem(models.Model):
 
 
 
+def image_dir_path(instance, filename):
+	ext = filename.split('.')[-1]
+	path = 'gem_{0}/{1}.{2}'.format(instance.gem.id, instance.id, ext)
+	return path
+
 class Picture(models.Model):
-
-	@staticmethod
-	def image_dir_path(instance, filename):
-		ext = filename.split('.')[-1]
-		path = 'gem_{0}/{1}.{2}'.format(instance.gem.id, instance.id, ext)
-		return path
-
+	
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	gem = models.ForeignKey('Gem', related_name='pictures')
 	image = models.ImageField(upload_to=image_dir_path, max_length=255)
