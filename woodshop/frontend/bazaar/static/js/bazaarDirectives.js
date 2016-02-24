@@ -22,15 +22,11 @@
             };
         }]);
 
-        app.directive('grabBag', ['Gem',  function (Gem) {
+        app.directive('grabBag', ['GemsCache', '$rootScope', function (GemsCache, rs) {
             function ctrl() {
                 /* jshint validthis: true */
                 var self = this;
                 this.gems = [];
-           
-                Gem.query().$promise.then( function(data) {
-                    self.gems = data.results;
-                });
             }            
             return {
                 templateUrl: partialUrl + 'grab_bag.html',
@@ -38,7 +34,14 @@
                 scope: {},
                 controller: ctrl,
                 controllerAs: 'grabBag',
-                bindToController: true
+                bindToController: true,
+                link: function(scope) {
+                    scope.$watchCollection(function() {
+                        return GemsCache.gems;
+                    }, function(gems) {
+                        scope.grabBag.gems = gems;
+                    });
+                }
             };
         }]);
 
