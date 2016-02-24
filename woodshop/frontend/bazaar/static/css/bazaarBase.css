@@ -35,7 +35,10 @@
 }
 
 .sidebar .nav-second-level li,
-.sidebar .nav-third-level li {
+.sidebar .nav-third-level li,
+.sidebar .nav-fourth-level li,
+.sidebar .nav-fifth-level li,
+.sidebar .nav-sixth-level li {
     border-bottom: 0!important;
 }
 
@@ -45,6 +48,10 @@
 
 .sidebar .nav-third-level li a {
     padding-left: 52px;
+}
+
+.sidebar .nav-fourth-level li a {
+    padding-left: 66px;
 }
 
 @media(min-width:768px) {
