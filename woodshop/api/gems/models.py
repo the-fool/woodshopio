@@ -54,20 +54,17 @@ class Category(models.Model):
 		"""
 		l = []
 
-		def cont(name, node):
+		def traverse(name, node):
 			for i in node:
-				name = name + '_' + i[0]
+				name = name + '_' + i[0] if name else i[0]
 				if i[1]:
 					l.append({'name':name, 'leaf':False})
-					cont(name, i[1])
+					traverse(name, i[1])
 				else:
 					l.append({'name':name, 'leaf':True})
 				name = '_'.join(name.split('_')[:-1])
 
-		for i in Category.CATS:
-			name = i[0]
-			l.append({'name':name, 'leaf':False}) # Bad -- perhaps top-level nodes are leaves
-			cont(name, i[1])
+		traverse('',Category.CATS)
 
 		return l
 
@@ -90,7 +87,7 @@ def image_dir_path(instance, filename):
 	return path
 
 class Picture(models.Model):
-	
+
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	gem = models.ForeignKey('Gem', related_name='pictures')
 	image = models.ImageField(upload_to=image_dir_path, max_length=255)
