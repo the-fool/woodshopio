@@ -73,10 +73,10 @@ class Category(models.Model):
 		sub_names = full_name.split('_')
 		for i in range(1, len(sub_names) + 1):
 			parent = '_'.join(sub_names[:i])
-			c = Category.objects.get(full_name=parent)
+			c = Category.objects.get(id=parent)
 			yield c
 
-	full_name=models.CharField(max_length=128, default='') 	  # (Ur_sub1_sub2_leaf)
+	id=models.CharField(max_length=128, default='', primary_key=True) 	  # (Ur_sub1_sub2_leaf)
 	name=models.CharField(max_length=128, default='') 		  # simple name ('sub2')
 	is_leaf=models.BooleanField(default=False)
 
@@ -98,7 +98,7 @@ class Gem(models.Model):
     categories = models.ManyToManyField(Category, blank=True, related_name ="gems")
 
     def add_category(self, category):
-    	for c in Category.generate_parent_names(category.full_name):
+    	for c in Category.generate_parent_names(category.id):
     		self.categories.add(c)
     	self.save()
 

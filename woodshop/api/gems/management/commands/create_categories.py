@@ -12,7 +12,7 @@ class Command(BaseCommand):
         Category.objects.all().delete()
         for category in Category.get_category_names():
             full_name = category['name']
-            Category(full_name=full_name, name=Command.simple_name(full_name), is_leaf=category['leaf']).save()
+            Category(id=full_name, name=Command.simple_name(full_name), is_leaf=category['leaf']).save()
 
         """Cache a JSON repr"""
         with open(os.path.join(os.path.abspath(settings.PROJECT_ROOT), 'woodshop/frontend/static/categories.json'), 'w') as f:

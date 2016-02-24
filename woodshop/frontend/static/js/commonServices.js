@@ -19,7 +19,7 @@
                     isArray: false,
                 }, 
                 categorize: {
-                    url: '/api/gems/category/:category',
+                    url: '/api/gems/',
                     method: 'GET',
                     paramams: {
                         category:'@category'

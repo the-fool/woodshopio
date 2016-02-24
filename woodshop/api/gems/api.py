@@ -13,6 +13,12 @@ class GemList(generics.ListCreateAPIView):
   permission_classes = [
     permissions.AllowAny
   ]
+  def get_queryset(self):
+    queryset = Gem.objects.all()
+    category = self.request.query_params.get('category', None)
+    if category is not None:
+      queryset = queryset.filter(categories=category)
+    return queryset
 
 class GemDetail(generics.RetrieveUpdateDestroyAPIView):
   model = Gem
