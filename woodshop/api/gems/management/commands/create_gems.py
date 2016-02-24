@@ -43,3 +43,4 @@ class Command(BaseCommand):
                                title="Title #{}".format(i + 1), 
                                description=d)
             g.add_category(categories[i % len(categories)])
+

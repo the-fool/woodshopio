@@ -87,6 +87,8 @@ class Category(models.Model):
 		return self.name
 
 
+
+
 class Gem(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name=("gems"))
