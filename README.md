@@ -1,25 +1,40 @@
 # Initialize the project
+
 Create and activate a virtualenv:
 
 ```bash
 virtualenv env
-source env/bin/activate
+cd env
+source bin/activate
 ```
+
+Pull down woodshopio repository from github:
+
+```bash
+git clone https://github.com/the-fool/woodshopio.git
+```
+
+Navigate into the woodshopio repository you just created:
+
+```bash
+cd woodshopio
+```
+
 Install dependencies (requires node):
 
 ```bash
 pip install -r requirements/local.txt
 npm install
-manage.py bower install
+python manage.py bower install
 ```
+
 Create the postgres database:
 
 ```bash
 createdb woodshop
-psql: ALTER USER you CREATEDB
+psql woodshop: ALTER USER you CREATEDB
 $ export DATABASE_URL="postgres://you:password@127.0.0.1/woodshop"
 ```
-
 
 Migrate the database and create a superuser:
 ```bash
@@ -40,5 +55,5 @@ npm test
 
 Run the development server: 
 ```bash
-python woodshop/manage.py runserver
+python manage.py runserver
 ```
