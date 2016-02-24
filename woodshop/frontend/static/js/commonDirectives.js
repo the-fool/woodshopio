@@ -26,6 +26,8 @@
 
         }]);
 
+        //app.directive('categoryList');
+
         
 
 })(angular);
