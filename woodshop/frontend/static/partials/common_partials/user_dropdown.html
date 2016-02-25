@@ -1,0 +1,20 @@
+<li class="dropdown" uib-dropdown is-open="status.isopen">
+    <a class="dropdown-toggle" uib-dropdown-toggle>
+        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+    </a>
+    <ul uib-dropdown-menu class="dropdown-menu dropdown-user" role="menu">
+        <li ng-show="user.authenticated">
+            <a ng-click='user.profile()'><i class="fa fa-user fa-fw"></i> User Profile</a>
+        </li>
+        <li ng-show="user.authenticated">
+            <a ng-click='user.settings()'><i class="fa fa-gear fa-fw"></i> Settings</a>
+        </li>
+        <li class="divider"></li>
+        <li ng-show="user.authenticated"i>
+            <a ng-click='user.logout()'><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+        </li>
+        <li ng-hide="user.authenticated">
+            <a ng-click='user.login()'><i class="fa fa-sign-in fa-fw"></i>Login</a>
+        </li>
+    </ul>
+</li>            

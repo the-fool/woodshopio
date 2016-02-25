@@ -5,6 +5,7 @@
     	'ngRoute',
         'ui.bootstrap',
         'django.auth',
+        'auth.directives',
         'common.controllers',
         'common.filters',
         'common.services',

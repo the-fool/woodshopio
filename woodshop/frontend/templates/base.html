@@ -229,43 +229,7 @@
                 <!-- /.dropdown-alerts -->
             </li>
             <!-- /.dropdown -->
-            <li class="dropdown" uib-dropdown is-open="status.isopen">
-                <a class="dropdown-toggle" uib-dropdown-toggle>
-                    <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                </a>
-                <ul uib-dropdown-menu class="dropdown-menu dropdown-user" role="menu">
-                     <!--<li ng-repeat"choice in userMenu">
-                        <a href>{{choice}}</a>
-                    </li>-->
-                    <li>
-                        <a href="#/">
-                            <i class="fa fa-user fa-fw"></i> User Profile
-                        </a>
-                    </li>
-                    <li><a href="#/"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
-                    <li class="divider"></li>
-                    <li>
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'rest_logout' %}">
-                        <i class="fa fa-sign-out fa-fw"></i> 
-                        Logout
-                        </a>
-                    {% else %}
-                        <a href="#/login">
-                        <i class="fa fa-sign-in fa-fw"></i> 
-                        Login
-                        </a>
-                     {% endif %}
-                    </li>
-                </ul>
-
-
-                        
-                    
-      
-                <!-- /.dropdown-user -->
-            </li>
-            <!-- /.dropdown -->
+            <user-dropdown></user-dropdown>
         </ul>
         {% block nav_sidebar %}
             <!-- insert sidebar content here -->

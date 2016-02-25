@@ -25,4 +25,24 @@
             };
         }]);
 
+        var app = ng.module('auth.directives', ['django.auth']);
+        app.directive('userDropdown', ['djangoAuth', function(djangoAuth) {
+            function ctrl() {
+                /*jshint validthis:true */
+                this.login = function() {
+                    console.log('clicked login');
+                }
+            }
+            return {
+                templateUrl: partialUrl + 'user_dropdown.html',
+                restrict: 'E',
+                scope: {
+                    authenticated:'='
+                },
+                controller: ctrl,
+                controllerAs: 'user',
+                bindToController: true
+            };
+        }]);
+
 })(angular);
