@@ -24,6 +24,7 @@ class Common(Configuration):
         'django_rq',                 # asynchronous queuing
         'versatileimagefield',       # image manipulation
         'djangobower',               # frontend asset manager
+        'corsheaders',               # allows requests from multiple ports
 
         # My apps
         'woodshop.api.authentication',  # helper auth 
@@ -63,7 +64,9 @@ class Common(Configuration):
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
-        'django.middleware.security.SecurityMiddleware'
+        'django.middleware.security.SecurityMiddleware',
+        'corsheaders.middleware.CorsMiddleware',
+        'django.middleware.common.CommonMiddleware',
     )
 
     ROOT_URLCONF = 'config.urls'
@@ -85,7 +88,11 @@ class Common(Configuration):
 
     SECRET_KEY = 'Not a secret'
     WSGI_APPLICATION = 'config.wsgi.application'
-
+    CORS_ORIGIN_WHITELIST = (
+            '127.0.0.1:8000',
+            'localhost:8000'
+        )
+    CORS_ALLOW_CREDENTIALS = True
     # Allow for less strict handling of urls
     APPEND_SLASH = True
 

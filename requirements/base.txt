@@ -7,6 +7,9 @@ django-bower==5.1.0
 # Environmental var configuration
 django-configurations==1.0
 
+# credential configuration (maybe only necessary for local?)
+django-cors-headers==1.1.0
+
 # For the persistence stores
 psycopg2==2.6.1
 dj-database-url==0.4.0
