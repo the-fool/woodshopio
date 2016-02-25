@@ -81,13 +81,29 @@
             }; 
         });
         var app = ng.module('modals', ['ui.directives', 'django.auth']);
-        app.directive('loginModal', ['djangoAuth', function(djangoAuth) {
+        app.directive('loginModal', ['djangoAuth', 'Validate', function(djangoAuth, Validate) {
             function ctrl() {
-                this.visible = false;
+                var self = this;
+                self.model = {'username':'','password':''};
+                self.complete = false;
+                self.login = function(formData){
+                    self.errors = [];
+                    Validate.form_validation(formData,self.errors);
+                    if(!formData.$invalid){
+                        djangoAuth.login(self.model.username, self.model.password)
+                        .then(function(data){
+                            // success case
+                            //$location.path("/");
+                            },function(data){
+                            // error case
+                            self.errors = data;
+                            });
+                    }
+                };
             }
             return {
                 templateUrl: partialUrl + 'login_modal.html',
-                controllerAs: 'loginModal',
+                controllerAs: 'vm',
                 controller: ctrl,
                
             };

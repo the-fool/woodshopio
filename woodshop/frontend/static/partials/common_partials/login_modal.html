@@ -1,13 +1,17 @@
 <modal title="Login form" visible="showLoginModal">
-  <form role="form">
+  <form role="form" ng-submit="vm.login(loginForm)" name="loginForm" novalidate>
     <div class="form-group">
-      <label for="email">Email address</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter email" />
+       <label for="id_username">Username</label>
+      <input name="username" id="id_username" type="text" ng-model="vm.model.username" placeholder="Username" class="form-control" required />
     </div>
+    <div class="alert alert-danger" ng-repeat="error in errors.username">{{error}}</div>
     <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" placeholder="Password" />
+      <label for="id_password">Password</label>
+      <input name="password" id="id_password" type="password" ng-model="vm.model.password" placeholder="Password" class="form-control" required />
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <div class="alert alert-danger" ng-repeat="error in vm.errors.password">{{error}}</div>
+    <div class="alert alert-danger" ng-repeat="error in vm.errors.non_field_errors">{{error}}</div>
+    <div class="alert alert-danger" ng-if="error">{{error}}</div>
+    <button type="submit" class="btn btn-primary">Login</button>
   </form>
 </modal>
