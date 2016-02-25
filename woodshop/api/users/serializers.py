@@ -17,7 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
 class VendorSerializer(serializers.ModelSerializer):
     #a vendor can be associated with multiple gems
     gems = serializers.PrimaryKeyRelatedField(many=True, queryset=Gem.objects.all())
-    pass
+
 
 
 class CreateUserSerializer(serializers.ModelSerializer):

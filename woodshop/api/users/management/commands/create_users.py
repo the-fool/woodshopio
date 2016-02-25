@@ -7,4 +7,4 @@ class Command(BaseCommand):
         users = ['Bob', 'Sally', 'Joe', 'Rachel']
         for user in users:
             username = user.lower()
-            User.objects.create(username=username, email="{}@example.com".format(username), first_name=user)
+            User.objects.create(username=username, email="{}@example.com".format(username), first_name=user, password='password')
