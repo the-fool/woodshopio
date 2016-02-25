@@ -1,4 +1,4 @@
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+.pagination, .carousel, .panel-title a { cursor: pointer; }
 
 footer {
     bottom: 0;
