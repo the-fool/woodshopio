@@ -4,6 +4,7 @@
     var bazaarApp = ng.module('bazaarApp', [
     	'ngRoute',
         //'ui.bootstrap',
+        'modals',
         'django.auth',
         'auth.directives',
         'common.controllers',

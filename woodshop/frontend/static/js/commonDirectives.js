@@ -25,13 +25,12 @@
             };
         }]);
 
-        var app = ng.module('auth.directives', ['django.auth', 'ui.directives']);
+        var app = ng.module('auth.directives', ['ui.directives']);
         app.directive('userDropdown', ['djangoAuth', function(djangoAuth) {
             function ctrl() {
                 /*jshint validthis:true */
                 var self = this;
                 self.login = function() {
-                    console.log('dir called');
                     self.openModal({which:'login'});
                 }
             }
@@ -81,5 +80,17 @@
                 }
             }; 
         });
+        var app = ng.module('modals', ['ui.directives', 'django.auth']);
+        app.directive('loginModal', ['djangoAuth', function(djangoAuth) {
+            function ctrl() {
+                this.visible = false;
+            }
+            return {
+                templateUrl: partialUrl + 'login_modal.html',
+                controllerAs: 'loginModal',
+                controller: ctrl,
+               
+            };
+        }]);
 
 })(angular);

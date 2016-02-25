@@ -26,7 +26,6 @@
         $scope.showLoginModal = false;
 
         $scope.openModal = function(which) {
-        	console.log('which ' + which);
         	switch (which) {
         		case ('login'):
         			$scope.showLoginModal = !$scope.showLoginModal;
