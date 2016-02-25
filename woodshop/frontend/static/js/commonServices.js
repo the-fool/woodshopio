@@ -38,13 +38,6 @@
     }
     ]);
 
-    app.factory('Categories', [
-        '$resource', 
-        function($r) {
-            return $r('/static/categories.json');
-        }
-        ]);
-
     app.factory('DetailGemCache', function() {
         var cache = {};
         var detailGem = {};
