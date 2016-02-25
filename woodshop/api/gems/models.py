@@ -97,6 +97,7 @@ class Gem(models.Model):
     main_picture = models.OneToOneField('Picture', related_name='gem_asset', blank=True, null=True)
     categories = models.ManyToManyField(Category, blank=True, related_name ="gems")
 
+    """ Must use this method for adding categories, not the field.add() method """
     def add_category(self, category):
     	for c in Category.generate_parent_names(category.id):
     		self.categories.add(c)

@@ -23,7 +23,7 @@
     <script src="{% static "js/vendor/modernizr-2.8.3-respond-1.4.2.min.js" %}"></script>
     {% endblock %}
 </head>
-<body ng-app="{% block ng_app %}{% endblock %}">
+<body ng-app="{% block ng_app %}{% endblock %}" ng-controller="{%block ng_controller%}baseController{% endblock %}">
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
@@ -230,16 +230,27 @@
             </li>
             <!-- /.dropdown -->
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="">
                     <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    <li><a href="#/"><i class="fa fa-user fa-fw"></i> User Profile</a>
                     </li>
-                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    <li><a href="#/"><i class="fa fa-gear fa-fw"></i> Settings</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <li>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'rest_logout' %}">
+                        <i class="fa fa-sign-out fa-fw"></i> 
+                        Logout
+                        </a>
+                    {% else %}
+                        <a href="#/login">
+                        <i class="fa fa-sign-in fa-fw"></i> 
+                        Login
+                        </a>
+                     {% endif %}
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -263,6 +274,8 @@
 <script src="{% static "jquery/dist/jquery.js"%}"></script>
 <script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>
 <script src="{% static "angular/angular.js"%}"></script>
+<script src="{% static "angular-bootstrap/ui-bootstrap.js" %}"></script>
+<script src="{% static "js/commonControllers.js" %}"></script>
 <script src="{% static "js/commonDirectives.js" %}"></script>
 <script src="{% static "js/commonServices.js" %}"></script>
 <script src="{% static "js/commonFilters.js" %}"></script>

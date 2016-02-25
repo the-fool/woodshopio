@@ -6,7 +6,6 @@ from .authentication import urls as auth_urls
 from .gems import urls as gem_urls
 
 urlpatterns = [
-	url(r'^rest-auth/', include('rest_auth.urls')),
 	url(r'^users/', include(user_urls)),
 	url(r'^gems/', include(gem_urls))
 ]

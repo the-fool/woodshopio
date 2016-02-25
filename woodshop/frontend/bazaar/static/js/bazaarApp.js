@@ -3,6 +3,8 @@
     
     var bazaarApp = ng.module('bazaarApp', [
     	'ngRoute',
+        'ui.bootstrap',
+        'common.controllers',
         'common.filters',
         'common.services',
         'common.directives',
