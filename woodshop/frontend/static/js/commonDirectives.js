@@ -25,19 +25,22 @@
             };
         }]);
 
-        var app = ng.module('auth.directives', ['django.auth']);
+        var app = ng.module('auth.directives', ['django.auth', 'ui.directives']);
         app.directive('userDropdown', ['djangoAuth', function(djangoAuth) {
             function ctrl() {
                 /*jshint validthis:true */
-                this.login = function() {
-                    console.log('clicked login');
+                var self = this;
+                self.login = function() {
+                    console.log('dir called');
+                    self.openModal({which:'login'});
                 }
             }
             return {
                 templateUrl: partialUrl + 'user_dropdown.html',
                 restrict: 'E',
                 scope: {
-                    authenticated:'='
+                    authenticated:'=',
+                    openModal: '&openModal'
                 },
                 controller: ctrl,
                 controllerAs: 'user',
@@ -45,5 +48,38 @@
                 bindToController: true
             };
         }]);
+
+        var app = ng.module('ui.directives', []);
+        app.directive('modal', function() {
+            return {
+                templateUrl: partialUrl + 'ui_modal.html',
+                restrict: 'E',
+                transclude: true,
+                replace:true,
+                scope: true,
+                link: function postLink(scope, element, attrs, parentCtrl) {
+                    scope.title = attrs.title;
+
+                    scope.$watch(attrs.visible, function(value){
+
+                      if(value == true) 
+                        $(element).modal('show');
+                      else
+                        $(element).modal('hide');
+                    });
+                    $(element).on('shown.bs.modal', function(){
+                        scope.$apply(function(){
+                            scope.$parent[attrs.visible] = true;
+                        });
+                    });
+
+                    $(element).on('hidden.bs.modal', function(){
+                        scope.$apply(function(){
+                            scope.$parent[attrs.visible] = false;
+                        });
+                    });
+                }
+            }; 
+        });
 
 })(angular);

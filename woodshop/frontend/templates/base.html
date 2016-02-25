@@ -234,14 +234,26 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#/">
                     <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                 </a>
-                <user-dropdown></user-dropdown>
+                <user-dropdown open-modal="openModal(which)" authenticated="authenticated"></user-dropdown>
             </li>
         </ul>
         {% block nav_sidebar %}
             <!-- insert sidebar content here -->
         {% endblock %}
-        
     </nav>
+    <modal title="Login form" visible="showLoginModal">
+        <form role="form">
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" />
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </modal>
     <div id="page-wrapper">
         {% block page_content %}
 
