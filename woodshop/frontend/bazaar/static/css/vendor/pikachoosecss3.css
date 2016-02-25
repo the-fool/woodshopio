@@ -5,7 +5,7 @@
 body{font-family: sans-serif;background:#FCFCFC;}
 
 #pikachoose {max-width: 100%; margin: 0 auto;}
-#pikachoose .pika-stage {max-width: 100%; position: relative;border: 2px solid #010101;}
+#pikachoose .pika-stage {max-width: 100%; height: position:relative;border: 2px solid #010101;}
 	/*-moz-box-shadow: 5px 5px 2px #888;-webkit-box-shadow: 5px 5px 2px #888;box-shadow: 5px 5px 2px #888;}
 	
 	/*if you change the padding on pika-stage you must adjust the top left of this to match! */

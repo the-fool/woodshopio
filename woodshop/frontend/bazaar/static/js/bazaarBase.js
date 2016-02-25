@@ -1,11 +1,5 @@
 $(function() {
-
-    $('#side-menu').metisMenu({
-        onTransitionEnd: function() {
-            $('li.active ')
-        }
-    });
-
+    $('#side-menu').metisMenu();
 });
 
 //Loads the correct sidebar on window load,
@@ -21,6 +15,7 @@ $(function() {
         } else {
             $('div.navbar-collapse').removeClass('collapse');
         }
+       
 
         var height = ((this.window.innerHeight > 0) ? this.window.innerHeight : this.screen.height) - 1;
         height = height - topOffset;
@@ -37,6 +32,7 @@ $(function() {
     if (element.is('li')) {
         element.addClass('active');
     }*/
+
 
     // The goal is to prevent menu toggling when it's already open
     // TODO -- Test this bad boy, I think it's buggy
@@ -56,6 +52,5 @@ $(function() {
         } else {
             clearList($(this).parent().parent());
         }
-
     });
 });
