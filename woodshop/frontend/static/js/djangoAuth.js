@@ -79,13 +79,13 @@
 	                'data' :data
 	            });
 	        },
-	        'login': function(username,password){
+	        'login': function(email,password){
 	            var djangoAuth = this;
 	            return this.request({
 	                'method': "POST",
 	                'url': "/login/",
 	                'data':{
-	                    'username':username,
+	                    'email':email,
 	                    'password':password
 	                }
 	            }).then(function(data){

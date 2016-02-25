@@ -84,13 +84,13 @@
         app.directive('loginModal', ['djangoAuth', 'Validate', function(djangoAuth, Validate) {
             function ctrl() {
                 var self = this;
-                self.model = {'username':'','password':''};
+                self.model = {'email':'','password':''};
                 self.complete = false;
                 self.login = function(formData){
                     self.errors = [];
                     Validate.form_validation(formData,self.errors);
                     if(!formData.$invalid){
-                        djangoAuth.login(self.model.username, self.model.password)
+                        djangoAuth.login(self.model.email, self.model.password)
                         .then(function(data){
                             // success case
                             //$location.path("/");
