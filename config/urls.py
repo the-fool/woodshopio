@@ -13,6 +13,7 @@ from woodshop.frontend import urls as frontend_urls
 
 urlpatterns = [
     url(r'', include(frontend_urls)),
+    url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include(api_urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
