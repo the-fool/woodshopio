@@ -17,8 +17,8 @@
 	        'authPromise': null,
 	        'request': function(args) {
 	            // Let's retrieve the token from the cookie, if available
-	            if($cookies.token){
-	                $http.defaults.headers.common.Authorization = 'Token ' + $cookies.token;
+	            if($cookies.get('token')){
+	                $http.defaults.headers.common.Authorization = 'Token ' + $cookies.get('token');
 	            }
 	            // Continue
 	            params = args.params || {}
@@ -33,7 +33,7 @@
 	                url: url,
 	                withCredentials: this.use_session,
 	                method: method.toUpperCase(),
-	                headers: {'X-CSRFToken': $cookies['csrftoken']},
+	                headers: {'X-CSRFToken': $cookies.get('csrftoken')},
 	                params: params,
 	                data: data
 	            })
@@ -91,7 +91,7 @@
 	            }).then(function(data){
 	                if(!djangoAuth.use_session){
 	                    $http.defaults.headers.common.Authorization = 'Token ' + data.key;
-	                    $cookies.token = data.key;
+	                    $cookies.put('token', data.key);
 	                }
 	                djangoAuth.authenticated = true;
 	                $rootScope.$broadcast("djangoAuth.logged_in", data);
@@ -104,7 +104,7 @@
 	                'url': "/logout/"
 	            }).then(function(data){
 	                delete $http.defaults.headers.common.Authorization;
-	                delete $cookies.token;
+	                delete $cookies.remove('token');
 	                djangoAuth.authenticated = false;
 	     
 	                $rootScope.$broadcast("djangoAuth.logged_out");
@@ -192,7 +192,7 @@
 	                    da.authenticated = false;
 	                    if(restrict){
 	                        getAuthStatus.reject("User is not logged in.");
-	                    }else{
+	                    }else{	
 	                        getAuthStatus.resolve();
 	                    }
 	                });
