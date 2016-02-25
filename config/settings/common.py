@@ -20,6 +20,7 @@ class Common(Configuration):
         'rest_framework',            # utilities for rest apis
         'rest_framework.authtoken',  # token authentication
         'rest_auth',                 # basic login/logout
+        'rest_auth.registration',
         'django_rq',                 # asynchronous queuing
         'versatileimagefield',       # image manipulation
         'djangobower',               # frontend asset manager
@@ -30,7 +31,8 @@ class Common(Configuration):
         'woodshop.frontend.bazaar',     # main frontend app (i.e, not the interface to managing a store or viewing analytics) 
         'woodshop.frontend.cubicle',    # dashboard management for vendors
         'woodshop.api.gems',            # manage gem assets
-        'woodshop.api.users',           # eponymous
+        'woodshop.api.users'           # eponymous
+
     )
 
     BOWER_INSTALLED_APPS = ('angular#1.5.0',
@@ -59,7 +61,6 @@ class Common(Configuration):
     )
 
     ROOT_URLCONF = 'config.urls'
-
     TEMPLATES = [
         {
             'BACKEND': 'django.template.backends.django.DjangoTemplates',

@@ -4,8 +4,7 @@ Create and activate a virtualenv:
 
 ```bash
 virtualenv env
-cd env
-source bin/activate
+source env/bin/activate
 ```
 
 Pull down woodshopio repository from github:
