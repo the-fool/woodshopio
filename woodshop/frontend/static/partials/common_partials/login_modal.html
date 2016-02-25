@@ -12,6 +12,7 @@
     <div class="alert alert-danger" ng-repeat="error in vm.errors.password">{{error}}</div>
     <div class="alert alert-danger" ng-repeat="error in vm.errors.non_field_errors">{{error}}</div>
     <div class="alert alert-danger" ng-if="error">{{error}}</div>
+    <div class="alert alert-success" ng-if="vm.success">{{vm.success}}</div>
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
 </modal>

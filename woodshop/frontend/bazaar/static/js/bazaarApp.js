@@ -32,7 +32,7 @@
     	$ap.classNameFilter(/animated/);
     }])
     .run(function(djangoAuth) {
-        djangoAuth.initialize('//127.0.01:8000/rest-auth',true);
+        djangoAuth.initialize('//127.0.01:8000/rest-auth',false);
     });
 
         

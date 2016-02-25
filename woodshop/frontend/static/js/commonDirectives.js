@@ -32,7 +32,10 @@
                 var self = this;
                 self.login = function() {
                     self.openModal({which:'login'});
-                }
+                };
+                self.logout = function() {
+                    djangoAuth.logout();
+                };
             }
             return {
                 templateUrl: partialUrl + 'user_dropdown.html',
@@ -47,6 +50,7 @@
                 bindToController: true
             };
         }]);
+
 
         var app = ng.module('ui.directives', []);
         app.directive('modal', function() {
@@ -80,8 +84,11 @@
                 }
             }; 
         });
+
+
         var app = ng.module('modals', ['ui.directives', 'django.auth']);
-        app.directive('loginModal', ['djangoAuth', 'Validate', function(djangoAuth, Validate) {
+        
+        app.directive('loginModal', ['djangoAuth', 'Validate', '$location', function(djangoAuth, Validate, $location) {
             function ctrl() {
                 var self = this;
                 self.model = {'email':'','password':''};
@@ -93,7 +100,11 @@
                         djangoAuth.login(self.model.email, self.model.password)
                         .then(function(data){
                             // success case
-                            //$location.path("/");
+                            self.success = "You are logged in";
+                            setTimeout(function() {
+                                $('.modal').modal('hide');
+                                self.success = undefined;
+                            }, 500);
                             },function(data){
                             // error case
                             self.errors = data;

@@ -106,6 +106,7 @@
 	                delete $http.defaults.headers.common.Authorization;
 	                delete $cookies.token;
 	                djangoAuth.authenticated = false;
+	     
 	                $rootScope.$broadcast("djangoAuth.logged_out");
 	            });
 	        },
