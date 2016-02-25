@@ -1,9 +1,6 @@
 <div>
-	Title: {{ summary.gem.title }}
-	<hr>
-	Description: {{ summary.gem.description }}
-	<hr>
-	<div class="col-md-12">
+	<div class="row">	
+	<div class="col-md-8">
 		<div id="pikachoose">
 			<ul id="pikame" class="jcarousel-skin-pika">
 				<li ng-repeat="picture in summary.pictures" >
@@ -11,5 +8,12 @@
 				</li>
 			</ul>
 		</div>
+	</div>
+	<div class="col-md-4">
+		Title: {{ summary.gem.title }}
+	<hr>
+	Description: {{ summary.gem.description }}
+	<hr>
+	</div>
 	</div>
 </div>

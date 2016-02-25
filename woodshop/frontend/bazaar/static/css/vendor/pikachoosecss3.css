@@ -2,18 +2,17 @@
 .pika-thumbs li{width: 144px; height:74px;}
 #pikachoose .pika-stage {height: 400px;}
 
-
 body{font-family: sans-serif;background:#FCFCFC;}
 
-#pikachoose {width: 800px; margin: 0 auto;}
-#pikachoose .pika-stage {height: 400px; position: relative;border: 3px solid #010101;
-	-moz-box-shadow: 5px 5px 2px #888;-webkit-box-shadow: 5px 5px 2px #888;box-shadow: 5px 5px 2px #888;}
+#pikachoose {max-width: 100%; margin: 0 auto;}
+#pikachoose .pika-stage {max-width: 100%; position: relative;border: 2px solid #010101;}
+	/*-moz-box-shadow: 5px 5px 2px #888;-webkit-box-shadow: 5px 5px 2px #888;box-shadow: 5px 5px 2px #888;}
 	
 	/*if you change the padding on pika-stage you must adjust the top left of this to match! */
 #pikachoose	.pika-stage .main-image {position: absolute; top: 0px; left: 0px;}
 #pikachoose	.pika-stage .pika-aniwrap{position: absolute; top: 0px; left: 0px;}
 #pikachoose	.pika-stage .pika-ani {position:relative;display: none;z-index:2;margin:0 auto;}
-#pikachoose	.pika-stage img {border:0;height:100%;}
+#pikachoose	.pika-stage img {border:0;max-width:100%; min-width: 100%; height: auto; max-height: 100%; overflow: hidden;}
 
 .pika-stage .caption {position: absolute; background: url(75-black.png);  border: 1px solid #141414; font-size: 11px; 
 			color: #fafafa; padding: 10px; text-align: right; bottom: 10px; right: 10px;}
