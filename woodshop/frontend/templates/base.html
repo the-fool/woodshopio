@@ -229,15 +229,20 @@
                 <!-- /.dropdown-alerts -->
             </li>
             <!-- /.dropdown -->
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="">
+            <li class="dropdown" uib-dropdown is-open="status.isopen">
+                <a class="dropdown-toggle" uib-dropdown-toggle>
                     <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                 </a>
-                <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#/"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                <ul uib-dropdown-menu class="dropdown-menu dropdown-user" role="menu">
+                     <!--<li ng-repeat"choice in userMenu">
+                        <a href>{{choice}}</a>
+                    </li>-->
+                    <li>
+                        <a href="#/">
+                            <i class="fa fa-user fa-fw"></i> User Profile
+                        </a>
                     </li>
-                    <li><a href="#/"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                    </li>
+                    <li><a href="#/"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
                     <li class="divider"></li>
                     <li>
                     {% if user.is_authenticated %}
@@ -253,6 +258,11 @@
                      {% endif %}
                     </li>
                 </ul>
+
+
+                        
+                    
+      
                 <!-- /.dropdown-user -->
             </li>
             <!-- /.dropdown -->
@@ -272,13 +282,16 @@
 
 {% block scripts %}
 <script src="{% static "jquery/dist/jquery.js"%}"></script>
-<script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>
+<!--<script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>-->
 <script src="{% static "angular/angular.js"%}"></script>
 <script src="{% static "angular-bootstrap/ui-bootstrap.js" %}"></script>
+<script src="{% static "angular-cookies/angular-cookies.js" %}"></script>
+<script src="{% static "angular-sanitize/angular-sanitize.js" %}"></script>
 <script src="{% static "js/commonControllers.js" %}"></script>
 <script src="{% static "js/commonDirectives.js" %}"></script>
 <script src="{% static "js/commonServices.js" %}"></script>
 <script src="{% static "js/commonFilters.js" %}"></script>
+<script src="{% static "js/djangoAuth.js" %}"></script>
 {% endblock %}
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
