@@ -7,8 +7,11 @@
             <a ng-click='user.settings()'><i class="fa fa-gear fa-fw"></i> Settings</a>
         </li>
         <li class="divider"></li>
-        <li ng-show="user.authenticated"i>
-            <a ng-click='user.logout()'><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+        <li ng-show="user.authenticated" >
+            <a ng-click='user.logout()' id="logout-menu"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+        </li>
+        <li ng-show="user.message" >
+            <a class="user-message"><i class="fa fa-bell-o fa-fw"></i>{{user.message}}</a>
         </li>
         <li ng-hide="user.authenticated">
             <a ng-click='user.login()'><i class="fa fa-sign-in fa-fw"></i>Login</a>

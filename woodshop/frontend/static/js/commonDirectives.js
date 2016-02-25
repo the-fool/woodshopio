@@ -26,15 +26,26 @@
         }]);
 
         var app = ng.module('auth.directives', ['ui.directives']);
-        app.directive('userDropdown', ['djangoAuth', function(djangoAuth) {
+        app.directive('userDropdown', ['djangoAuth', '$rootScope', function(djangoAuth, scope) {
+
             function ctrl() {
                 /*jshint validthis:true */
                 var self = this;
+                var delay = 700;
+                $('#user-dropdown').on('click', '#logout-menu', function(e) {
+                    e.stopPropagation();
+                    setTimeout(function() {
+                        $('#user-dropdown').click();
+                        scope.$apply(self.message = '');
+                    }, delay);
+                });
                 self.login = function() {
                     self.openModal({which:'login'});
                 };
                 self.logout = function() {
-                    djangoAuth.logout();
+                    djangoAuth.logout().then(function() {
+                        self.message = "You are signed out";
+                    });
                 };
             }
             return {
@@ -64,7 +75,6 @@
                     scope.title = attrs.title;
 
                     scope.$watch(attrs.visible, function(value){
-
                       if(value == true) 
                         $(element).modal('show');
                       else
