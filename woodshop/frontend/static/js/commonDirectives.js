@@ -41,6 +41,7 @@
                 },
                 controller: ctrl,
                 controllerAs: 'user',
+                replace: true,
                 bindToController: true
             };
         }]);

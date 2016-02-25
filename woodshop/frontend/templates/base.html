@@ -229,7 +229,13 @@
                 <!-- /.dropdown-alerts -->
             </li>
             <!-- /.dropdown -->
-            <user-dropdown></user-dropdown>
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#/">
+                    <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                </a>
+                <user-dropdown></user-dropdown>
+            </li>
         </ul>
         {% block nav_sidebar %}
             <!-- insert sidebar content here -->
@@ -246,9 +252,9 @@
 
 {% block scripts %}
 <script src="{% static "jquery/dist/jquery.js"%}"></script>
-<!--<script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>-->
+<script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>
 <script src="{% static "angular/angular.js"%}"></script>
-<script src="{% static "angular-bootstrap/ui-bootstrap.js" %}"></script>
+<!--<script src="{% static "angular-bootstrap/ui-bootstrap.js" %}"></script>-->
 <script src="{% static "angular-cookies/angular-cookies.js" %}"></script>
 <script src="{% static "angular-sanitize/angular-sanitize.js" %}"></script>
 <script src="{% static "js/commonControllers.js" %}"></script>
