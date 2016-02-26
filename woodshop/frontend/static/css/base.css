@@ -28,6 +28,11 @@ a.user-message {
         border-left: 1px solid #e7e7e7;
     }
 }
+@media(min-width:1250px) {
+    #page-wrapper {
+        padding-right: 90px;
+    }
+}
 .sidebar .sidebar-nav.navbar-collapse {
     padding-right: 0;
     padding-left: 0;
