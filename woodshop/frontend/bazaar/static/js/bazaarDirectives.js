@@ -57,8 +57,27 @@
                         response.data.results.forEach(function (v) {
                             self.pictures.push(v);
                         });
-                        setTimeout(function() 
-                            {  $('#pikame').pikachoose({carousel:true, autoPlay: false});},0);
+                        setTimeout(function() {
+                            $('#carousel').flexslider({
+                            animation: "slide",
+                            controlNav: false,
+                            animationLoop: false,
+                            slideshow: false,
+                            itemWidth: 210,
+                            itemMargin: 5,
+                            asNavFor: '#slider'
+                          });
+                          $('#slider').flexslider({
+                            animation: "slide",
+                            controlNav: false,
+                            animationLoop: false,
+                            slideshow: false,
+                            sync: "#carousel",
+                            start: function(slider){
+                              $('body').removeClass('loading');
+                            }
+                          });
+                        },1);
                     }); 
                 }
 

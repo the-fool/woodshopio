@@ -20,8 +20,9 @@
     <link rel="stylesheet" href="{% static "font-awesome/css/font-awesome.css" %}">
     <link rel="stylesheet" href="{% static "metisMenu/dist/metisMenu.css" %}">
     <link rel="stylesheet" href="{% static "css/base.css" %}">
-    <script src="{% static "js/vendor/modernizr-2.8.3-respond-1.4.2.min.js" %}"></script>
     {% endblock %}
+    <script src="{% static "js/vendor/modernizr-2.8.3-respond-1.4.2.min.js" %}"></script>
+
 </head>
 <body ng-app="{% block ng_app %}{% endblock %}" ng-controller="{%block ng_controller%}baseController{% endblock %}">
 <!--[if lt IE 8]>
@@ -255,7 +256,6 @@
 <script src="{% static "jquery/dist/jquery.js"%}"></script>
 <script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>
 <script src="{% static "angular/angular.js"%}"></script>
-<!--<script src="{% static "angular-bootstrap/ui-bootstrap.js" %}"></script>-->
 <script src="{% static "angular-cookies/angular-cookies.js" %}"></script>
 <script src="{% static "angular-sanitize/angular-sanitize.js" %}"></script>
 <script src="{% static "js/commonControllers.js" %}"></script>
