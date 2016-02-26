@@ -91,7 +91,8 @@
 	            }).then(function(data){
 	                if(!djangoAuth.use_session){
 	                    $http.defaults.headers.common.Authorization = 'Token ' + data.key;
-	                    $cookies.put('token', data.key);
+	                    
+	                    $cookies.put('token',data.key);
 	                }
 	                djangoAuth.authenticated = true;
 	                $rootScope.$broadcast("djangoAuth.logged_in", data);
