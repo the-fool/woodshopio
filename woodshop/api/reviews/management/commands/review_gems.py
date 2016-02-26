@@ -24,8 +24,5 @@ class Command(BaseCommand):
         users = User.objects.all()
         for i, g in enumerate(gems):
         	for j, r in enumerate(reviews):
-            	Review.objects.create(gem=g, text=r, 
-            		author=users[(i + j) % users.count()],
-            		rating=random.randint(1,5),
-            		title="Review {0}{1}".format(i,j))
+        		Review.objects.create(gem=g, text=r, author=users[(i + j) % users.count()], rating=random.randint(1,5), title="Review {0}{1}".format(i,j))
 

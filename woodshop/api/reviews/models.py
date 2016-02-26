@@ -23,6 +23,8 @@ class Review(TimeStampedModel):
 	gem = models.ForeignKey(Gem, related_name="reviews")
 	title = models.CharField(max_length=128)
 
+	def __repr__(self):
+		return "<Review: {0} -- {1}/5>".format(self.title, self.rating)
 	#TODO write the following methods
 
 	# returns the average rating of a gem
