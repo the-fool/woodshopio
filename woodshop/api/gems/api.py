@@ -1,9 +1,10 @@
-from rest_framework import viewsets, mixins, generics
+from rest_framework import generics
 from rest_framework import permissions
 
 from .models import Gem, Picture
 from .serializers import GemSerializer, PictureSerializer
-
+from woodshop.api.reviews.models import Review
+from woodshop.api.reviews.serializers import ReviewSerializer
 
 
 class GemList(generics.ListCreateAPIView):
@@ -40,6 +41,17 @@ class GemPictureList(generics.ListAPIView):
     queryset = super(GemPictureList, self).get_queryset()
     return queryset.filter(gem__pk=self.kwargs.get('pk'))
 
+class GemReviewList(generics.ListAPIView):
+  model = Review
+  serializer_class = ReviewSerializer
+  queryset = Review.objects.all()
+  permission_classes = [
+    permissions.AllowAny
+  ]
+
+  def get_queryset(self):
+    queryset = super(GemReviewList, self).get_queryset()
+    return queryset.filter(gem__pk=self.kwargs.get('pk'))
 
 class PictureDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Picture
