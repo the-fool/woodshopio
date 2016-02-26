@@ -35,7 +35,7 @@ descriptions = ['This is text',
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        users = User.objects.all()
+        users = User.objects.filter(is_vendor__exact=True)
         Gem.objects.all().delete()
         for i, d in enumerate(descriptions):
             g = Gem.objects.create(author=users[i % users.count()], 

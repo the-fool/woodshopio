@@ -10,3 +10,9 @@ class Command(BaseCommand):
             u = User(username=username, email="{}@example.com".format(username), first_name=user)
             u.set_password('password')
             u.save()
+        vendors = ['vendor{}'.format(i) for i in range(1,5)]
+        for v in vendors:
+        	u = User(username=v, email="{}@example.com".format(username), first_name=v)
+        	u.set_password('password')
+        	u.is_vendor = True
+        	u.save()
