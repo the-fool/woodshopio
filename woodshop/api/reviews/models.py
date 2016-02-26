@@ -1,7 +1,9 @@
+
 from django.db import models
+
 from ..gems.models import Gem
 from django.conf import settings
-
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class TimeStampedModel(models.Model):
 	"""
@@ -15,10 +17,10 @@ class TimeStampedModel(models.Model):
 		abstract = True
 
 class Review(TimeStampedModel):
-	rating = models.PositiveSmallIntegerField(blank = True)
-	review = models.TextField(blank = True)
-	reviewer = models.ForeignKey(settings.AUTH_USER_MODEL, related_name = "review")
-	gem = models.ForeignKey(Gem, blank=True, related_name = "review")
+	rating = models.PositiveSmallIntegerField(validators = [MaxValueValidator(5), MinValueValidator(1)])
+	review = models.TextField(blank = True, null=True)
+	reviewer = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="reviews")
+	gem = models.ForeignKey(Gem, related_name="reviews")
 	title = models.CharField(max_length=128, unique=True)
 
 	#TODO write the following methods
