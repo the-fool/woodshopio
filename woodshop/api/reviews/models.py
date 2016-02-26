@@ -26,11 +26,11 @@ class Review(TimeStampedModel):
 	#TODO write the following methods
 
 	# returns the average rating of a gem
-	def gem_average():
+	def gem_average(self):
 		pass
 
 	#custom create review method
-	def create_review():
+	def create_review(self):
 		pass
 
 
