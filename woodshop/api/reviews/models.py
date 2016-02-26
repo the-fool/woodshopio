@@ -18,8 +18,8 @@ class TimeStampedModel(models.Model):
 
 class Review(TimeStampedModel):
 	rating = models.PositiveSmallIntegerField(validators = [MaxValueValidator(5), MinValueValidator(1)])
-	review = models.TextField(blank = True, null=True)
-	reviewer = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="reviews")
+	text = models.TextField(blank = True, null=True)
+	author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="reviews")
 	gem = models.ForeignKey(Gem, related_name="reviews")
 	title = models.CharField(max_length=128, unique=True)
 
