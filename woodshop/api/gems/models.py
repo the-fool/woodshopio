@@ -96,6 +96,7 @@ class Gem(models.Model):
     description = models.TextField(blank=True, null=True)
     main_picture = models.OneToOneField('Picture', related_name='gem_asset', blank=True, null=True)
     categories = models.ManyToManyField(Category, blank=True, related_name ="gems")
+    rating = models.DecimalField(max_digits=3, decimal_places=2, blank=True, null=True)
 
     """ Must use this method for adding categories, not the field.add() method """
     def add_category(self, category):
