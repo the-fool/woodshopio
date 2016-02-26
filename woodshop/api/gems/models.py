@@ -5,8 +5,6 @@ from django.conf import settings
 
 
 class Category(models.Model):
-	# PS -- the reason for doing categories this way is for the sake of JSONifying the cat heirarchy 
-	# Then client-side display can represent the structure
 	
 	CATS = [
 	('3D Models', [
@@ -96,6 +94,8 @@ class Gem(models.Model):
     description = models.TextField(blank=True, null=True)
     main_picture = models.OneToOneField('Picture', related_name='gem_asset', blank=True, null=True)
     categories = models.ManyToManyField(Category, blank=True, related_name ="gems")
+
+    # 'Rating' is not updated through api, but on save for releated reviews
     rating = models.DecimalField(max_digits=3, decimal_places=2, blank=True, null=True)
 
     """ Must use this method for adding categories, not the field.add() method """
@@ -104,6 +104,8 @@ class Gem(models.Model):
     		self.categories.add(c)
     	self.save()
 
+    def __repr__(self):
+    	return '<Gem: {}>'.format(self.title)
 
 def image_dir_path(instance, filename):
 	ext = filename.split('.')[-1]

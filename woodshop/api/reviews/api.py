@@ -13,4 +13,9 @@ class Review(generics.CreateAPIView):
     permissions.AllowAny
   ]
 
-
+class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
+    model = Review
+    serializer_class = ReviewSerializer
+    permission_classes = [
+        permissions.AllowAny
+    ]

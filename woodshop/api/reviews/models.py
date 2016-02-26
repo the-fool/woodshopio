@@ -26,7 +26,12 @@ class Review(TimeStampedModel):
 	def __repr__(self):
 		return "<Review: {0} -- {1}/5>".format(self.title, self.rating)
 	
+	# override
 	def save(self, *args, **kwargs):
+		""" 
+		On saving a review, update the average rating for the gem 
+		This task should be passed to a Celery worker
+		"""
 		s = 0 
 		i = 0
 		for r in self.gem.reviews.all():
@@ -38,9 +43,6 @@ class Review(TimeStampedModel):
 
 
 	#TODO write the following methods
-	# returns the average rating of a gem
-	def gem_average(self):
-		pass
 
 	#custom create review method
 	def create_review(self):
