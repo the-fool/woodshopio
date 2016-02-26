@@ -1,6 +1,5 @@
 
 from django.db import models
-
 from ..gems.models import Gem
 from django.conf import settings
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -15,6 +14,7 @@ class TimeStampedModel(models.Model):
 
 	class Meta:
 		abstract = True
+
 
 class Review(TimeStampedModel):
 	rating = models.PositiveSmallIntegerField(validators = [MaxValueValidator(5), MinValueValidator(1)])
@@ -42,12 +42,16 @@ class Review(TimeStampedModel):
 		super(Review, self).save(*args, **kwargs)
 
 
-	#TODO write the following methods
+	def is_review_permitted(self):
+		"""
+		Determines whether a user may add a review on this gem.
+		Based off of whether they have purchased it or not  
+		"""
+		pass
 
 	#custom create review method
 	def create_review(self):
 		pass
-
 
 
 

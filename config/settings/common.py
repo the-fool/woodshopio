@@ -21,6 +21,7 @@ class Common(Configuration):
         'rest_framework.authtoken',  # token authentication
         'rest_auth',                 # basic login/logout
         'rest_auth.registration',
+        'guardian',
         'django_rq',                 # asynchronous queuing
         'versatileimagefield',       # image manipulation
         'djangobower',               # frontend asset manager
@@ -34,6 +35,7 @@ class Common(Configuration):
         'woodshop.api.gems',            # manage gem assets
         'woodshop.api.reviews',         # reviews functionality
         'woodshop.api.vendors',
+        'woodshop.api.transactions',
         'woodshop.api.users'            # eponymous
 
     )
@@ -204,8 +206,14 @@ class Common(Configuration):
     }
 
     # Custom user app
-
     AUTH_USER_MODEL = 'users.User'
+
+    # Backend authentication
+    ANONYMOUS_USER_ID = '813b2783-23e7-484d-b259-696c24076b0f'
+    AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend', 
+    'guardian.backends.ObjectPermissionBackend',
+    )
    
     # Django Rest Framework
     REST_FRAMEWORK = {
