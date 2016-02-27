@@ -3,12 +3,12 @@
     
     var bazaarApp = ng.module('bazaarApp', [
     	'ngRoute',
+        'django.auth',
         //'ui.bootstrap',
         'modals',
         'reviews',
         'api',
-        'django.auth',
-        'auth.directives',
+        'navbar',
         'common.filters',
         'common.services',
         'common.directives',

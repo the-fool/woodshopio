@@ -1,12 +1,8 @@
 (function(ng) {
 	'use strict';
 	var partialUrl = '/static/partials/common_partials/';
-	var app = ng.module('reviews', ['ngResource']);
-
-	app.config(['$resourceProvider', function ($resourceProvider) {
-        $resourceProvider.defaults.stripTrailingSlashes = false;
-    }]);
 	
+    var app = ng.module('reviews', ['api']);
 
 	app.directive('reviewsViewer', ['Review', function(Review) {
 		function ctrl () {
