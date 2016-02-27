@@ -9,7 +9,6 @@
         'api',
         'django.auth',
         'auth.directives',
-        'common.controllers',
         'common.filters',
         'common.services',
         'common.directives',

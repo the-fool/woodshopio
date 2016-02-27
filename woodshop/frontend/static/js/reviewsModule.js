@@ -1,25 +1,12 @@
 (function(ng) {
 	'use strict';
 	var partialUrl = '/static/partials/common_partials/';
-	app = ng.module('reviews', ['ngResource']);
+	var app = ng.module('reviews', ['ngResource']);
 
 	app.config(['$resourceProvider', function ($resourceProvider) {
         $resourceProvider.defaults.stripTrailingSlashes = false;
     }]);
-	app.factory('Review', [
-		'$resource', 
-		function($r){
-			return $r('/api/gems/:gemid/reviews/:reviewid', {
-                gemid: '@gemid',
-                reviewid: '@reviewid'
-            }, {
-            	query: {
-                    method: 'GET',
-                    isArray: false,
-                }
-            });
-		}
-	]);
+	
 
 	app.directive('reviewsViewer', ['Review', function(Review) {
 		function ctrl () {
