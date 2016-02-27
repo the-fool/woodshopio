@@ -4,6 +4,7 @@
 	var app = angular.module('django.auth', ['ngCookies', 'ngSanitize'])
 	  .service('djangoAuth', function djangoAuth($q, $http, $cookies, $rootScope) {
 	    // AngularJS will instantiate a singleton by calling "new" on this function
+	    var userData = {};
 	    var service = {
 	        /* START CUSTOMIZATION HERE */
 	        // Change this to point to your Django REST Auth API
@@ -94,8 +95,10 @@
 	                    $cookies.put('token',data.key);
 	                }
 	                djangoAuth.authenticated = true;
-	                //djangoAuth.profile().then(function(data) {console.log(data);});
-	                $rootScope.$broadcast("djangoAuth.logged_in", data);
+	                djangoAuth.profile().then(function(data) {
+	                	userData = data;
+	                	$rootScope.$broadcast("djangoAuth.logged_in", data);
+	                }); 
 	            });
 	        },
 	        'logout': function(){
@@ -180,14 +183,14 @@
 	                if(this.authenticated == false && restrict){
 	                    getAuthStatus.reject("User is not logged in.");
 	                }else{
-	                	console.log('skipping');
+	                	console.log('ALERT -- SKIPPED STATUS CHECK');
 	                    getAuthStatus.resolve();
 	                }
 	            }else{
 	                // There isn't a stored value, or we're forcing a request back to
 	                // the API to get the authentication status.
 	                this.authPromise.then(function(data){
-	                	console.log(data);
+	                	userData = data;
 	                    da.authenticated = true;
 	                    getAuthStatus.resolve();
 	                },function(){
@@ -200,6 +203,9 @@
 	                });
 	            }
 	            return getAuthStatus.promise;
+	        },
+	        'getUser' : function() {
+	        	return userData;
 	        },
 	        'initialize': function(url, sessions){
 	            this.API_URL = url;
