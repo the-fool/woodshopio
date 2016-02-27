@@ -9,12 +9,10 @@ from django.views.generic.base import RedirectView
 from rest_framework.routers import DefaultRouter
 
 from woodshop.api import urls as api_urls
-from woodshop.api.authentication.views import LogoutViewCustom
 from woodshop.frontend import urls as frontend_urls
 
 urlpatterns = [
     url(r'', include(frontend_urls)),
-    url(r'^rest-auth/logout/$', LogoutViewCustom.as_view(), name='rest_logout'),
     url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include(api_urls)),
