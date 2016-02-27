@@ -18,11 +18,11 @@ class GemList(generics.ListCreateAPIView):
     queryset = Gem.objects.all()
     category = self.request.query_params.get('category', None)
     if category is not None:
-      return queryset.filter(categories=category)
+      queryset = queryset.filter(categories=category)
 
     vendor = self.request.query_params.get('vendor', None)
     if vendor is not None:  
-      return queryset.filter(vendor=vendor)
+      queryset = queryset.filter(vendor=vendor)
 
     return queryset
 
