@@ -1,7 +1,7 @@
 (function(ng) {
     var app = ng.module('navbar', ['modals', 'django.auth']);
     var partialUrl = '/static/partials/navbar/';
-    app.directive('userDropdown', ['djangoAuth', function(djangoAuth) {
+    app.directive('userDropdown', ['djangoAuth', 'modalService', '$rootScope', function(djangoAuth, modalService, $rootScope) {
 
         function ctrl() {
             /*jshint validthis:true */
@@ -11,11 +11,12 @@
                 e.stopPropagation();
                 setTimeout(function() {
                     $('#user-dropdown').click();
-                    scope.$apply(self.message = '');
+                    $rootScope.$apply(self.message = '');
                 }, delay);
             });
             self.login = function() {
-                self.openModal({which:'login'});
+                //modalService.openModal({which:'login'});
+                modalService.openModal('login');
             };
             self.logout = function() {
                 djangoAuth.logout().then(function() {
@@ -28,7 +29,7 @@
             restrict: 'E',
             scope: {
                 authenticated:'=',
-                openModal: '&openModal'
+                //openModal: '&openModal'
             },
             controller: ctrl,
             controllerAs: 'user',

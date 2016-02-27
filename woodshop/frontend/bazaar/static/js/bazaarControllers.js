@@ -23,15 +23,6 @@
 	      $location.path('/restricted').replace();
 	    });
 
-        $scope.showLoginModal = false;
-
-        $scope.openModal = function(which) {
-        	switch (which) {
-        		case ('login'):
-        			$scope.showLoginModal = !$scope.showLoginModal;
-        			break;		
-        	}
-        };
 	}]);
 	
 	app.controller('categories',['GemsCache', function(GemsCache) {

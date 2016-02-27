@@ -3,17 +3,33 @@
 	var partialUrl = '/static/partials/modals/';
 	var app = ng.module('modals', ['django.auth']);
 
-	app.directive('modal', function() {
+	app.factory('modalService', function() {
+		var svc = {};
+		svc.login = false;
+
+        svc.openModal = function(which) {
+        	switch (which) {
+        		case ('login'):
+        			this.login = !this.login;
+        			break;		
+        	}
+        };
+
+        return svc;
+	});
+
+	app.directive('modal', ['modalService', function(modalService) {
 		return {
 			templateUrl: partialUrl + 'modal.html',
 			restrict: 'E',
 			transclude: true,
 			replace:true,
-			scope: true,
+			scope: {},
 			link: function postLink(scope, element, attrs, parentCtrl) {
 				scope.title = attrs.title;
-
-				scope.$watch(attrs.visible, function(value){
+				var which = attrs.which;
+				
+				scope.$watch(function() {return modalService[which]}, function(value){
 					if(value == true) 
 						$(element).modal('show');
 					else
@@ -21,18 +37,18 @@
 				});
 				$(element).on('shown.bs.modal', function(){
 					scope.$apply(function(){
-						scope.$parent[attrs.visible] = true;
+						modalService[which] = true;
 					});
 				});
 
 				$(element).on('hidden.bs.modal', function(){
 					scope.$apply(function(){
-						scope.$parent[attrs.visible] = false;
+						modalService[which] = false;
 					});
 				});
 			}
 		}; 
-	});
+	}]);
 
 	app.directive('loginModal', ['djangoAuth', 'Validate', '$location', function(djangoAuth, Validate, $location) {
 		function ctrl() {
