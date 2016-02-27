@@ -8,6 +8,7 @@
         'reviews',
         'api',
         'navbar',
+        'globalController',
         'common.filters',
         'bazaar.animations',
         'bazaar.controllers',

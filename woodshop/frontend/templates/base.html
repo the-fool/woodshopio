@@ -24,7 +24,7 @@
     <script src="{% static "js/lib/modernizr-2.8.3-respond-1.4.2.min.js" %}"></script>
 
 </head>
-<body ng-app="{% block ng_app %}{% endblock %}" ng-controller="{%block ng_controller%}{% endblock %}">
+<body ng-app="{% block ng_app %}{% endblock %}" ng-controller="globalController">
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
@@ -118,6 +118,7 @@
 <script src="{% static "angular/angular.js"%}"></script>
 <script src="{% static "angular-cookies/angular-cookies.js" %}"></script>
 <script src="{% static "angular-sanitize/angular-sanitize.js" %}"></script>
+<script src="{% static "js/globalController.js" %}"></script>
 <script src="{% static "js/apiModule.js" %}"></script>
 <script src="{% static "js/navbarModule.js" %}"></script>
 <script src="{% static "js/modalsModule.js" %}"></script>
