@@ -6,6 +6,7 @@
         //'ui.bootstrap',
         'modals',
         'reviews',
+        'api',
         'django.auth',
         'auth.directives',
         'common.controllers',
