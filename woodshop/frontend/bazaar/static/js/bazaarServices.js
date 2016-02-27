@@ -1,7 +1,7 @@
 (function(ng) {
-	app = ng.module('bazaar.services',['common.services']);
+	app = ng.module('bazaar.services', ['api']);
 
-	app.factory('GemsCache', ['Gem', '$rootScope', function(Gem, rs){
+	app.factory('GemsCache', ['Gem', function(Gem){
 		var GemsCache = {};
 		GemsCache.gems = [];
 		GemsCache.category = '';
@@ -20,6 +20,20 @@
 		return GemsCache;
 	}]);
 
+
+	app.factory('DetailGemCache', function() {
+		var Cache = {};
+		var detailGem = {};
+
+		Cache.setGem = function(gem) {
+			detailGem = gem;
+		};
+		Cache.getGem = function() {
+			return detailGem;
+		};
+
+		return Cache;
+	});
 	
 
 })(angular);

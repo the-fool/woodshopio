@@ -45,6 +45,27 @@
             };
         }]);
 
+        app.directive('gemThumb', ['DetailGemCache', function(cache) {
+
+            function ctrl() {
+                /*jshint validthis:true */
+                this.setDetail = function() {
+                    cache.setGem(this.gem);
+                };
+            }
+            return {
+                templateUrl: partialUrl + 'gem_thumb.html',
+                restrict: 'E',
+                scope: {
+                    img_src: '@',
+                    gem: '=',
+                },
+                controller: ctrl,
+                controllerAs: 'gemThumb',
+                bindToController: true
+            };
+        }]);
+
         app.directive('gemSummary', ['Gem', 'DetailGemCache', '$routeParams', '$http', function(Gem, cache, $r, $http){
             function ctrl() {
                 /* jshint validthis: true */
