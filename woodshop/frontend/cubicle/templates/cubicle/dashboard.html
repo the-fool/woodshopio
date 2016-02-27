@@ -1,5 +1,27 @@
 {% extends 'base.html' %}
 
+{% block ng_app %}cubicleApp{% endblock %}
+{%block ng_controller%}cubicleCtrl{% endblock %}
+
+{% block nav_sidebar %}
+<div class="navbar-befault sidebar" role="navigation" ng-controller="categories as cats">
+	<div class="sidebar-nav navbar-collapse" aria-expanded="false" style="height: 1px;">
+		<ul id="side-menu" class="nav in metismenu">
+			<li>
+				<a href="">My lumberyard</a>
+			</li>
+			<li>
+				<a href="">Edit assets<span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
+					<!-- I want to avoid server-side DB queries where possible -->
+					<cubicle-side-gem-list></cubicle-side-gem-list>					
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+{% endblock %}
+
 {% block page_content %}
-CUBICLE
+
 {% endblock %}
