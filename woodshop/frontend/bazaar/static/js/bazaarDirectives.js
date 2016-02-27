@@ -1,7 +1,7 @@
 (function (ng) {
         'use strict';
 
-        var app = ng.module('bazaar.directives', ['common.services', 'reviews']);
+        var app = ng.module('bazaar.directives', ['bazaar.services', 'reviews']);
         var partialUrl = '/static/partials/bazaar_partials/';
 
         app.directive('categoryList', ['Gem', function(Gem) {
