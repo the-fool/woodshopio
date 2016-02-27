@@ -6,9 +6,9 @@
 	app.controller('globalController', ['$scope', '$location', 'djangoAuth', function($scope, $location, djangoAuth) {
 	    $scope.authenticated = false;
 
-	    djangoAuth.authenticationStatus(true).then(function(){
+	    /*djangoAuth.authenticationStatus(true).then(function(){
 	        $scope.authenticated = true;
-	    });
+	    });*/
 
 	    $scope.$on('djangoAuth.logged_out', function() {
 	      $scope.authenticated = false;

@@ -91,10 +91,10 @@
 	            }).then(function(data){
 	                if(!djangoAuth.use_session){
 	                    $http.defaults.headers.common.Authorization = 'Token ' + data.key;
-	                    
 	                    $cookies.put('token',data.key);
 	                }
 	                djangoAuth.authenticated = true;
+	                //djangoAuth.profile().then(function(data) {console.log(data);});
 	                $rootScope.$broadcast("djangoAuth.logged_in", data);
 	            });
 	        },
@@ -107,7 +107,6 @@
 	                delete $http.defaults.headers.common.Authorization;
 	                delete $cookies.remove('token');
 	                djangoAuth.authenticated = false;
-	     
 	                $rootScope.$broadcast("djangoAuth.logged_out");
 	            });
 	        },
@@ -181,12 +180,14 @@
 	                if(this.authenticated == false && restrict){
 	                    getAuthStatus.reject("User is not logged in.");
 	                }else{
+	                	console.log('skipping');
 	                    getAuthStatus.resolve();
 	                }
 	            }else{
 	                // There isn't a stored value, or we're forcing a request back to
 	                // the API to get the authentication status.
-	                this.authPromise.then(function(){
+	                this.authPromise.then(function(data){
+	                	console.log(data);
 	                    da.authenticated = true;
 	                    getAuthStatus.resolve();
 	                },function(){

@@ -234,6 +234,10 @@ class Common(Configuration):
     }
     REST_SESSION_LOGIN = True
 
+    REST_AUTH_SERIALIZERS = {
+        'USER_DETAILS_SERIALIZER': 'woodshop.api.users.serializers.UserSerializer'
+    }
+
     # Versatile Image Field
     VERSATILEIMAGEFIELD_SETTINGS = {
         # The amount of time, in seconds, that references to created images
