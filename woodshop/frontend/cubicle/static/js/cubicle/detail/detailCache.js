@@ -1,24 +1,23 @@
 (function (ng) {
 	'use strict';
-	var app = ng.module('cubicle.detail', ['api']);
+	var app = ng.module('cubicle.detail', ['api', 'ngRoute']);
 
-	app.factory('DetailGemCache', function(Gem) {
+	app.factory('DetailGemCache', ['Gem', '$routeParams', function(Gem, $routeParams) {
 		var cache = {};
+		var promise = null;
+		var toCache = $routeParams.id;
 		var Service = {
-			setGem: function(gemID) {
-				if (cache.id !== gemID) {
-					Gem.get({id:gemID}).$promise.then(function(data) {
-						console.log(data);
+			getGem: function(cb) {
+				if (cache.id !== $routeParams.id) {
+					Gem.query({id:$routeParams.id}).$promise.then(function(data) {
 						cache = data;
+						cb(cache);
 					});
 				}
-			},
-			getGem: function() {
-				return cache;
+				else cb(cache);
 			}
-
 		};
 		return Service;
-	});
+	}]);
 
 })(angular);

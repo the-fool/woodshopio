@@ -14,7 +14,6 @@
                 }, delay);
             });
             self.login = function() {
-                //modalService.openModal({which:'login'});
                 modalService.openModal('login');
             };
             self.logout = function() {
@@ -28,7 +27,6 @@
             restrict: 'E',
             scope: {
                 user:'=',
-                //openModal: '&openModal'
             },
             controller: ctrl,
             controllerAs: 'vm',

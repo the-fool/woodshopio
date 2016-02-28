@@ -2,7 +2,7 @@
 	'use strict';
 
 	var app = ng.module('cubicleApp', [
-        	'ngRoute',
+        	   'ngRoute',
                 'django.auth',
                 'modals',
                 'reviews',
@@ -11,14 +11,15 @@
                 'globalController',
                 'common.filters',
                 'cubicle.animations',
+                'cubicle.detail',
                 'cubicle.sidebar',
-                'cubicle.detail'
+                
         ]);
 
         app.config(['$routeProvider', '$animateProvider', function($rp, $ap) {
         $rp
-        .when('/Gem/:id', {
-                templateUrl:'/static/cubicle_tpl/detail.html',
+        .when('/gem/:id', {
+                template:'<detail-editor user="user"></detail-editor>',
         })
         .when('/', {
                 templateUrl: '/static/cubicle_tpl/main.html'

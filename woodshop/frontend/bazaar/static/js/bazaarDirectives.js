@@ -4,23 +4,6 @@
         var app = ng.module('bazaar.directives', ['bazaar.services', 'reviews']);
         var partialUrl = '/static/partials/bazaar_partials/';
 
-        app.directive('categoryList', ['Gem', function(Gem) {
-            function ctrl() {
-                /* jshint validthis: true */
-                this.setCategory = function(name) {
-                    console.log('clicked ' + name);
-                };
-            }
-            return {
-                restrict: 'A',
-                transclude: true,
-                template: '<div ng-transclude></div>',
-                scope: {},
-                controller: ctrl,
-                controllerAs: 'cat',
-                bindToController: true
-            };
-        }]);
 
         app.directive('grabBag', ['GemsCache', '$rootScope', function (GemsCache, rs) {
             function ctrl() {
