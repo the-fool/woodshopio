@@ -1,6 +1,6 @@
 (function (ng) {
 	'use strict';
-	var app = ng.module('cubicle.detail', ['api', 'ngRoute']);
+	var app = ng.module('cubicle.detail');
 
 	app.factory('DetailGemCache', ['Gem', '$routeParams', function(Gem, $routeParams) {
 		var gemCache = {};

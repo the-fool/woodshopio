@@ -1,0 +1,1 @@
+var app = angular.module('cubicle.detail', ['api', 'ngRoute', 'modals']);

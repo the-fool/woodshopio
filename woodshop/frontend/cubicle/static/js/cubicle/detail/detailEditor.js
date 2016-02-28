@@ -13,6 +13,9 @@
 				g[key] = data;
 				Gem.update(g);
 			};
+			this.openImageUploadModal = function() {
+				console.log('klikd');
+			};
 
 			
 			// initialization
