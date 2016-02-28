@@ -2,7 +2,11 @@
 from django.db import models
 from ..gems.models import Gem
 from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
 from django.core.validators import MaxValueValidator, MinValueValidator
+from woodshop.api.transactions.models import Transaction
+from guardian.shortcuts import assign_perm
+
 
 class TimeStampedModel(models.Model):
 	"""
@@ -22,6 +26,11 @@ class Review(TimeStampedModel):
 	author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="reviews")
 	gem = models.ForeignKey(Gem, related_name="reviews")
 	title = models.CharField(max_length=128)
+
+	class Meta:
+		permissions=(
+            ('add_review', 'Add Review'),
+    	)
 
 	def __repr__(self):
 		return "<Review: {0} -- {1}/5>".format(self.title, self.rating)
@@ -47,8 +56,13 @@ class Review(TimeStampedModel):
 		Determines whether a user may add a review on this gem.
 		Based off of whether they have purchased it or not  
 		"""
-		pass
-
+		try:
+			t = Transaction.objects.get(gem = self.gem.id, buyer = self.author.id)
+			assign_perm('add_review', self.author, self)
+			print(self.author.has_perm('add_review', self))
+		except ObjectDoesNotExist:
+			print(self.author.has_perm('add_review', self))
+			
 	#custom create review method
 	def create_review(self):
 		pass
