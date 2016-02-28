@@ -42,7 +42,7 @@
 <script src="{% static "js/cubicle/detail/detailCache.js" %}"></script>
 
 <script>
-var app = angular.module('cubicle\App'); 
+var app = angular.module('cubicleApp'); 
 app.config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token|escapejs}}';
 }]);

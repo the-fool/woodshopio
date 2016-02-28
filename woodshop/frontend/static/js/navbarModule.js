@@ -10,8 +10,7 @@
             $('#user-dropdown').on('click', '#logout-menu', function(e) {
                 e.stopPropagation();
                 setTimeout(function() {
-                    $('#user-dropdown').click();
-                    $rootScope.$apply(self.message = '');
+                    location.replace(location.origin + '/');
                 }, delay);
             });
             self.login = function() {
