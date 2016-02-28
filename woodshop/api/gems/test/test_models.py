@@ -10,8 +10,8 @@ class TestGemModel(TestCase):
         self.gem = Gem()
         
     @raises(ValueError)
-    def test_gem_rejects_bogus_author(self):
-        self.gem.author = "BOGUS"
+    def test_gem_rejects_bogus_vendor(self):
+        self.gem.vendor = "BOGUS"
         self.gem.save()
 
 class TestPictureModel(TestCase):

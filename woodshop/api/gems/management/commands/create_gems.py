@@ -38,7 +38,7 @@ class Command(BaseCommand):
         users = User.objects.filter(is_vendor__exact=True)
         Gem.objects.all().delete()
         for i, d in enumerate(descriptions):
-            g = Gem.objects.create(author=users[i % users.count()], 
+            g = Gem.objects.create(vendor=users[i % users.count()], 
                                title="Title #{}".format(i + 1), 
                                description=d)
 
