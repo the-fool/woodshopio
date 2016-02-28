@@ -4,7 +4,7 @@
 	var app = ng.module('cubicle.detail');
 	var partialUrl = '/static/js/cubicle/partials/';
 
-	app.directive('detailEditor', ['Gem', 'DetailGemCache', function(Gem, DetailGemCache) {
+	app.directive('detailEditor', ['Gem', 'DetailGemCache', 'modalService', function(Gem, DetailGemCache, modalService) {
 		function ctrl() {
 			this.gem = null;
 			this.pictures = null;
@@ -14,7 +14,7 @@
 				Gem.update(g);
 			};
 			this.openImageUploadModal = function() {
-				console.log('klikd');
+				modalService.openModal('image');
 			};
 
 			

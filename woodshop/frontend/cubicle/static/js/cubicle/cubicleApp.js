@@ -14,6 +14,7 @@
                 'cubicle.animations',
                 'cubicle.detail',
                 'cubicle.sidebar',
+                'cubicle.modals'
                 
         ]);
 

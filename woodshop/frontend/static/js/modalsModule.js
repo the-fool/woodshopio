@@ -6,11 +6,15 @@
 	app.factory('modalService', function() {
 		var svc = {};
 		svc.login = false;
+		svc.image = false;
 
         svc.openModal = function(which) {
         	switch (which) {
-        		case ('login'):
+        		case 'login':
         			this.login = !this.login;
+        			break;
+        		case 'image':
+        			this.image = !this.image;
         			break;		
         	}
         };
