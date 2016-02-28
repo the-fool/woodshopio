@@ -14,7 +14,7 @@
                 }, delay);
             });
             self.login = function() {
-                modalService.openModal('login');
+                modalService.open('login');
             };
             self.logout = function() {
                 djangoAuth.logout().then(function() {

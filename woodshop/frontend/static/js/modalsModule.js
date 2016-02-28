@@ -5,17 +5,15 @@
 
 	app.factory('modalService', function() {
 		var svc = {};
-		svc.login = false;
-		svc.image = false;
 
-        svc.openModal = function(which) {
-        	switch (which) {
-        		case 'login':
-        			this.login = !this.login;
-        			break;
-        		case 'image':
-        			this.image = !this.image;
-        			break;		
+        svc.register = function(name) {
+        	svc[name] = false;
+        };
+        svc.open = function(name) {
+        	if (name in svc) {
+        		svc[name] = !svc[name];
+        	} else {
+        		console.log('no modal registered under name <' + name + '>');
         	}
         };
 
@@ -54,7 +52,8 @@
 		}; 
 	}]);
 
-	app.directive('loginModal', ['djangoAuth', 'Validate', '$location', function(djangoAuth, Validate, $location) {
+	app.directive('loginModal', ['djangoAuth', 'Validate', 'modalService', function(djangoAuth, Validate, modalService) {
+		modalService.register('login');
 		function ctrl() {
 			var self = this;
 			self.model = {'email':'','password':''};

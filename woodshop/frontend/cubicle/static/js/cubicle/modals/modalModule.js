@@ -4,7 +4,8 @@
 	var partialUrl = '/static/js/cubicle/modals/';
 
 
-	app.directive('imageUploadModal', function() {
+	app.directive('imageUploadModal', ['modalService', function(modalService) {
+		modalService.register('image');
 		function ctrl() {
 	
 		}
@@ -14,5 +15,5 @@
 			controller: ctrl,
 
 		};
-	});
+	}]);
 })(angular);

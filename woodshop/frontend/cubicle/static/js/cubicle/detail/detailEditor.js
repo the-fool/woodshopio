@@ -14,7 +14,7 @@
 				Gem.update(g);
 			};
 			this.openImageUploadModal = function() {
-				modalService.openModal('image');
+				modalService.open('image');
 			};
 
 			
