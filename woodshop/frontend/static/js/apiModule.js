@@ -17,14 +17,12 @@
                 query: {
                     method: 'GET',
                     isArray: false,
-                }, 
-                categorize: {
-                    url: '/api/gems/',
-                    method: 'GET',
-                    paramams: {
-                        category:'@category'
+                    params: {
+                        category:'@category',
+                        vendor:'@vendor'
                     }
                 }
+
             });
         }
         ]);

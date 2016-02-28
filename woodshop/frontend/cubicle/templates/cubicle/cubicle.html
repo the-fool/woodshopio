@@ -14,7 +14,7 @@
 				<ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
 					<!-- I want to avoid server-side DB queries where possible 
 						So, angular will XHR this stuff      -->
-					<cubicle-side-gem-list></cubicle-side-gem-list>					
+					<cubicle-sidebar-gem-list user="user"></cubicle-sidebar-gem-list>					
 				</ul>
 			</li>
 		</ul>
@@ -29,7 +29,9 @@
 
 {% block scripts %}
 {{ block.super }}
-<script src="{% static "js/cubicleApp.js" %}"></script>
+<script src="{% static "js/cubicle/cubicleApp.js" %}"></script>
+<script src="{% static "js/cubicle/side_bar/sideBarDirectives.js" %}"></script>
+
 <script>
 var app = angular.module('cubicle\App'); 
 app.config(['$httpProvider', function($httpProvider) {
