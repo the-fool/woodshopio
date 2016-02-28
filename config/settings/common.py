@@ -40,24 +40,25 @@ class Common(Configuration):
 
     )
 
-    BOWER_INSTALLED_APPS = ('angular#1.5.0',
-         'angular-animate#1.5.0',
-         'angular-bootstrap#1.1.2',
-         'angular-cookies#1.5.0',
-         'angular-mocks#1.5.0',
-         'angular-resource#1.5.0',
-         'angular-route#1.5.0',
-         'angular-sanitize#1.5.0',
-         'angular-xeditable#0.1.10',
-         'bootstrap#3.3.6',
-         'font-awesome#4.5.0',
-         'jasmine#2.4.1',
-         'jasmine-jquery#2.1.1',
-         'jquery#2.2.0',
-         'lodash#4.4.0',
-         'metisMenu#2.4.0',
-         'modernizr#3.3.1',
-         'underscore#1.8.3'
+    BOWER_INSTALLED_APPS = ('Croppie#2.0.0',
+ 'angular#1.5.0',
+ 'angular-animate#1.5.0',
+ 'angular-bootstrap#1.1.2',
+ 'angular-cookies#1.5.0',
+ 'angular-mocks#1.5.0',
+ 'angular-resource#1.5.0',
+ 'angular-route#1.5.0',
+ 'angular-sanitize#1.5.0',
+ 'angular-xeditable#0.1.10',
+ 'bootstrap#3.3.6',
+ 'font-awesome#4.5.0',
+ 'jasmine#2.4.1',
+ 'jasmine-jquery#2.1.1',
+ 'jquery#2.2.0',
+ 'lodash#4.4.0',
+ 'metisMenu#2.4.0',
+ 'modernizr#3.3.1',
+ 'underscore#1.8.3'
         )
 
 

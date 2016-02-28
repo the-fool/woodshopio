@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% block styles %}
 {{ block.super }}
+<link rel="stylesheet" href="{% static "Croppie/croppie.css" %}">
 <link rel="stylesheet" href="{% static "css/cubicle/cubicle_animations.css" %}">
 <link rel="stylesheet" href="{% static "css/cubicle/flexslider_custom.css" %}">
 <link rel="stylesheet" href="{% static "css/cubicle/cubicle_base.css" %}">
@@ -38,6 +39,7 @@
 
 {% block scripts %}
 {{ block.super }}
+<script src="{% static "Croppie/croppie.js" %}"></script>
 <script src="{% static "js/cubicle/cubicleApp.js" %}"></script>
 <script src="{% static "js/cubicle/cubicleAnimations.js" %}"></script>
 <script src="{% static "js/cubicle/side_bar/sideBarDirectives.js" %}"></script>
