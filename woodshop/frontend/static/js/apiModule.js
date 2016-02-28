@@ -11,9 +11,8 @@
     app.factory('Gem', [
         '$resource',
         function ($r) {
-            return $r('/api/gems/:id/', {
-                id: '@id'
-            },  { 
+            return $r('/api/gems/:id/', { id: '@id' },  
+            { 
                 query: {
                     method: 'GET',
                     isArray: false,
@@ -21,20 +20,40 @@
                         category:'@category',
                         vendor:'@vendor'
                     }
+                },  
+                fetchPictures: {
+                        url: '/api/gems/:id/pictures',
+                        method: 'GET',
+                        isArray: false,
                 }
-
             });
         }
         ]);
 
     app.factory('User', [
-     '$resource',
-     function ($r) {
+       '$resource',
+       function ($r) {
         return $r('/api/users/:username', {
             username: '@username'
         });
     }
     ]);
+    app.factory('Picture' [
+        '$resource',
+        function($r) {
+            return $r('/api/pictures/:pictureid', {
+                pictureid: '@id'
+            }, {
+                query: {
+                    method: 'GET',
+                    isArray: false,
+                    params: {
+                        gem: '@gem'
+                    }
+                }
+            });
+        }
+        ]);
 
     app.factory('Review', [
         '$resource', 
@@ -49,7 +68,7 @@
                 }
             });
         }
-    ]);
+        ]);
 
     app.service('Validate', function Validate() {
         return {

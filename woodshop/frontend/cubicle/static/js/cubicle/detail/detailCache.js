@@ -3,18 +3,26 @@
 	var app = ng.module('cubicle.detail', ['api', 'ngRoute']);
 
 	app.factory('DetailGemCache', ['Gem', '$routeParams', function(Gem, $routeParams) {
-		var cache = {};
-		var promise = null;
-		var toCache = $routeParams.id;
+		var gemCache = {};
+		var picturesCache = {};
 		var Service = {
 			getGem: function(cb) {
-				if (cache.id !== $routeParams.id) {
+				if (gemCache.id !== $routeParams.id) {
 					Gem.query({id:$routeParams.id}).$promise.then(function(data) {
-						cache = data;
-						cb(cache);
+						gemCache = data;
+						cb(gemCache);
 					});
 				}
-				else cb(cache);
+				else cb(gemCache);
+			},
+			getPictures: function(cb) {
+				if (picturesCache.id !== $routeParams.id) {
+					Gem.fetchPictures({id:$routeParams.id}).$promise.then(function(data) {
+						picturesCache = data.results;
+						cb(picturesCache);
+					});
+				}
+				else cb(picturesCache);
 			}
 		};
 		return Service;

@@ -61,6 +61,23 @@ class GemReviewList(generics.ListAPIView):
 class PictureDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Picture
     serializer_class = PictureSerializer
+    queryset = Picture.objects.all()
     permission_classes = [
         permissions.AllowAny
     ]
+
+class PictureList(generics.ListCreateAPIView):
+  model = Picture
+  queryset = Picture.objects.all()
+  serializer_class = PictureSerializer
+  permission_classes = [
+    permissions.AllowAny
+  ]
+
+  def get_queryset(self):
+    queryset = Picture.objects.all()
+    gem = self.request.query_params.get('gem', None)
+    if gem is not None:
+      queryset = queryset.filter(gem=gem)
+
+    return queryset

@@ -1,2 +1,37 @@
-{{vm.user}}
-{{vm.gem}}
+<div>
+	<div class="row">	
+		<div class="col-md-8">
+			<section class="slider">
+				<div id="slider" class="flexslider">
+					<ul class="slides">
+						<li ng-repeat="picture in vm.pictures">
+							<img ng-src="{{picture.image}}"/>
+						</li>
+					</ul>
+				</div>
+				<div id="carousel" class="flexslider">
+					<ul class="slides">
+						<li ng-repeat="picture in vm.pictures">
+							<img ng-src="{{picture.image}}"/>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</div>
+		<div class="col-md-4">
+			Title: {{ vm.gem.title }}
+			<hr>
+			Description: {{ vm.gem.description }}
+			<hr>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+			<reviews-viewer gem="vm.gem.id"></reviews-viewer>
+			
+		</div>
+		<div class="col-md-4">
+			<p> Detailed information -- file structure</p>
+		</div>
+	</div>
+</div>

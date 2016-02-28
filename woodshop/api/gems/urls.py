@@ -2,12 +2,13 @@ from django.conf.urls import url, include
 from rest_framework.routers import DefaultRouter
 
 from .api import GemPictureList, GemReviewList, GemDetail, GemList
-#from .api import PictureDetail
+from .api import PictureDetail, PictureList
 
 
-"""picture_urls = [
-	url(r'^(?P<pk>.+)$', PictureDetail.as_view(), name='picture-detail')
-]"""
+picture_urls = [
+	url(r'^(?P<pk>.+)$', PictureDetail.as_view(), name='picture-detail'),
+	url(r'^$', PictureList.as_view(), name='picture-list')
+]
 
 gem_urls = [
 	url(r'^(?P<pk>[0-9a-zA-Z_-]+)/pictures/?$',  GemPictureList.as_view(), name='gempicture-list'),
