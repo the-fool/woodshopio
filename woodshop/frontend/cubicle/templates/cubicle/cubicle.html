@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
-
+{% load staticfiles %}
 {% block ng_app %}cubicleApp{% endblock %}
-{%block ng_controller%}cubicleCtrl{% endblock %}
 
 {% block nav_sidebar %}
-<div class="navbar-befault sidebar" role="navigation" ng-controller="categories as cats">
+<div class="navbar-befault sidebar" role="navigation">
 	<div class="sidebar-nav navbar-collapse" aria-expanded="false" style="height: 1px;">
 		<ul id="side-menu" class="nav in metismenu">
 			<li>
@@ -13,7 +12,8 @@
 			<li>
 				<a href="">Edit assets<span class="fa arrow"></span></a>
 				<ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
-					<!-- I want to avoid server-side DB queries where possible -->
+					<!-- I want to avoid server-side DB queries where possible 
+						So, angular will XHR this stuff      -->
 					<cubicle-side-gem-list></cubicle-side-gem-list>					
 				</ul>
 			</li>
@@ -24,4 +24,16 @@
 
 {% block page_content %}
 
+
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script src="{% static "js/cubicleApp.js" %}"></script>
+<script>
+var app = angular.module('cubicle\App'); 
+app.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token|escapejs}}';
+}]);
+</script>
 {% endblock %}
