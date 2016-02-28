@@ -8,8 +8,10 @@
 		function ctrl() {
 			this.gem = null;
 			this.pictures = null;
-			this.updateTitle = function(title) {
-				Gem.update({id:this.gem.id, title:title});
+			this.update = function(data, key) {
+				var g = {id:this.gem.id};
+				g[key] = data;
+				Gem.update(g);
 			};
 
 			

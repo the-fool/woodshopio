@@ -3,12 +3,17 @@
 		<h2>
 			<span editable-text="vm.gem.title" 
 				e-form="titleIcon"
-				onbeforesave="vm.updateTitle($data)">{{vm.gem.title}}</span>
+				onbeforesave="vm.update($data, 'title')">{{vm.gem.title}}</span>
 			<a ng-click="titleIcon.$show()" ng-hide="titleIcon.$visible"><i class="fa fa-pencil"></i></a>
 		</h2>
 		<div id="gem-text" class="col-md-8">
 			<hr>
-			Description: {{ vm.gem.description }}
+				<h4>Description:</h4>
+				<span editable-textarea="vm.gem.description" e-rows="20" e-cols="40" 
+				e-form="descIcon" onbeforesave="vm.update($data, 'description')">
+				{{ vm.gem.description }}
+				</span>
+				<a ng-click="descIcon.$show()" ng-hide="descIcon.$visible"><i class="fa fa-pencil"></i></a>
 			<hr>
 		</div>
 		<div id="gem-analytics" class="col-md-4">
