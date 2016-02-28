@@ -1,1 +1,5 @@
 span + a {cursor: pointer;}
+
+#image-upload-modal .modal-dialog {
+	width: 90%;
+}
