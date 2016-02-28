@@ -10,26 +10,15 @@
 			this.pictures = null;
 			DetailGemCache.getGem(function(data) {
 				this.gem = data;
-
 			}.bind(this));
 			DetailGemCache.getPictures(function(data) {
 				this.pictures = data;
 				setTimeout(function() {
-                    $('#carousel').flexslider({
-                    animation: "slide",
-                    controlNav: false,
-                    animationLoop: false,
-                    slideshow: false,
-                    itemWidth: 210,
-                    itemMargin: 5,
-                    asNavFor: '#slider'
-                  });
                   $('#slider').flexslider({
-                    animation: "fade",
-                    controlNav: false,
+                    animation: "slide",
+                    controlNav: "thumbnails",
                     animationLoop: false,
                     slideshow: false,
-                    sync: "#carousel",
                     start: function(slider){
                       $('#detail-editor').removeClass('loading').addClass('loaded');
                     }
@@ -37,6 +26,7 @@
                 },1);
 			}.bind(this));
 		}
+
 		function link() {
 
 		}

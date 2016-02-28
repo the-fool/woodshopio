@@ -20,7 +20,7 @@ class Command(BaseCommand):
 		Picture.objects.all().delete()
 		gems = Gem.objects.all()
 
-		for x in range(1,4):
+		for x in range(1,10):
 			for i, gem in enumerate(gems):
 				Picture.objects.create(gem=gem, image=sample_images[(i + x) % len(sample_images)])
 

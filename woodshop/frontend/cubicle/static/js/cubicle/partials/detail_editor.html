@@ -1,17 +1,12 @@
 <div id="detail-editor" class="loading">
+	<div class="row">
+	</div>
 	<div class="row">	
 		<div id="picture-slider" class="col-md-8">
 			<section class="slider">
 				<div id="slider" class="flexslider">
 					<ul class="slides">
-						<li ng-repeat="picture in vm.pictures">
-							<img ng-src="{{picture.image}}"/>
-						</li>
-					</ul>
-				</div>
-				<div id="carousel" class="flexslider">
-					<ul class="slides">
-						<li ng-repeat="picture in vm.pictures">
+						<li ng-repeat="picture in vm.pictures" data-thumb="{{picture.image}}">
 							<img ng-src="{{picture.image}}"/>
 						</li>
 					</ul>
