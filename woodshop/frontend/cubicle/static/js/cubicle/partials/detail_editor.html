@@ -1,11 +1,12 @@
 <div id="detail-editor" class="loading container-fluid">
 	<div class="row">
 		<h2>
-			<span editable-text="vm.gem.title" e-form="titleIcon">{{vm.gem.title}}</span>
+			<span editable-text="vm.gem.title" 
+				e-form="titleIcon"
+				onbeforesave="vm.updateTitle($data)">{{vm.gem.title}}</span>
 			<a ng-click="titleIcon.$show()" ng-hide="titleIcon.$visible"><i class="fa fa-pencil"></i></a>
 		</h2>
 		<div id="gem-text" class="col-md-8">
-			Title: {{ vm.gem.title }}
 			<hr>
 			Description: {{ vm.gem.description }}
 			<hr>

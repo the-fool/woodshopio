@@ -31,7 +31,7 @@
 
             $ap.classNameFilter(/animated/);
         }]).run(function(editableOptions) {
-            editableOptions.theme = 'default';
+            editableOptions.theme = 'bs3';
         });
 
 })(angular);

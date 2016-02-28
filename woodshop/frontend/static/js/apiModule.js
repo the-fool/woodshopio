@@ -25,7 +25,8 @@
                         url: '/api/gems/:id/pictures',
                         method: 'GET',
                         isArray: false,
-                }
+                },
+                update: {method: 'PATCH'}
             });
         }
         ]);
