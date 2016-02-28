@@ -1,12 +1,15 @@
 (function(ng) {
-	var app = ng.module('cubicle.sidebar', ['api', 'django.auth']);
+	var app = ng.module('cubicle.sidebar', ['api', 'django.auth', 'cubicle.detail']);
 
 	var partialUrl = '/static/js/cubicle/partials/';
 	
-	app.directive('cubicleSidebarGemList', ['Gem', 'djangoAuth', function(Gem, djangoAuth) {
+	app.directive('cubicleSidebarGemList', ['Gem', 'djangoAuth', 'DetailGemCache', function(Gem, djangoAuth, DetailGemCache) {
 		
 		function ctrl() {
 			this.gems = [];
+			this.setDetail = function(gemID) {
+				DetailGemCache.setGem(gemID);
+			};
 		};
 		return {
 			restrict: 'E',

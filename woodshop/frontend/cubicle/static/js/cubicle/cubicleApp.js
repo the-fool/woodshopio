@@ -10,6 +10,7 @@
                 'navbar',
                 'globalController',
                 'common.filters',
-                'cubicle.sidebar'
+                'cubicle.sidebar',
+                'cubicle.detail'
         ]);
 })(angular);
