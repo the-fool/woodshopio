@@ -19,6 +19,7 @@
         });
 	    
 	    $scope.$on('djangoAuth.logged_out', function() {
+	      $scope.user = null;
 	      $scope.authenticated = false;
 	    });
 

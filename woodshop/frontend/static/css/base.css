@@ -11,8 +11,11 @@ body {
     padding-bottom: 20px;*/
 }
 
-a.user-message {
+#menu-user-message {
     color: red;
+}
+#menu-vendor-link {
+    color: green;
 }
 #page-wrapper {
     padding: 0 15px;

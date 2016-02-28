@@ -40,6 +40,7 @@
             <a class="navbar-brand">The Woodshop</a>
         </div>
         <ul class="nav navbar-top-links navbar-right">
+
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
@@ -95,7 +96,7 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href="">
                     <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                 </a>
-                <user-dropdown open-modal="openModal(which)" authenticated="authenticated"></user-dropdown>
+                <user-dropdown open-modal="openModal(which)" user="user"></user-dropdown>
             </li>
         </ul>
         {% block nav_sidebar %}

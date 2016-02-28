@@ -28,11 +28,11 @@
             templateUrl: partialUrl + 'user_dropdown.html',
             restrict: 'E',
             scope: {
-                authenticated:'=',
+                user:'=',
                 //openModal: '&openModal'
             },
             controller: ctrl,
-            controllerAs: 'user',
+            controllerAs: 'vm',
             replace: true,
             bindToController: true
         };
