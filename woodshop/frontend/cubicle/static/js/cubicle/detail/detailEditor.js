@@ -4,16 +4,16 @@
 	var app = ng.module('cubicle.detail');
 	var partialUrl = '/static/js/cubicle/partials/';
 
-	app.directive('detailEditor', ['Gem', 'DetailGemCache', '$rootScope', function(Gem, DetailGemCache, $rootScope) {
+	app.directive('detailEditor', ['Gem', 'DetailGemCache', function(Gem, DetailGemCache) {
 		function ctrl() {
 			this.gem = null;
 			this.pictures = null;
 			DetailGemCache.getGem(function(data) {
 				this.gem = data;
+
 			}.bind(this));
 			DetailGemCache.getPictures(function(data) {
-				$rootScope.$applyAsync(this.pictures = data);
-				console.log(this.pictures);
+				this.pictures = data;
 				setTimeout(function() {
                     $('#carousel').flexslider({
                     animation: "slide",
@@ -31,10 +31,10 @@
                     slideshow: false,
                     sync: "#carousel",
                     start: function(slider){
-                      $('body').removeClass('loading');
+                      $('#detail-editor').removeClass('loading').addClass('loaded');
                     }
                   });
-                },20);
+                },1);
 			}.bind(this));
 		}
 		function link() {
