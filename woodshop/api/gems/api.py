@@ -3,6 +3,7 @@ from rest_framework import permissions
 
 from .models import Gem, Picture
 from .serializers import GemSerializer, PictureSerializer
+from .permissions import IsOwnerOrReadOnly
 from woodshop.api.reviews.models import Review
 from woodshop.api.reviews.serializers import ReviewSerializer
 
@@ -12,7 +13,7 @@ class GemList(generics.ListCreateAPIView):
   queryset = Gem.objects.all()
   serializer_class = GemSerializer
   permission_classes = [
-    permissions.AllowAny
+    IsOwnerOrReadOnly
   ]
   def get_queryset(self):
     queryset = Gem.objects.all()
@@ -31,7 +32,7 @@ class GemDetail(generics.RetrieveUpdateDestroyAPIView):
   serializer_class = GemSerializer
   queryset = Gem.objects.all()
   permission_classes = [
-    permissions.AllowAny
+    IsOwnerOrReadOnly
   ]
 
 class GemPictureList(generics.ListAPIView):
