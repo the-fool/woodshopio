@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% block styles %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static "css/cubicle/cubicle_animations.css" %}">
+{% endblock %}
+
 {% block ng_app %}cubicleApp{% endblock %}
 
 {% block nav_sidebar %}
@@ -7,7 +12,7 @@
 	<div class="sidebar-nav navbar-collapse" aria-expanded="false" style="height: 1px;">
 		<ul id="side-menu" class="nav in metismenu">
 			<li>
-				<a href="">My lumberyard</a>
+				<a href="">My Lumberyard</a>
 			</li>
 			<li>
 				<a href="">Edit assets<span class="fa arrow"></span></a>
@@ -23,13 +28,16 @@
 {% endblock %}
 
 {% block page_content %}
-
+<div class="view-container">
+	<div ng-view class="view-frame animated"></div>
+</div>
 
 {% endblock %}
 
 {% block scripts %}
 {{ block.super }}
 <script src="{% static "js/cubicle/cubicleApp.js" %}"></script>
+<script src="{% static "js/cubicle/cubicleAnimations.js" %}"></script>
 <script src="{% static "js/cubicle/side_bar/sideBarDirectives.js" %}"></script>
 <script src="{% static "js/cubicle/detail/detailCache.js" %}"></script>
 

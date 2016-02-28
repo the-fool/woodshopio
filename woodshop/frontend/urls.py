@@ -4,5 +4,5 @@ from .cubicle import views as cubicle_views
 
 urlpatterns = [
     url(r'^$', bazaar_views.home_page, name="bazaar"),
-    url(r'^vendor$', cubicle_views.dashboard, name="dashboard") 
+    url(r'^vendor/$', cubicle_views.dashboard, name="dashboard") 
 ]
