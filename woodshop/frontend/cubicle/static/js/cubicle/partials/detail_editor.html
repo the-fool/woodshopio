@@ -1,7 +1,21 @@
-<div id="detail-editor" class="loading">
+<div id="detail-editor" class="loading container-fluid">
 	<div class="row">
+		<h2>
+			<span editable-text="vm.gem.title" e-form="titleIcon">{{vm.gem.title}}</span>
+			<a ng-click="titleIcon.$show()" ng-hide="titleIcon.$visible"><i class="fa fa-pencil"></i></a>
+		</h2>
+		<div id="gem-text" class="col-md-8">
+			Title: {{ vm.gem.title }}
+			<hr>
+			Description: {{ vm.gem.description }}
+			<hr>
+		</div>
+		<div id="gem-analytics" class="col-md-4">
+			<ul><li>whitespace</li><li>lorem ipsum space</li></ul>
+		</div>
 	</div>
-	<div class="row">	
+	<div class="row">
+		<h3>Edit Images</h3>	
 		<div id="picture-slider" class="col-md-8">
 			<section class="slider">
 				<div id="slider" class="flexslider">
@@ -10,16 +24,10 @@
 							<img ng-src="{{picture.image}}"/>
 						</li>
 					</ul>
-					
 				</div>
 			</section>
 		</div>
-		<div id="gem-summary-text" class="col-md-4">
-			Title: {{ vm.gem.title }}
-			<hr>
-			Description: {{ vm.gem.description }}
-			<hr>
-		</div>
+		
 	</div>
 	<div class="row">
 		<div class="col-md-8">

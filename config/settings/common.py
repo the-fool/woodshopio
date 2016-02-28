@@ -48,6 +48,7 @@ class Common(Configuration):
          'angular-resource#1.5.0',
          'angular-route#1.5.0',
          'angular-sanitize#1.5.0',
+         'angular-xeditable#0.1.10',
          'bootstrap#3.3.6',
          'font-awesome#4.5.0',
          'jasmine#2.4.1',
