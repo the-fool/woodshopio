@@ -12,8 +12,9 @@
 
 		GemsCache.getCategorical = function(category) {
 			if (GemsCache.category !== category) {
-				Gem.categorize({category:category}).$promise.then(function(data){
-					GemsCache.gems = data.results;				
+				Gem.query({category:category}).$promise.then(function(data){
+					GemsCache.gems = data.results;
+					GemsCache.category = category;				
 				});
 			}
 		}
