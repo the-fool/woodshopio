@@ -29,7 +29,7 @@ class Review(TimeStampedModel):
 
 	class Meta:
 		permissions=(
-            ('add_review', 'Add Review'),
+            ('can_add_review', 'Add Review'),
     	)
 
 	def __repr__(self):
@@ -57,11 +57,11 @@ class Review(TimeStampedModel):
 		Based off of whether they have purchased it or not  
 		"""
 		try:
-			t = Transaction.objects.get(gem = self.gem.id, buyer = self.author.id)
-			assign_perm('add_review', self.author, self)
-			print(self.author.has_perm('add_review', self))
+			t = Transaction.objects.get(gem=self.gem.id, buyer=self.author.id)
+			assign_perm('can_add_review', self.author, self)
+			print(self.author.has_perm('can_add_review', self))
 		except ObjectDoesNotExist:
-			print(self.author.has_perm('add_review', self))
+			print(self.author.has_perm('can_add_review', self))
 			
 	#custom create review method
 	def create_review(self):
