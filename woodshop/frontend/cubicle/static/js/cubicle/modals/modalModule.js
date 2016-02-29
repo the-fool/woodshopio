@@ -94,6 +94,8 @@
 				});
 			});
 		}, function onclose() {
+			var input = $('#upload');
+			input.replaceWith(input.val('').clone(true));
 			$('#upload-cropper').croppie('destroy');
 		});
 
