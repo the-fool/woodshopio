@@ -4,7 +4,8 @@
 	var partialUrl = '/static/js/cubicle/modals/';
 
 
-	app.directive('imageUploadModal', ['modalService', 'Picture', 'DetailGemCache', function(modalService, Picture, DetailGemCache) {
+	app.directive('imageUploadModal', ['modalService', 'Picture', 'DetailGemCache', '$http', 
+		function(modalService, Picture, DetailGemCache, $http) {
 		var $uploadCrop;
 		function readFile(input) {
 			if (input.files && input.files[0]) {
@@ -22,6 +23,17 @@
 				alert("Sorry - you're browser doesn't support the FileReader API");
 			}
 		}
+		function dataURItoBlob(dataURI) {
+        	var split = dataURI.split(','),
+            dataTYPE = split[0].match(/:(.*?);/)[1],
+            binary = atob(split[1]),
+            array = [];
+        	for(var i = 0; i < binary.length; i++) {array.push(binary.charCodeAt(i));}
+        	
+        	return new Blob([new Uint8Array(array)], {
+            	type: dataTYPE
+        	});
+    	}
 
 		modalService.register('image', function onopen() {
 			$uploadCrop = $('#upload-cropper').croppie({
@@ -36,14 +48,29 @@
 				},
 				exif: true
 			});
-			$('#upload').off('change').on('change', function () { readFile(this); });
-			$('.upload-result').off('click').on('click', function (ev) {
+			$('#upload').off('change').on('change', function () {
+				$('.upload-result').css('display', 'block'); 
+				readFile(this); 
+			});
+			$('.upload-result').css('display', 'none').off('click').on('click', function (ev) {
 				$uploadCrop.croppie('result', {
 					type: 'canvas',
 					size: 'viewport'
 				}).then(function (resp) {
 					DetailGemCache.getGem(function(gem){
-						Picture.save({image:resp, gem:gem.id});
+					    var fd = new FormData();
+		                fd.append("image", dataURItoBlob(resp), "cropped-" + (new Date) + ".png");
+		                fd.append("gem", gem.id);
+		                $http({
+		                	url: '/api/pictures/',
+		                	method:'POST',
+		                	headers: {
+		                		'Content-Type': undefined,
+		                	},
+		                	data: fd,
+		                	transformRequest: ng.identity
+
+		                });
 					});
 				});
 			});
@@ -56,8 +83,6 @@
 			DetailGemCache.getGem(function(gem) {
 				self.gem = gem;
 			});
-			
-
 		}
 		return {
 				templateUrl: partialUrl + 'image_upload_modal.html',

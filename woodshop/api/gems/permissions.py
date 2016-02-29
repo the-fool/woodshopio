@@ -28,5 +28,11 @@ class CanAddPicture(permissions.BasePermission):
             return True
         elif request.method == "POST":
             #creating picture
-            g = Gem.objects.get(pk=request.data.get('gem'))
-            return g.vendor == request.user
+            pk=request.data.get('gem', None)
+            if not pk:
+                return False
+            g = Gem.objects.get(pk=pk)
+            if g:
+                return g.vendor == request.user
+            else:
+                return False

@@ -69,19 +69,20 @@ class PictureDetail(generics.RetrieveUpdateDestroyAPIView):
         IsOwnerOrReadOnly
     ]
 
-
 class PictureList(generics.ListCreateAPIView):
   model = Picture
   queryset = Picture.objects.all()
   serializer_class = PictureSerializer
   permission_classes = [
-    IsOwnerOrReadOnly, CanAddPicture
+    CanAddPicture
   ]
 
   def post(self, request, *args, **kwargs):
-    gem_id = request.data.get('gem', None)
-    if gem_id is None:
-      return HttpResponseBadRequest(content="Error -- no asset id provided")
+    image = request.FILES['image']
+    gem = Gem.objects.get(pk=request.data.get('gem', None))
+    if not gem or not image:
+      return HttpResponseBadRequest()
+    Picture.objects.create(gem=gem, image=request.FILES['image'])
     return HttpResponse()
 
 
