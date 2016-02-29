@@ -22,6 +22,7 @@ class Common(Configuration):
         'rest_auth',                 # basic login/logout
         'rest_auth.registration',
         'guardian',
+        'dry_rest_permissions',
         'django_rq',                 # asynchronous queuing
         'versatileimagefield',       # image manipulation
         'djangobower',               # frontend asset manager

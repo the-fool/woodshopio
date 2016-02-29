@@ -27,11 +27,6 @@ class Review(TimeStampedModel):
 	gem = models.ForeignKey(Gem, related_name="reviews")
 	title = models.CharField(max_length=128)
 
-	class Meta:
-		permissions=(
-            ('can_add_review', 'Add Review'),
-    	)
-
 	def __repr__(self):
 		return "<Review: {0} -- {1}/5>".format(self.title, self.rating)
 	
@@ -50,23 +45,14 @@ class Review(TimeStampedModel):
 		self.gem.save()
 		super(Review, self).save(*args, **kwargs)
 
-
-	def is_review_permitted(self):
-		"""
-		Determines whether a user may add a review on this gem.
-		Based off of whether they have purchased it or not  
-		"""
+	@staticmethod
+	def has_create_permission(request):
 		try:
 			t = Transaction.objects.get(gem=self.gem.id, buyer=self.author.id)
-			assign_perm('can_add_review', self.author, self)
-			print(self.author.has_perm('can_add_review', self))
+			return True
 		except ObjectDoesNotExist:
-			print(self.author.has_perm('can_add_review', self))
-			
-	#custom create review method
-	def create_review(self):
-		pass
-
+			print("Can not Review")
+		return False
 
 
 
