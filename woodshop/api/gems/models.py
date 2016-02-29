@@ -86,13 +86,15 @@ class Category(models.Model):
 
 
 
+def get_random_pic():
+	return Gem.objects.pictures
 
 class Gem(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     vendor = models.ForeignKey(settings.AUTH_USER_MODEL, related_name=("gems"))
     title = models.CharField(max_length=128, unique=True)
     description = models.TextField(blank=True, null=True)
-    main_picture = models.OneToOneField('Picture', related_name='gem_asset', blank=True, null=True)
+    main_picture = models.ForeignKey('Picture', related_name='gem_asset', blank=True, null=True, on_delete=models.SET_NULL)
     categories = models.ManyToManyField(Category, blank=True, related_name ="gems")
 
     # 'Rating' is not updated through api, but on save for releated reviews
@@ -119,7 +121,6 @@ class Picture(models.Model):
 	image = models.ImageField(upload_to=image_dir_path, max_length=255)
 
 	
-
 """ These methods are not for production! """
 from django.db.models.signals import post_delete
 from django.dispatch.dispatcher import receiver
@@ -128,11 +129,13 @@ import os, shutil
 def picture_delete(sender, instance, **kwargs):
 	"""Delete picture file"""
 	# Pass false so FileField doesn't save the model.
+	print('picture delete triggered')
 	instance.image.delete(False)
 
 @receiver(post_delete, sender=Gem)
 def gem_dir_delete(sender, instance, **kwargs):
 	"""Remove the gem's photo directory"""
+	print('gem dir delete triggered')
 	if os.environ['DJANGO_CONFIGURATION'] == 'Local':
 		shutil.rmtree(os.path.join(settings.MEDIA_ROOT, 'gem_{}'.format(instance.id)), 
 			ignore_errors=True)

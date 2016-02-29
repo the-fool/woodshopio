@@ -23,12 +23,13 @@
 	<div class="row">
 		<h3>Images</h3>
 		<a ng-click="vm.openImageUploadModal()">Add images</a>
+		<a ng-click="vm.openImageDeleteModal()">Delete this image</a>
 	</div>	
 		<div id="picture-slider" class="col-md-8">
 			<section class="slider">
 				<div id="slider" class="flexslider">
 					<ul class="slides">
-						<li ng-repeat="picture in vm.pictures" data-thumb="{{picture.image}}">
+						<li ng-repeat="picture in vm.pictures" data-thumb="{{picture.image}}" data-id="{{picture.id}}">
 							<img ng-src="{{picture.image}}"/>
 						</li>
 					</ul>

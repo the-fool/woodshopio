@@ -66,7 +66,7 @@ class PictureDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PictureSerializer
     queryset = Picture.objects.all()
     permission_classes = [
-        IsOwnerOrReadOnly
+        permissions.AllowAny
     ]
 
 class PictureList(generics.ListCreateAPIView):

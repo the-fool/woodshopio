@@ -4,8 +4,8 @@
 	var app = ng.module('cubicle.detail');
 	var partialUrl = '/static/js/cubicle/partials/';
 
-	app.directive('detailEditor', ['Gem', 'DetailGemCache', 'modalService', '$rootScope', '$route', 
-		function(Gem, DetailGemCache, modalService, $rootScope, $route) {
+	app.directive('detailEditor', ['Gem', 'Picture', 'DetailGemCache', 'modalService', '$rootScope', '$route', 
+		function(Gem, Picture, DetailGemCache, modalService, $rootScope, $route) {
 		function ctrl($rootScope) {
 			this.gem = null;
 			this.pictures = null;
@@ -15,7 +15,10 @@
 				Gem.update(g);
 			};
 			this.openImageUploadModal = function() {
-				modalService.open('image');
+				modalService.open('image-upload');
+			};
+			this.openImageDeleteModal = function(imageID) {
+				modalService.open('image-delete');
 			};
 
 			this.populatePictures = function(force) {
@@ -36,9 +39,20 @@
 	                },1);
 				}.bind(this), force);
 			};
-			$rootScope.$on('image-uploaded', function(data) {
+
+			$rootScope.$$listeners['image-uploaded']=[],
+			$rootScope.$$listeners['image-deleted']=[];
+			$rootScope.$on('image-uploaded', function() {
 				$route.reload();
-			}.bind(this));
+			});
+			$rootScope.$on('image-deleted', function() {
+				var picID = $('#slider .flex-active-slide').data('id');
+				console.log(picID);
+				Picture.delete({id:picID}).$promise.then(function(data) {
+					console.log(data);
+				});;
+			});
+
 			// initialization
 			(function() {
 				DetailGemCache.getGem(function(data) {

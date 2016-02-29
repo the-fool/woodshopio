@@ -42,8 +42,8 @@
     app.factory('Picture', [
         '$resource',
         function($r) {
-            return $r('/api/pictures/:pictureid', {
-                pictureid: '@id'
+            return $r('/api/pictures/:id', {
+                id: '@id'
             }, {
                 query: {
                     method: 'GET',

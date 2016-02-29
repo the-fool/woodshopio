@@ -15,3 +15,7 @@ span + a {cursor: pointer;}
 #upload-cropper div.image-loading {
 	opacity: .4;
 }
+
+#image-delete-modal .modal-dialog {
+	width: 190px;
+}

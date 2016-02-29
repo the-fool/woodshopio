@@ -3,6 +3,25 @@
 	var app = ng.module('cubicle.modals', ['modals', 'api', 'cubicle.detail']);
 	var partialUrl = '/static/js/cubicle/modals/';
 
+	app.directive('imageDeleteModal', ['modalService', '$rootScope', 
+		function(modalService, $rootScope) {
+			modalService.register('image-delete');
+			function ctrl() {
+				this.confirm = function() {
+					// signal detail-editor
+					console.log('confirmed');
+					$rootScope.$emit('image-deleted');
+				};
+			}
+			return {
+				templateUrl: partialUrl + 'image_delete_modal.html',
+				controller: ctrl,
+				controllerAs: 'vm',
+				scope: {},
+				bindToController: true
+			};
+
+	}]);
 
 	app.directive('imageUploadModal', ['modalService', 'Picture', 'DetailGemCache', '$http', '$rootScope',
 		function(modalService, Picture, DetailGemCache, $http, $rootScope) {
@@ -35,7 +54,7 @@
         	});
     	}
 
-		modalService.register('image', function onopen() {
+		modalService.register('image-upload', function onopen() {
 			// Clean loading relics
 			$('#image-loading').hide();
 			$('#upload-cropper div.cr-boundary').removeClass('image-loading');
