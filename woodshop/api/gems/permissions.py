@@ -1,7 +1,6 @@
 from rest_framework import permissions
 from .models import Gem, Picture
 
-
 class IsOwnerOrReadOnly(permissions.BasePermission):
     """
     Custom permission to only allow owners of an object to edit it.
@@ -13,10 +12,21 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
         # Write permissions are only allowed to the owner of the snippet.
+
         if type(obj) is Gem:
             return obj.vendor == request.user
         elif type(obj) is Picture:
-            print('in here ********')
             return obj.gem.vendor == request.user
 
-        print('heeellllleoooo')
+class CanAddPicture(permissions.BasePermission):
+    """
+    Custom permission to only allow owners of an object to edit it.
+    """
+
+    def has_permission(self, request, view):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        elif request.method == "POST":
+            #creating picture
+            g = Gem.objects.get(pk=request.data.get('gem'))
+            return g.vendor == request.user

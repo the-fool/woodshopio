@@ -5,7 +5,7 @@ from rest_framework import permissions
 
 from .models import Gem, Picture
 from .serializers import GemSerializer, PictureSerializer
-from .permissions import IsOwnerOrReadOnly
+from .permissions import IsOwnerOrReadOnly, CanAddPicture
 from woodshop.api.reviews.models import Review
 from woodshop.api.reviews.serializers import ReviewSerializer
 
@@ -75,14 +75,13 @@ class PictureList(generics.ListCreateAPIView):
   queryset = Picture.objects.all()
   serializer_class = PictureSerializer
   permission_classes = [
-    IsOwnerOrReadOnly
+    IsOwnerOrReadOnly, CanAddPicture
   ]
 
   def post(self, request, *args, **kwargs):
     gem_id = request.data.get('gem', None)
     if gem_id is None:
       return HttpResponseBadRequest(content="Error -- no asset id provided")
-    print('hit')
     return HttpResponse()
 
 
