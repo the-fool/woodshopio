@@ -95,7 +95,7 @@ class Gem(models.Model):
     title = models.CharField(max_length=128, unique=True)
     description = models.TextField(blank=True, null=True)
     # main_picture will be reassigned on_delete through a signal
-    main_picture = models.ForeignKey('Picture', related_name='gem_asset', blank=True, null=True, on_delete=models.DO_NOTHING)
+    main_picture = models.OneToOneField('Picture', related_name='gem_asset', blank=True, null=True, on_delete=models.DO_NOTHING)
     categories = models.ManyToManyField(Category, blank=True, related_name ="gems")
 
     # 'Rating' is not updated through api, but on save for releated reviews
@@ -129,7 +129,10 @@ import os, shutil
 def picture_pre_delete(sender, instance, **kwargs):
 	""" Reassign main picture to gem if necessary """
 	# Pass false so FileField doesn't save the model.
-	gem = instance.gem_asset.first()
+	if hasattr(instance, 'gem_asset'):
+		gem = instance.gem_asset
+	else: gem = None
+
 	if gem: # we have deleted main picture
 		pics = gem.pictures.all()
 		if pics[1]: 
