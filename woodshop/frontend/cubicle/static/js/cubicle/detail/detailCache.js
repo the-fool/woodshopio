@@ -6,8 +6,8 @@
 		var gemCache = {};
 		var picturesCache = {};
 		var Service = {
-			getGem: function(cb) {
-				if (gemCache.id !== $routeParams.id) {
+			getGem: function(cb, force) {
+				if (force || gemCache.id !== $routeParams.id) {
 					Gem.query({id:$routeParams.id}).$promise.then(function(data) {
 						gemCache = data;
 						cb(gemCache);
@@ -15,8 +15,8 @@
 				}
 				else cb(gemCache);
 			},
-			getPictures: function(cb) {
-				if (picturesCache.id !== $routeParams.id) {
+			getPictures: function(cb, force) {
+				if (force || picturesCache.id !== $routeParams.id) {
 					Gem.fetchPictures({id:$routeParams.id}).$promise.then(function(data) {
 						picturesCache = data.results;
 						cb(picturesCache);

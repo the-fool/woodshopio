@@ -4,8 +4,9 @@
 	var app = ng.module('cubicle.detail');
 	var partialUrl = '/static/js/cubicle/partials/';
 
-	app.directive('detailEditor', ['Gem', 'DetailGemCache', 'modalService', function(Gem, DetailGemCache, modalService) {
-		function ctrl() {
+	app.directive('detailEditor', ['Gem', 'DetailGemCache', 'modalService', '$rootScope', '$route', 
+		function(Gem, DetailGemCache, modalService, $rootScope, $route) {
+		function ctrl($rootScope) {
 			this.gem = null;
 			this.pictures = null;
 			this.update = function(data, key) {
@@ -17,12 +18,7 @@
 				modalService.open('image');
 			};
 
-			
-			// initialization
-			(function() {
-				DetailGemCache.getGem(function(data) {
-					this.gem = data;
-				}.bind(this));
+			this.populatePictures = function(force) {
 				DetailGemCache.getPictures(function(data) {
 					this.pictures = data;
 					setTimeout(function() {
@@ -38,8 +34,17 @@
 	                    }
 	                  });
 	                },1);
-				}.bind(this))
-
+				}.bind(this), force);
+			};
+			$rootScope.$on('image-uploaded', function(data) {
+				$route.reload();
+			}.bind(this));
+			// initialization
+			(function() {
+				DetailGemCache.getGem(function(data) {
+					this.gem = data;
+				}.bind(this));
+				this.populatePictures(true);	
 			}.bind(this))();
 		}
 

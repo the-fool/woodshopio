@@ -85,7 +85,9 @@
 		                setTimeout(function() {p.then(function(data) {
 		                	 $('#image-loading').hide();
 		               		 $('#upload-cropper div.cr-boundary').removeClass('image-loading');
+		               		 $rootScope.$emit('image-uploaded');
 		               		 modalService.close('image');
+
 		                	}, function(error) {console.log('er', error)});
 		            	}, 500);
 					});
