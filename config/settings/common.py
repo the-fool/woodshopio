@@ -40,7 +40,7 @@ class Common(Configuration):
 
     )
 
-    BOWER_INSTALLED_APPS = ('Croppie#2.0.0',
+    BOWER_INSTALLED_APPS = ('croppie#2.0.0',
  'angular#1.5.0',
  'angular-animate#1.5.0',
  'angular-bootstrap#1.1.2',
@@ -121,7 +121,7 @@ class Common(Configuration):
     )
 
     # Postgres
-    DATABASES = values.DatabaseURLValue('postgres://localhost/woodshop')
+    DATABASES = values.DatabaseURLValue('postgres://127.0.0.1/woodshop')
 
     # General
     APPEND_SLASH = False

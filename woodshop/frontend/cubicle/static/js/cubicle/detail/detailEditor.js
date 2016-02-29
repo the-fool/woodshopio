@@ -7,6 +7,7 @@
 	app.directive('detailEditor', ['Gem', 'Picture', 'DetailGemCache', 'modalService', '$rootScope', '$route', 
 		function(Gem, Picture, DetailGemCache, modalService, $rootScope, $route) {
 		function ctrl($rootScope) {
+			var self = this;
 			this.gem = null;
 			this.pictures = null;
 			this.update = function(data, key) {
@@ -42,15 +43,15 @@
 
 			$rootScope.$$listeners['image-uploaded']=[],
 			$rootScope.$$listeners['image-deleted']=[];
+			
 			$rootScope.$on('image-uploaded', function() {
 				$route.reload();
 			});
 			$rootScope.$on('image-deleted', function() {
 				var picID = $('#slider .flex-active-slide').data('id');
-				console.log(picID);
 				Picture.delete({id:picID}).$promise.then(function(data) {
-					console.log(data);
-				});;
+					$route.reload();
+				});
 			});
 
 			// initialization
