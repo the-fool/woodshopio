@@ -1,24 +1,12 @@
 <modal title="Upload image" which="image" id="image-upload-modal">
-  <form id="form1">
-    <input type='file' id="imgInp" />
-    <img id="pic" src="#" alt="your image" />
-  </form>
-  <script>
-    function readURL(input) {
+  <input type="file" id="upload" value="Choose a file" accept="image/*" />
+  <div class="col-1-2">
+    <div class="upload-msg">
+      Upload a file to start cropping
+    </div>
+    <button class="upload-result">Result</button>
+    <div id="upload-cropper"></div>
+  </div>
 
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#pic').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $("#imgInp").change(function(){
-        readURL(this);
-    });
-  </script>
+ 
 </modal>

@@ -5,16 +5,29 @@
 
 	app.factory('modalService', function() {
 		var svc = {};
+		var onclose = {};
+		var onopen = {};
 
-        svc.register = function(name) {
+        svc.register = function(name, open, close) {
         	svc[name] = false;
+        	if (open) {
+        		onopen[name] = open;
+        	}
+        	if (close) {
+        		onclose[name] = close;
+        	}
         };
         svc.open = function(name) {
         	if (name in svc) {
         		svc[name] = !svc[name];
+        		if(onopen[name]) {onopen[name]();}
         	} else {
         		console.log('no modal registered under name <' + name + '>');
         	}
+        };
+        svc.close = function(name) {
+        	svc[name] = false;
+        	if(onclose[name]) {onclose[name]();}
         };
 
         return svc;
@@ -45,7 +58,7 @@
 
 				$(element).on('hidden.bs.modal', function(){
 					scope.$apply(function(){
-						modalService[which] = false;
+						modalService.close(which);
 					});
 				});
 			}
