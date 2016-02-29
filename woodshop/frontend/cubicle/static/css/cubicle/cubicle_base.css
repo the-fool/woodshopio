@@ -1,5 +1,17 @@
 span + a {cursor: pointer;}
 
 #image-upload-modal .modal-dialog {
-	width: 90%;
+	width: 80%;
+}
+
+#image-loading {
+	position: fixed;
+	z-index: 99;
+	top: 50%;
+	left: 47%;
+	text-align: center;
+}
+
+#upload-cropper div.image-loading {
+	opacity: .4;
 }

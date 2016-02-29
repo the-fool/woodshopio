@@ -4,8 +4,8 @@
 	var partialUrl = '/static/js/cubicle/modals/';
 
 
-	app.directive('imageUploadModal', ['modalService', 'Picture', 'DetailGemCache', '$http', 
-		function(modalService, Picture, DetailGemCache, $http) {
+	app.directive('imageUploadModal', ['modalService', 'Picture', 'DetailGemCache', '$http', '$rootScope',
+		function(modalService, Picture, DetailGemCache, $http, $rootScope) {
 		var $uploadCrop;
 		function readFile(input) {
 			if (input.files && input.files[0]) {
@@ -36,6 +36,11 @@
     	}
 
 		modalService.register('image', function onopen() {
+			// Clean loading relics
+			$('#image-loading').hide();
+			$('#upload-cropper div.cr-boundary').removeClass('image-loading');
+			
+			// initialize js widget
 			$uploadCrop = $('#upload-cropper').croppie({
 				viewport: {
 					width: 400,
@@ -48,6 +53,8 @@
 				},
 				exif: true
 			});
+			
+			// Event bindings for upload to browser, and then to server
 			$('#upload').off('change').on('change', function () {
 				$('.upload-result').css('display', 'block'); 
 				readFile(this); 
@@ -61,7 +68,7 @@
 					    var fd = new FormData();
 		                fd.append("image", dataURItoBlob(resp), "cropped-" + (new Date) + ".png");
 		                fd.append("gem", gem.id);
-		                $http({
+		                var p = $http({
 		                	url: '/api/pictures/',
 		                	method:'POST',
 		                	headers: {
@@ -69,8 +76,18 @@
 		                	},
 		                	data: fd,
 		                	transformRequest: ng.identity
-
 		                });
+		                // add loading conditions
+		                $('#image-loading').show();
+		               	$('#upload-cropper div.cr-boundary').addClass('image-loading');
+		                
+		                // Timeout only for simulated delay while testing
+		                setTimeout(function() {p.then(function(data) {
+		                	 $('#image-loading').hide();
+		               		 $('#upload-cropper div.cr-boundary').removeClass('image-loading');
+		               		 modalService.close('image');
+		                	}, function(error) {console.log('er', error)});
+		            	}, 500);
 					});
 				});
 			});
