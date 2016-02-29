@@ -94,7 +94,8 @@ class Gem(models.Model):
     vendor = models.ForeignKey(settings.AUTH_USER_MODEL, related_name=("gems"))
     title = models.CharField(max_length=128, unique=True)
     description = models.TextField(blank=True, null=True)
-    main_picture = models.ForeignKey('Picture', related_name='gem_asset', blank=True, null=True, on_delete=models.SET_NULL)
+    # main_picture will be reassigned on_delete through a signal
+    main_picture = models.ForeignKey('Picture', related_name='gem_asset', blank=True, null=True, on_delete=models.DO_NOTHING)
     categories = models.ManyToManyField(Category, blank=True, related_name ="gems")
 
     # 'Rating' is not updated through api, but on save for releated reviews
@@ -120,17 +121,30 @@ class Picture(models.Model):
 	gem = models.ForeignKey('Gem', related_name='pictures')
 	image = models.ImageField(upload_to=image_dir_path, max_length=255)
 
-	
-""" These methods are not for production! """
-from django.db.models.signals import post_delete
+
+from django.db.models.signals import post_delete, pre_delete
 from django.dispatch.dispatcher import receiver
 import os, shutil
+@receiver(pre_delete, sender=Picture)
+def picture_pre_delete(sender, instance, **kwargs):
+	""" Reassign main picture to gem if necessary """
+	# Pass false so FileField doesn't save the model.
+	gem = instance.gem_asset.first()
+	print(gem)
+	if gem: # we have deleted main picture
+		pics = gem.pictures.all()
+		print(pics)
+		if pics[1]: 
+			gem.main_picture = pics[1]
+			gem.save()
+
+""" These methods are not for production! """
 @receiver(post_delete, sender=Picture)
 def picture_delete(sender, instance, **kwargs):
 	"""Delete picture file"""
 	# Pass false so FileField doesn't save the model.
-	print('picture delete triggered')
 	instance.image.delete(False)
+	
 
 @receiver(post_delete, sender=Gem)
 def gem_dir_delete(sender, instance, **kwargs):
