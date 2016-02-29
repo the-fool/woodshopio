@@ -1,3 +1,5 @@
+from django.http.response import HttpResponseBadRequest, HttpResponse
+
 from rest_framework import generics
 from rest_framework import permissions
 
@@ -64,16 +66,25 @@ class PictureDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PictureSerializer
     queryset = Picture.objects.all()
     permission_classes = [
-        permissions.AllowAny
+        IsOwnerOrReadOnly
     ]
+
 
 class PictureList(generics.ListCreateAPIView):
   model = Picture
   queryset = Picture.objects.all()
   serializer_class = PictureSerializer
   permission_classes = [
-    permissions.AllowAny
+    IsOwnerOrReadOnly
   ]
+
+  def post(self, request, *args, **kwargs):
+    gem_id = request.data.get('gem', None)
+    if gem_id is None:
+      return HttpResponseBadRequest(content="Error -- no asset id provided")
+    print('hit')
+    return HttpResponse()
+
 
   def get_queryset(self):
     queryset = Picture.objects.all()

@@ -1,4 +1,5 @@
 from rest_framework import permissions
+from .models import Gem, Picture
 
 
 class IsOwnerOrReadOnly(permissions.BasePermission):
@@ -12,4 +13,10 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
         # Write permissions are only allowed to the owner of the snippet.
-        return obj.vendor == request.user
+        if type(obj) is Gem:
+            return obj.vendor == request.user
+        elif type(obj) is Picture:
+            print('in here ********')
+            return obj.gem.vendor == request.user
+
+        print('heeellllleoooo')

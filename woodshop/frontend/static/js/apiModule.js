@@ -39,7 +39,7 @@
         });
     }
     ]);
-    app.factory('Picture' [
+    app.factory('Picture', [
         '$resource',
         function($r) {
             return $r('/api/pictures/:pictureid', {
