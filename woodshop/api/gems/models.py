@@ -130,10 +130,8 @@ def picture_pre_delete(sender, instance, **kwargs):
 	""" Reassign main picture to gem if necessary """
 	# Pass false so FileField doesn't save the model.
 	gem = instance.gem_asset.first()
-	print(gem)
 	if gem: # we have deleted main picture
 		pics = gem.pictures.all()
-		print(pics)
 		if pics[1]: 
 			gem.main_picture = pics[1]
 			gem.save()
@@ -149,7 +147,6 @@ def picture_delete(sender, instance, **kwargs):
 @receiver(post_delete, sender=Gem)
 def gem_dir_delete(sender, instance, **kwargs):
 	"""Remove the gem's photo directory"""
-	print('gem dir delete triggered')
 	if os.environ['DJANGO_CONFIGURATION'] == 'Local':
 		shutil.rmtree(os.path.join(settings.MEDIA_ROOT, 'gem_{}'.format(instance.id)), 
 			ignore_errors=True)
