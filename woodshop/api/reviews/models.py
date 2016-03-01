@@ -50,4 +50,4 @@ class Review(TimeStampedModel):
 			t = Transaction.objects.get(gem=self.gem.id, buyer=self.author.id)
 			return True
 		except ObjectDoesNotExist:
-		return False
+			return False
