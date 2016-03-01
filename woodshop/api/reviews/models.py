@@ -5,7 +5,6 @@ from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.validators import MaxValueValidator, MinValueValidator
 from woodshop.api.transactions.models import Transaction
-from guardian.shortcuts import assign_perm
 
 
 class TimeStampedModel(models.Model):
@@ -46,16 +45,9 @@ class Review(TimeStampedModel):
 		super(Review, self).save(*args, **kwargs)
 
 	@staticmethod
-	def has_create_permission(request):
+	def has_create_permission(self, request):
 		try:
 			t = Transaction.objects.get(gem=self.gem.id, buyer=self.author.id)
 			return True
 		except ObjectDoesNotExist:
-			print("Can not Review")
 		return False
-
-
-
-
-
-
