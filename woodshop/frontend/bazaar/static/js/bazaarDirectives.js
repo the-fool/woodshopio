@@ -105,4 +105,49 @@
 
         }]);
 
+        app.directive('banner', ['Gem', function(Gem) {
+            // simple cache, 
+            // since we don't expect adverts to change during a session
+            var adverts = [];
+
+            /* Gets the advertisement objects */
+            /* (for now, it just gets gems) */
+            function getBanner() {
+                return Gem.query().$promise;
+            }
+            
+            function initSlider() {
+                setTimeout(function() {
+                  $('.flexslider').flexslider({
+                    animation: "slide",
+                    controlsContainer: $(".custom-controls-container"),
+                    customDirectionNav: $(".custom-navigation a"),
+                    slideshowSpeed: 5000,
+                    start: function(slider){
+                      $('body').removeClass('loading');
+                    }
+                });
+                }, 50);
+            }
+
+            function ctrl() {
+                this.adverts = adverts;
+                if (adverts.length === 0) {
+                    getBanner().then(function(data){
+                        console.log(data);
+                        this.adverts = data.results.slice(0,5);
+                        initSlider();
+                    }.bind(this));
+                } else {initSlider();}
+            }
+
+            return {
+                templateUrl: partialUrl + 'banner.html',
+                restrict: 'E',
+                scope: {},
+                controller: ctrl,
+                controllerAs: 'banner',
+                bindToController: true
+            }
+        }]);
 })(angular);

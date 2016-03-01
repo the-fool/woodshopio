@@ -1,0 +1,16 @@
+<div>
+	<section class="slider">
+        <div class="flexslider">
+          <ul class="slides">
+            <li ng-repeat="advert in banner.adverts">
+				<img ng-src="{{advert.main_picture.image}}"/>
+			</li>
+          </ul>
+        </div>
+        <div class="custom-navigation">
+          <a href="#" class="flex-prev">Prev</a>
+          <div class="custom-controls-container"></div>
+          <a href="#" class="flex-next">Next</a>
+        </div>
+      </section>
+</div>
