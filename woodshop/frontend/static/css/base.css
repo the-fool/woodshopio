@@ -7,11 +7,22 @@ footer {
 
 body {
     background-color: #795548;
-    padding-top: 50px;
     padding-bottom: 20px;
 }
 a {
     color: #00BCD4;
+}
+
+#topnavbar {
+    margin: 0;
+}
+#topnavbar.affix {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+#banner {
+    padding: 40px 0;
 }
 
 #menu-user-message {

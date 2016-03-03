@@ -1,4 +1,9 @@
 $(function() {
+    $('#topnavbar').affix({
+    offset: {
+        top: $('#banner').height()
+    }   
+});
     $(window).bind("load resize", function() {
         var topOffset = 50;
         var width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
