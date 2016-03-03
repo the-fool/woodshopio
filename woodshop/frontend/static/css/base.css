@@ -6,9 +6,12 @@ footer {
 }
 
 body {
-    background-color: #f8f8f8;
-    /*padding-top: 50px;
-    padding-bottom: 20px;*/
+    background-color: #795548;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+a {
+    color: #00BCD4;
 }
 
 #menu-user-message {
@@ -17,6 +20,12 @@ body {
 #menu-vendor-link {
     color: green;
 }
+
+
+#wrapper {
+    width: 100%;
+}
+
 #page-wrapper {
     padding: 0 15px;
     min-height: 568px;
@@ -27,15 +36,23 @@ body {
     #page-wrapper {
         position: inherit;
         margin: 0 0 0 200px;
-        padding: 0 20px;
+        padding: 0 15px;
         border-left: 1px solid #e7e7e7;
     }
 }
+
+@media(min-width:768px) {
+    #main-view {
+     
+        padding-right: 120px;
+        
+}
 @media(min-width:1250px) {
-    #page-wrapper {
-        padding-right: 90px;
+    #main-view {
+        padding-right: 190px;
     }
 }
+
 .sidebar .sidebar-nav.navbar-collapse {
     padding-right: 0;
     padding-left: 0;

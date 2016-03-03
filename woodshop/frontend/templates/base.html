@@ -105,19 +105,29 @@
             <!-- insert sidebar content here -->
         {% endblock %}
     </nav>
-    <login-modal></login-modal>
+
     
     <div id="page-wrapper">
-        {% block page_content %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                <div id="main-view">
+            {% block page_content %}
 
-        {% endblock %}
+            {% endblock %}
+            </div>
+            </div>
+            </div>
+        </div>
     </div>
+        <login-modal></login-modal>    
 </div>
 
 
 {% block scripts %}
 <script src="{% static "jquery/dist/jquery.js"%}"></script>
 <script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>
+<script src="{% static "js/base.js" %}"></script>
 <script src="{% static "metisMenu/dist/metisMenu.min.js" %}"></script>
 <script src="{% static "js/lib/jquery.flexslider.js" %}"></script>
 <script src="{% static "angular/angular.js"%}"></script>
