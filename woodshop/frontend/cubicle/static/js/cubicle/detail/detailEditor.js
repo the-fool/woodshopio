@@ -46,11 +46,12 @@
 				$route.reload();
 			});
 			$rootScope.$on('image-deleted', function() {
-				var picID = $('#slider .flex-active-slide').data('id');
-				console.log(picID);
+				var $pic = $('#slider .flex-active-slide');
+				var picID = $pic.data('id');
 				Picture.delete({id:picID}).$promise.then(function(data) {
-					console.log(data);
-				});;
+					// success
+					$route.reload();
+				}, function(error) {console.log('error', error)});;
 			});
 
 			// initialization
