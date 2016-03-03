@@ -1,9 +1,18 @@
 $(function() {
+    $('#topnavbar').on('affix.bs.affix', function () {
+        $('a.navbar-brand').addClass('fixed');
+    });
+
+    $('#topnavbar').on('affix-top.bs.affix', function () {
+        $('a.navbar-brand').removeClass('fixed');
+    });
+    
     $('#topnavbar').affix({
-    offset: {
-        top: $('#banner').height()
-    }   
-});
+        offset: {
+            top: $('#banner').height()
+        }   
+    });
+
     $(window).bind("load resize", function() {
         var topOffset = 50;
         var width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
