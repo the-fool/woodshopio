@@ -17,6 +17,7 @@ dj-database-url==0.4.0
 # Models
 django-model-utils==2.4
 django-guardian==1.4.1
+dry-rest-permissions==0.1.6
 
 # Rest apis
 djangorestframework==3.3.2

@@ -104,8 +104,11 @@
 		                setTimeout(function() {p.then(function(data) {
 		                	 $('#image-loading').hide();
 		               		 $('#upload-cropper div.cr-boundary').removeClass('image-loading');
+		               		 DetailGemCache.getPictures(function(test) {
+		               		 	console.log(test)
+		               		 }, true);
 		               		 $rootScope.$emit('image-uploaded');
-		               		 modalService.close('image');
+		               		 modalService.close('image-upload');
 
 		                	}, function(error) {console.log('er', error)});
 		            	}, 500);
