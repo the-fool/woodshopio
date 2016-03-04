@@ -78,7 +78,7 @@
                             slideshow: false,
                             sync: "#carousel",
                             start: function(slider){
-                              $('body').removeClass('loading');
+                              $('banner').removeClass('loading');
                             }
                           });
                         },1);
