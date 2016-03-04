@@ -121,7 +121,7 @@
 
         }]);
 
-        app.directive('banner', ['Gem', function(Gem) {
+        app.directive('advertSlider', ['Gem', function(Gem) {
             // simple cache, 
             // since we don't expect adverts to change during a session
             var adverts = [];
@@ -157,11 +157,11 @@
             }
 
             return {
-                templateUrl: partialUrl + 'banner.html',
+                templateUrl: partialUrl + 'advert_slider.html',
                 restrict: 'E',
                 scope: {},
                 controller: ctrl,
-                controllerAs: 'banner',
+                controllerAs: 'advertSlider',
                 bindToController: true
             }
         }]);
