@@ -24,11 +24,11 @@
         .when('/filter/category/:cat', {
             templateUrl:'/static/bazaar_tpl/filtered.html'
         })
-    	.when('/', {
+    	.when('/home', {
     		templateUrl: '/static/bazaar_tpl/main.html'
     	})
     	.otherwise({
-    		redirectTo: '/'
+    		redirectTo: '/home'
     	});
 
     	$ap.classNameFilter(/animated/);

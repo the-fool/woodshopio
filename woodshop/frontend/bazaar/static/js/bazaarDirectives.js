@@ -28,6 +28,22 @@
             };
         }]);
 
+        app.directive('banner', ['$route', '$rootScope', function($route, $rootScope) {
+            function link(scope,element,attrs) {
+               scope.$on('$routeChangeStart', function(event, next) {
+                    if ('cat' in next.pathParams) {
+                        // in a filtered view -- so remove top banner
+
+                    }
+                });
+            }
+            return {
+                restrict: 'A',
+                link: link,
+                scope: true
+            }
+        }]);
+
         app.directive('gemThumb', ['DetailGemCache', function(cache) {
 
             function ctrl() {
@@ -134,7 +150,6 @@
                 this.adverts = adverts;
                 if (adverts.length === 0) {
                     getBanner().then(function(data){
-                        console.log(data);
                         this.adverts = data.results.slice(0,5);
                         initSlider();
                     }.bind(this));
