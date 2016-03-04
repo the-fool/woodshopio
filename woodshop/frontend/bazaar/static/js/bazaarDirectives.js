@@ -28,19 +28,30 @@
             };
         }]);
 
-        app.directive('banner', ['$route', '$rootScope', function($route, $rootScope) {
+        app.directive('bazaarBanner', ['$route', '$rootScope', '$location', function($route, $rootScope, $location) {
+            function ctrl() {
+
+            }
+
             function link(scope,element,attrs) {
                scope.$on('$routeChangeStart', function(event, next) {
-                    if ('cat' in next.pathParams) {
-                        // in a filtered view -- so remove top banner
-
+                    console.log(event);
+                    if ($location.path() === '/home') {
+                       scope.vm.home = true;
+                       console.log('home');
+                    } else {
+                        scope.vm.home = false;
                     }
                 });
             }
             return {
-                restrict: 'A',
+                restrict: 'AE',
                 link: link,
-                scope: true
+                templateUrl: partialUrl + 'bazaar_banner.html',
+                scope: {},
+                controller: ctrl,
+                controllerAs: 'vm',
+                bindToController: true
             }
         }]);
 

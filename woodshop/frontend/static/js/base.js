@@ -7,11 +7,6 @@ $(function() {
         $('a.navbar-brand').removeClass('fixed');
     });
     
-    $('#topnavbar').affix({
-        offset: {
-            top: $('#banner').height()
-        }   
-    });
 
     $(window).bind("load resize", function() {
         var topOffset = 50;
