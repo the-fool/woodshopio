@@ -21,6 +21,9 @@
     	.when('/Gem/:id', {
     		templateUrl:'/static/bazaar_tpl/detail.html',
     	})
+        .when('/filter/category/:cat', {
+            templateUrl:'/static/bazaar_tpl/filtered.html'
+        })
     	.when('/', {
     		templateUrl: '/static/bazaar_tpl/main.html'
     	})

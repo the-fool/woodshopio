@@ -34,8 +34,9 @@ a {
 
 a.navbar-brand {
   opacity: 0;
-  transition: opacity .5s;
+  transition: opacity .7s;
 }
+
 
 a.navbar-brand.fixed {
     opacity: 1;

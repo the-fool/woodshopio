@@ -17,14 +17,14 @@ class Command(BaseCommand):
                 name = name + '_' + i[0] if name else i[0]
                 if i[1]: # if not leaf
                     l.append(
-                       	'<li><a href="#/{0}"><span class="fa arrow"></span><span ng-click="cats.setCategory(\'{0}\')" class="cat-text">{1}</span></a>'.format(name, i[0]) +	
+                       	'<li><a href="#/filter/category/{0}"><span class="fa arrow"></span><span ng-click="cats.setCategory(\'{0}\')" class="cat-text">{1}</span></a>'.format(name, i[0]) +	
                        	'<ul class="nav nav-{}-level collapse" aria-expanded="false" style="height: 0px;">'.format(level[index])
                        	)
                     index += 1
                     traverse(name,i[1])
                 else:   # if leaf
                 	l.append(
-                		'<li><a href="#/{0}" ng-click="cats.setCategory(\'{0}\')"><span class="cat-text">{1}</span></a></li>'.format(name, i[0]))
+                		'<li><a href="#/filter/category/{0}" ng-click="cats.setCategory(\'{0}\')"><span class="cat-text">{1}</span></a></li>'.format(name, i[0]))
                 name = '_'.join(name.split('_')[:-1])
             l.append('</ul></li>')
             index -= 1
