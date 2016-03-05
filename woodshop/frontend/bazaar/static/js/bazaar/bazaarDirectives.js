@@ -37,7 +37,6 @@
                function setBanner () {
                     if ($location.path() === '/home') {
                        scope.vm.home = true;
-                       console.log('home');
                     } else {
                         scope.vm.home = false;
                     }
@@ -45,7 +44,7 @@
                scope.$on('$routeChangeStart', function(event, next) {
                    setBanner(); 
                 });
-               
+
                // init
                $('#topnavbar').affix({
                  offset: {
