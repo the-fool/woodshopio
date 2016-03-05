@@ -11,9 +11,6 @@
         'globalController',
         'common.filters',
         'bazaar.animations',
-        'bazaar.controllers',
-        'bazaar.directives',
-        'bazaar.services'
     ]);
     
     bazaarApp.config(['$routeProvider', '$animateProvider', function($rp, $ap) {

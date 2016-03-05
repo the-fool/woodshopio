@@ -1,5 +1,5 @@
 (function(ng) {
-	app = ng.module('bazaar.services', ['api']);
+	app = ng.module('bazaarApp');
 
 	app.factory('GemsCache', ['Gem', function(Gem){
 		var GemsCache = {};

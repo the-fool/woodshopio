@@ -1,13 +1,16 @@
 #banner {
 	overflow: hidden;
-    padding: 40px 0;
-    height: 150px;
+    max-height: 150px;
 }
+#banner .row {
+    padding: 40px 0;
+}
+
 #banner.ng-hide-add, #banner.ng-hide-remove {
-  transition: height 0.5s ease, padding 0.5s ease;
+  transition: max-height 0.2s ease-in;
 }
 #banner.ng-hide {
-	height: 0px;
+	max-height: 0px;
 }
 .cat-text:hover {
     text-decoration: underline;

@@ -1,7 +1,7 @@
 (function (ng) {
         'use strict';
 
-        var app = ng.module('bazaar.directives', ['bazaar.services', 'reviews']);
+        var app = ng.module('bazaarApp');
         var partialUrl = '/static/partials/bazaar_partials/';
 
 
@@ -34,14 +34,18 @@
             }
 
             function link(scope,element,attrs) {
-               scope.$on('$routeChangeStart', function(event, next) {
-                    console.log(event);
+               function setBanner () {
                     if ($location.path() === '/home') {
                        scope.vm.home = true;
                        console.log('home');
                     } else {
                         scope.vm.home = false;
                     }
+               };
+               // init
+               setBanner();
+               scope.$on('$routeChangeStart', function(event, next) {
+                   setBanner(); 
                 });
             }
             return {
