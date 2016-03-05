@@ -1,18 +1,18 @@
 <modal title="Login form" which="login">
-  <form role="form" ng-submit="vm.login(loginForm)" name="loginForm" novalidate>
+  <form role="form" ng-submit="login.login(loginForm)" name="loginForm" id="loginForm" novalidate>
     <div class="form-group">
        <label for="id_email">Email</label>
-      <input name="email" id="id_email" type="text" ng-model="vm.model.email" placeholder="email" class="form-control" required />
+      <input name="email" id="id_email" type="text" ng-model="login.model.email" placeholder="email" class="form-control" required />
     </div>
     <div class="alert alert-danger" ng-repeat="error in errors.username">{{error}}</div>
     <div class="form-group">
       <label for="id_password">Password</label>
-      <input name="password" id="id_password" type="password" ng-model="vm.model.password" placeholder="Password" class="form-control" required />
+      <input name="password" id="id_password" type="password" ng-model="login.model.password" placeholder="Password" class="form-control" required />
     </div>
-    <div class="alert alert-danger" ng-repeat="error in vm.errors.password">{{error}}</div>
-    <div class="alert alert-danger" ng-repeat="error in vm.errors.non_field_errors">{{error}}</div>
+    <div class="alert alert-danger" ng-repeat="error in login.errors.password">{{error}}</div>
+    <div class="alert alert-danger" ng-repeat="error in login.errors.non_field_errors">{{error}}</div>
     <div class="alert alert-danger" ng-if="error">{{error}}</div>
-    <div class="alert alert-success" ng-if="vm.success">{{vm.success}}</div>
-    <button type="submit" class="btn btn-primary">Login</button>
+    <div class="alert alert-success" ng-if="login.success">{{login.success}}</div>
+    <button type="submit" form="loginForm" class="btn btn-primary">Login</button>
   </form>
 </modal>

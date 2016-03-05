@@ -1,10 +1,11 @@
-from __future__ import unicode_literals
 import uuid
-
 from django.db import models
 from django.conf import settings
-from ..gems.models import Gem
 from django.utils.encoding import python_2_unicode_compatible
+
+from dry_rest_permissions.generics import DRYPermissions, allow_staff_or_superuser, authenticated_users
+
+from ..gems.models import Gem
 
 
 """
@@ -31,6 +32,13 @@ class Transaction(TimeStampedModel):
 	
 	def __repr__(self):
 		return '<Transaction: {0}>'.format(self.t_id)
+
+	@staticmethod
+	@authenticated_users
+	def has_read_permission(request):
+		return True
+	
+	
 
 
 

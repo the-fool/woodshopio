@@ -86,6 +86,7 @@
 			self.model = {'email':'','password':''};
 			self.complete = false;
 			self.login = function(formData){
+				console.log('hit');
 				self.errors = [];
 				Validate.form_validation(formData,self.errors);
 				if(!formData.$invalid){
@@ -106,7 +107,7 @@
 		}
 		return {
 			templateUrl: partialUrl + 'login_modal.html',
-			controllerAs: 'vm',
+			controllerAs: 'login',
 			controller: ctrl,
 		};
 	}]);
