@@ -58,3 +58,13 @@ class Review(TimeStampedModel):
 				return False
 		else:
 			return False
+
+	@staticmethod
+	def has_write_permission(request):
+	    return True
+
+	def has_object_write_permission(self, request):
+	    return False
+
+	def has_object_update_permission(self, request):
+	    return request.user == self.author
