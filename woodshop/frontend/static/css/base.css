@@ -38,6 +38,7 @@ a.navbar-brand {
 a.navbar-brand.fixed {
     opacity: 1;
 }
+
 #wrapper {
     width: 100%;
 }
@@ -55,13 +56,11 @@ a.navbar-brand.fixed {
         padding: 0 15px;
         border-right: 1px solid #e7e7e7;
     }
+     #main-view {
+        padding-left: 120px;
+    }
 }
 
-@media(min-width:768px) {
-    #main-view {
-        padding-left: 120px;
-        
-}
 @media(min-width:1250px) {
     #main-view {
         padding-left: 190px;
@@ -126,6 +125,7 @@ a.navbar-brand.fixed {
 }
 
 @media(min-width:768px) {
+
     .sidebar {
         z-index: 1;
         right: 0;
