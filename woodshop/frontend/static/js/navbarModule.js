@@ -1,6 +1,7 @@
 (function(ng) {
     var app = ng.module('navbar', ['modals', 'django.auth']);
     var partialUrl = '/static/partials/navbar/';
+    
     app.directive('userDropdown', ['djangoAuth', 'modalService', '$rootScope', function(djangoAuth, modalService, $rootScope) {
 
         function ctrl() {
@@ -21,6 +22,9 @@
                     self.message = "You are signed out";
                 });
             };
+            self.account = function() {
+                modalService.open('account');
+            }
         }
         return {
             templateUrl: partialUrl + 'user_dropdown.html',

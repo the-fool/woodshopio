@@ -43,7 +43,10 @@
 			link: function postLink(scope, element, attrs, parentCtrl) {
 				scope.title = attrs.title;
 				var which = attrs.which;
-				
+				var cls = attrs['modalclass'];
+				if (cls) {
+					$(element).find('.modal-dialog').addClass(cls);
+				}
 				scope.$watch(function() {return modalService[which]}, function(value){
 					if(value == true) 
 						$(element).modal('show');
@@ -63,6 +66,17 @@
 				});
 			}
 		}; 
+	}]);
+
+	app.directive('accountModal', ['modalService', function(modalService) {
+		modalService.register('account');
+		function ctrl() {}
+		return {
+			templateUrl: partialUrl + "account_modal.html",
+			controller: ctrl,
+			controllerAs: 'vm'
+		}
+
 	}]);
 
 	app.directive('loginModal', ['djangoAuth', 'Validate', 'modalService', function(djangoAuth, Validate, modalService) {
@@ -94,7 +108,6 @@
 			templateUrl: partialUrl + 'login_modal.html',
 			controllerAs: 'vm',
 			controller: ctrl,
-
 		};
 	}]);
 })(angular);
