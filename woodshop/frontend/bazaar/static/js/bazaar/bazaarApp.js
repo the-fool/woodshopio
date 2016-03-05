@@ -5,7 +5,7 @@
     	'ngRoute',
         'django.auth',
         'modals',
-        'reviews',
+        //'reviews',
         'api',
         'navbar',
         'globalController',
