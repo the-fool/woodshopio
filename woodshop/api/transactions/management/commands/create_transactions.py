@@ -11,9 +11,9 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
     	Transaction.objects.all().delete()
     	users = User.objects.all()
-    	gems = Gem.objects.all()[:5]
+    	gems = Gem.objects.all()
     	for i, u in enumerate(users):
-    		print(i)
-    		for j, g in enumerate(gems):
+    		for j in range(0,5):
+    			g = gems[(j+i) % gems.count()]
     			t= Transaction(gem=g, buyer=u)
     			t.save()
