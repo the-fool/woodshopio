@@ -6,6 +6,7 @@ from rest_framework import permissions
 from .models import Gem, Picture
 from .serializers import GemSerializer, PictureSerializer
 from .permissions import IsOwnerOrReadOnly, CanAddPicture
+
 from woodshop.api.reviews.models import Review
 from woodshop.api.reviews.serializers import ReviewSerializer
 
@@ -55,7 +56,7 @@ class GemPictureList(generics.ListAPIView):
 class GemReviewList(generics.ListAPIView):
   model = Review
   serializer_class = ReviewSerializer
-  queryset = Review.objects.all()
+  queryset = Review.objects.select_related('author').all()
   permission_classes = [
     permissions.AllowAny
   ]
