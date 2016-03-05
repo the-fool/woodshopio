@@ -6,7 +6,7 @@ from .serializers import TransactionSerializer
 
 class TransactionList(generics.ListCreateAPIView):
   model = Transaction
-  queryset = Transaction.objects.all()
+  queryset = Transaction.objects.select_related('buyer').select_related('gem').all()
   serializer_class = TransactionSerializer
   permission_classes = [
     permissions.AllowAny
@@ -17,5 +17,5 @@ class TransactionDetail(generics.RetrieveUpdateDestroyAPIView):
   serializer_class = TransactionSerializer
   queryset = Transaction.objects.all()
   permission_classes = [
-    permissions.AllawAny
+    permissions.AllowAny
   ]
