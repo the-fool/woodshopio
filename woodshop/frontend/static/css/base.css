@@ -72,7 +72,7 @@ a.navbar-brand.fixed {
     padding-left: 0;
 }
 
-.sidebar .sidebar-search {
+.sidebar-search {
     padding: 15px;
 }
 
@@ -131,7 +131,7 @@ a.navbar-brand.fixed {
         right: 0;
         position: absolute;
         width: 175px;
-        margin-top: 51px;
+        margin-top: 2px;
     }
 
     .navbar-top-links .dropdown-messages,
