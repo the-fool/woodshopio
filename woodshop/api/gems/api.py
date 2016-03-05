@@ -12,13 +12,16 @@ from woodshop.api.reviews.serializers import ReviewSerializer
 
 class GemList(generics.ListCreateAPIView):
   model = Gem
-  queryset = Gem.objects.all()
   serializer_class = GemSerializer
   permission_classes = [
     IsOwnerOrReadOnly
   ]
   def get_queryset(self):
-    queryset = Gem.objects.all()
+    queryset = Gem.objects.select_related('vendor')\
+                          .select_related('main_picture')\
+                          .all()\
+                          .prefetch_related('categories')
+    
     category = self.request.query_params.get('category', None)
     if category is not None:
       queryset = queryset.filter(categories=category)
