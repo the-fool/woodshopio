@@ -1,11 +1,12 @@
+import uuid
 
 from django.db import models
-from ..gems.models import Gem
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.validators import MaxValueValidator, MinValueValidator
-from woodshop.api.transactions.models import Transaction
 
+from ..transactions.models import Transaction
+from ..gems.models import Gem
 
 class TimeStampedModel(models.Model):
 	"""
@@ -20,6 +21,7 @@ class TimeStampedModel(models.Model):
 
 
 class Review(TimeStampedModel):
+	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	rating = models.PositiveSmallIntegerField(validators = [MaxValueValidator(5), MinValueValidator(1)])
 	text = models.TextField(blank = True, null=True)
 	author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="reviews")

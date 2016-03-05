@@ -25,7 +25,7 @@ class TimeStampedModel(models.Model):
 
 @python_2_unicode_compatible
 class Transaction(TimeStampedModel):
-	t_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	gem = models.ForeignKey(Gem, related_name="transactions")
 	buyer = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="transactions")
 	
