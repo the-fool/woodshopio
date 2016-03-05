@@ -42,11 +42,17 @@
                         scope.vm.home = false;
                     }
                };
-               // init
-               setBanner();
                scope.$on('$routeChangeStart', function(event, next) {
                    setBanner(); 
                 });
+               
+               // init
+               $('#topnavbar').affix({
+                 offset: {
+                    top: $('#banner').height()
+                    }   
+                });
+               setBanner();
             }
             return {
                 restrict: 'AE',

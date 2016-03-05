@@ -1,6 +1,7 @@
 $(function() {
     $('#topnavbar').on('affix.bs.affix', function () {
         $('a.navbar-brand').addClass('fixed');
+        console.log('fixed');
     });
 
     $('#topnavbar').on('affix-top.bs.affix', function () {
