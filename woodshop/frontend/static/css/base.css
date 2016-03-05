@@ -131,7 +131,7 @@ a.navbar-brand.fixed {
         right: 0;
         position: absolute;
         width: 175px;
-        margin-top: 2px;
+        margin-top: 0px;
     }
 
     .navbar-top-links .dropdown-messages,

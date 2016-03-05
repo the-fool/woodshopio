@@ -44,10 +44,17 @@ class Review(TimeStampedModel):
 		self.gem.save()
 		super(Review, self).save(*args, **kwargs)
 
+	
 	@staticmethod
-	def has_create_permission(self, request):
-		try:
-			t = Transaction.objects.get(gem=self.gem.id, buyer=self.author.id)
-			return True
-		except ObjectDoesNotExist:
+	def has_create_permission(request):
+		gem = request.POST.get('gem', None)
+		if gem:
+			try:
+				t = Transaction.objects.get(gem=gem, buyer=request.user.id)
+				return True
+			except Transaction.DoesNotExist:
+				return False
+			except ValueError: # malformed arguments
+				return False
+		else:
 			return False
