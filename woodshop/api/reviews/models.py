@@ -26,7 +26,7 @@ class Review(TimeStampedModel):
 	text = models.TextField(blank = True, null=True)
 	author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="reviews")
 	gem = models.ForeignKey(Gem, related_name="reviews")
-	title = models.CharField(max_length=128)
+	title = models.CharField(max_length=128, blank=True, null=True)
 
 	class Meta:
 		unique_together = ('gem','author') # cannot allow a user to review a gem twice
@@ -34,6 +34,7 @@ class Review(TimeStampedModel):
 	def __repr__(self):
 		return "<Review: {0} -- {1}/5>".format(self.title, self.rating)
 	
+
 	# override
 	def save(self, *args, **kwargs):
 		""" 

@@ -10,4 +10,5 @@ class ReviewSerializer(serializers.ModelSerializer):
 		model = Review
 		fields = ('author', 'title', 'permissions', 'text', 'gem', 'rating')
 
+
 	
