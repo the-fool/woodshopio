@@ -38,7 +38,10 @@ class GemList(generics.ListCreateAPIView):
 class GemDetail(generics.RetrieveUpdateDestroyAPIView):
   model = Gem
   serializer_class = GemSerializer
-  queryset = Gem.objects.all()
+  queryset = Gem.objects.select_related('main_picture')\
+                        .select_related('vendor')\
+                        .all()\
+                        .prefetch_related('categories')
   permission_classes = [
     IsOwnerOrReadOnly
   ]

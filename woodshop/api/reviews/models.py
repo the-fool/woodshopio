@@ -28,6 +28,9 @@ class Review(TimeStampedModel):
 	gem = models.ForeignKey(Gem, related_name="reviews")
 	title = models.CharField(max_length=128)
 
+	class Meta:
+		unique_together = ('gem','author') # cannot allow a user to review a gem twice
+
 	def __repr__(self):
 		return "<Review: {0} -- {1}/5>".format(self.title, self.rating)
 	
@@ -50,16 +53,20 @@ class Review(TimeStampedModel):
 	@staticmethod
 	def has_create_permission(request):
 		gem = request.POST.get('gem', None)
-		if gem:
-			try:
-				t = Transaction.objects.get(gem=gem, buyer=request.user.id)
-				return True
-			except Transaction.DoesNotExist:
-				return False
-			except ValueError: # malformed arguments
-				return False
-		else:
+		user = request.user.id
+		if not gem:
+			# bad POST request
 			return False
+		# check if a review already has been written
+		r = Review.objects.filter(gem=gem, author=user).first()
+		if r:
+			# prexisting review 
+			return False
+		t = Transaction.objects.filter(gem=gem, buyer=user).first()
+		if not t:
+			# user did not buy gem
+			return False
+		return True
 
 	@staticmethod
 	def has_write_permission(request):
