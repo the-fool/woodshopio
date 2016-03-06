@@ -68,13 +68,24 @@
 		}; 
 	}]);
 
-	app.directive('accountModal', ['modalService', function(modalService) {
-		modalService.register('account');
-		function ctrl() {}
+	app.directive('accountModal', ['modalService', 'Transaction', '$rootScope', function(modalService, Transaction, $rootScope) {
+		var transactions = [];
+
+		modalService.register('account', function onOpen() {
+			Transaction.fetchPersonal().$promise.then(function(data) {
+				ng.copy(data.results, transactions);
+			});
+		});
+
+		function ctrl() {
+			this.transactions = transactions;
+		}
 		return {
 			templateUrl: partialUrl + "account_modal.html",
 			controller: ctrl,
-			controllerAs: 'vm'
+			scope: {},
+			controllerAs: 'vm',
+			bindToController: true
 		}
 
 	}]);
@@ -86,7 +97,6 @@
 			self.model = {'email':'','password':''};
 			self.complete = false;
 			self.login = function(formData){
-				console.log('hit');
 				self.errors = [];
 				Validate.form_validation(formData,self.errors);
 				if(!formData.$invalid){

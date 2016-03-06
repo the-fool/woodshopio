@@ -55,6 +55,25 @@
             });
         }
         ]);
+    app.factory('Transaction', [
+        '$resource',
+        function($r) {
+            return $r('/api/transactions/:id', {
+                id: '@id'
+            }, {
+                fetchPersonal: {
+                    url: '/api/transactions/',
+                    method: 'GET',
+                    isArray: false,
+                },
+                 fetchVendor: {
+                    url: '/api/vendor/:id/transactions/',
+                    method: 'GET',
+                    isArray: false
+                }
+            });
+        }
+    ]);
 
     app.factory('Review', [
         '$resource', 
@@ -69,7 +88,7 @@
                 }
             });
         }
-        ]);
+    ]);
 
     app.service('Validate', function Validate() {
         return {

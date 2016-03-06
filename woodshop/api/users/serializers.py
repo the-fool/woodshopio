@@ -19,7 +19,6 @@ class VendorSerializer(serializers.ModelSerializer):
     gems = serializers.PrimaryKeyRelatedField(many=True, queryset=Gem.objects.all())
 
 
-
 class CreateUserSerializer(serializers.ModelSerializer):
     
     def create(self, validated_data):
