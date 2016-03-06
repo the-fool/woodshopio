@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
 from woodshop.api.users.models import User
+from woodshop.api.vendors.models import Vendor
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
@@ -12,7 +13,9 @@ class Command(BaseCommand):
             u.save()
         vendors = ['vendor{}'.format(i) for i in range(1,5)]
         for v in vendors:
-        	u = User(username=v, email="{}@example.com".format(v), first_name=v)
-        	u.set_password('password')
-        	u.is_vendor = True
-        	u.save()
+            u = User(username=v, email="{}@example.com".format(v), first_name=v)
+            u.set_password('password')
+            u.is_vendor = True
+            u.save()
+            Vendor.objects.create(owner=u, name="{} market".format(v))
+
