@@ -4,6 +4,7 @@ from .models import Transaction
 from woodshop.api.users.serializers import UserSerializer
 from woodshop.api.gems.serializers import GemSerializer
 
+
 """ There are two basic use cases for transaction queries
 	1: A vendor wants them for a particular gem
 	2: A user wants a purchase history
@@ -12,7 +13,7 @@ from woodshop.api.gems.serializers import GemSerializer
 
 class TransactionPersonalSerializer(serializers.ModelSerializer):
     gem = GemSerializer
-
+    
     class Meta:
         model = Transaction
         fields = ('id', 'gem', 'created', 'modified')

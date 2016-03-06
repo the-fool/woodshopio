@@ -7,7 +7,6 @@ from dry_rest_permissions.generics import DRYPermissions, allow_staff_or_superus
 
 from ..gems.models import Gem
 
-
 """
 TimeStampedModel will need to be moved a level up since it 
 will act as the the base class for many models
@@ -37,6 +36,8 @@ class Transaction(TimeStampedModel):
 	@authenticated_users
 	def has_read_permission(request):
 		return True
+
+	
 	
 	
 

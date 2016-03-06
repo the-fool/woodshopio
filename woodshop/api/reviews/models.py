@@ -5,7 +5,7 @@ from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-from ..transactions.models import Transaction
+from woodshop.api.transactions.models import Transaction
 from ..gems.models import Gem
 
 class TimeStampedModel(models.Model):
@@ -49,7 +49,13 @@ class Review(TimeStampedModel):
 		self.gem.save()
 		super(Review, self).save(*args, **kwargs)
 
-	
+	@staticmethod
+	def has_read_permission(request):
+		return True
+
+	def has_object_read_permission(self, request):
+		return True
+
 	@staticmethod
 	def has_create_permission(request):
 		gem = request.POST.get('gem', None)
@@ -58,11 +64,11 @@ class Review(TimeStampedModel):
 			# bad POST request
 			return False
 		# check if a review already has been written
-		r = Review.objects.filter(gem=gem, author=user).first()
+		r = Review.objects.select_related('gem').select_related('author').filter(gem=gem, author=user).first()
 		if r:
 			# prexisting review 
 			return False
-		t = Transaction.objects.filter(gem=gem, buyer=user).first()
+		t = Transaction.objects.filter(gem__pk=gem, buyer=user).first()
 		if not t:
 			# user did not buy gem
 			return False
@@ -76,4 +82,5 @@ class Review(TimeStampedModel):
 	    return False
 
 	def has_object_update_permission(self, request):
-	    return request.user == self.author
+		return request.user == self.author
+

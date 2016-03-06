@@ -4,11 +4,10 @@ from .models import Review
 from woodshop.api.users.serializers import UserSerializer
 
 class ReviewSerializer(serializers.ModelSerializer):
-	permissions = DRYPermissionsField()
+	permissions = DRYPermissionsField(actions=["update"])
 
 	class Meta:
 		model = Review
-		fields = ('author', 'title', 'permissions', 'text')
+		fields = ('author', 'title', 'permissions', 'text', 'gem', 'rating')
 
 	
-   

@@ -1,5 +1,7 @@
 from rest_framework import generics
 from rest_framework import permissions
+from rest_framework.decorators import detail_route
+
 from dry_rest_permissions.generics import DRYPermissions
 
 from .models import Transaction
@@ -17,6 +19,7 @@ class TransactionPersonalList(generics.ListAPIView):
       if self.request.user.is_superuser:
        return queryset
       return queryset.filter(buyer__id=self.request.user.id)
+
 
 class TransactionDetail(generics.RetrieveUpdateDestroyAPIView):
   model = Transaction
