@@ -5,7 +5,7 @@ from dry_rest_permissions.generics import DRYPermissions
 from .models import Transaction
 from .serializers import TransactionPersonalSerializer
 
-class TransactionList(generics.ListAPIView):
+class TransactionPersonalList(generics.ListAPIView):
   model = Transaction
   serializer_class = TransactionPersonalSerializer
   permission_classes = [

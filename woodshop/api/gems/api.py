@@ -75,6 +75,7 @@ class GemTransactionList(generics.ListAPIView):
   ]
   def get_queryset(self):
     queryset = Transaction.objects.select_related('buyer')\
+                          .select_related('gem')\
                           .filter(gem__vendor__pk=self.request.user.id)\
                           .filter(gem__pk=self.kwargs.get('pk'))\
                           .all()

@@ -11,6 +11,7 @@ class IsOwner(permissions.BasePermission):
             return True
         else:
             return False
+        return True
 
 class IsOwnerOrReadOnly(permissions.BasePermission):
 

@@ -1,10 +1,10 @@
 from django.conf.urls import url, include
 
-from .api import TransactionList, TransactionDetail
+from .api import TransactionPersonalList, TransactionDetail
 
 transaction_urls = [
 	url(r'^(?P<pk>.+)$', TransactionDetail.as_view(), name='transaction-detail'),
-	url(r'^$', TransactionList.as_view(), name='transaction-list')
+	url(r'^$', TransactionPersonalList.as_view(), name='transaction-list')
 ]
 
 urlpatterns = [
