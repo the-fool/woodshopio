@@ -5,10 +5,12 @@ from rest_framework import permissions
 
 from .models import Gem, Picture
 from .serializers import GemSerializer, PictureSerializer
-from .permissions import IsOwnerOrReadOnly, CanAddPicture
+from .permissions import IsOwner, IsOwnerOrReadOnly, CanAddPicture
 
 from woodshop.api.reviews.models import Review
 from woodshop.api.reviews.serializers import ReviewSerializer
+from woodshop.api.transactions.models import Transaction
+from woodshop.api.transactions.serializers import TransactionVendorSerializer
 
 
 class GemList(generics.ListCreateAPIView):
@@ -64,6 +66,20 @@ class GemReviewList(generics.ListAPIView):
   def get_queryset(self):
     queryset = super(GemReviewList, self).get_queryset()
     return queryset.filter(gem__pk=self.kwargs.get('pk'))
+
+class GemTransactionList(generics.ListAPIView):
+  model = Transaction
+  serializer_class = TransactionVendorSerializer
+  permission_classes = [
+    IsOwner
+  ]
+  def get_queryset(self):
+    queryset = Transaction.objects.select_related('buyer')\
+                          .filter(gem__vendor__pk=self.request.user.id)\
+                          .filter(gem__pk=self.kwargs.get('pk'))\
+                          .all()
+    return queryset
+
 
 class PictureDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Picture

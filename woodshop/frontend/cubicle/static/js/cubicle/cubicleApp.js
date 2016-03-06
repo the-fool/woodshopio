@@ -6,7 +6,6 @@
                 'django.auth',
                 'xeditable',
                 'modals',
-                'reviews',
                 'api',
                 'navbar',
                 'globalController',
