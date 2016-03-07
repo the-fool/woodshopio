@@ -30,7 +30,7 @@ class Transaction(TimeStampedModel):
 	buyer = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="transactions")
 	
 	def __repr__(self):
-		return '<Transaction: {0}>'.format(self.t_id)
+		return '<Transaction: {0}>'.format(self.id)
 
 	@staticmethod
 	@authenticated_users

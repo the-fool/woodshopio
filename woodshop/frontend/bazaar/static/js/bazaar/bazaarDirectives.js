@@ -55,16 +55,16 @@
 
         app.directive('reviewWriter', ['Review', function(Review) {
             function ctrl() {
-                this.model = {author:'', title:''};
+                this.model = {author:'', title:'',rating:''};
                 this.submit = function() {
-                    console.log(this.model);
+                    Review.post(this.model);
                 }
             }
             function link(scope, element, attrs) {
                 scope.user = JSON.parse(attrs['user']);
                 scope.vm.model.author = scope.user.id;
             }
-            
+
             return {
                 restrict: 'E',
                 controller: ctrl,

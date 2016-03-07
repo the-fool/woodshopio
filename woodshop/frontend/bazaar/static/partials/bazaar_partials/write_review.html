@@ -3,11 +3,11 @@
 	name="reviewForm" novalidate>
 		<div class="form-group">
 			Title:
-			<input type="text" ng-model="vm.model.title" name="title"/>
+			<input type="text" ng-model="vm.model.title"/>
 			Text:
-			<input type="text" name="text"/>
+			<input type="text" ng-model="vm.model.text"/>
 			Rating:
-			<input type="number"/>
+			<input type="number" ng-model="vm.model.rating"/>
 
 			<button type="submit" form="reviewForm">Review It!</button>
 		</div>
