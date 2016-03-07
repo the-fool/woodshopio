@@ -6,6 +6,7 @@ from configurations import Configuration, values
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 APPS_DIR = os.path.join(BASE_DIR, 'woodshop')
 
+
 class Common(Configuration):
 
     INSTALLED_APPS = (
@@ -26,6 +27,7 @@ class Common(Configuration):
         'django_rq',                 # asynchronous queuing
         'versatileimagefield',       # image manipulation
         'djangobower',               # frontend asset manager
+        'storages',                  
         'corsheaders',               # allows requests from multiple ports
 
         # My apps
@@ -153,6 +155,16 @@ class Common(Configuration):
     )
 
     # Media files
+    #Toggle on for storing media on S3
+    """
+    AWS_STORAGE_BUCKET_NAME = 'woodshopstorage'
+    AWS_ACCESS_KEY_ID = 'AKIAIIHWNZZZIGGBRCBQ'
+    AWS_SECRET_ACCESS_KEY = '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'
+    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+    MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    """
+    #Toggle on for storing media locally
     MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
     MEDIA_URL = '/media/'
 
