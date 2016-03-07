@@ -1,0 +1,16 @@
+<div>
+	<form method="post" id="reviewForm" ng-submit="vm.submit(reviewForm)" 
+	name="reviewForm" novalidate>
+		<div class="form-group">
+			Title:
+			<input type="text" ng-model="vm.model.title" name="title"/>
+			Text:
+			<input type="text" name="text"/>
+			Rating:
+			<input type="number"/>
+
+			<button type="submit" form="reviewForm">Review It!</button>
+		</div>
+	</form>
+</div>
+

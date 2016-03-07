@@ -85,6 +85,11 @@
                 query: {
                     method: 'GET',
                     isArray: false,
+                },
+                post: {
+                    url: '/api/reviews/', 
+                    method: 'POST',
+                    isArray: false,
                 }
             });
         }

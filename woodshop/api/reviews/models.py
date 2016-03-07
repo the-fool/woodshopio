@@ -59,6 +59,7 @@ class Review(TimeStampedModel):
 
 	@staticmethod
 	def has_create_permission(request):
+		print('hit has create perm')
 		gem = request.POST.get('gem', None)
 		user = request.user.id
 		if not gem:
@@ -73,11 +74,12 @@ class Review(TimeStampedModel):
 		if not t:
 			# user did not buy gem
 			return False
+		print(r, t)
 		return True
 
 	@staticmethod
 	def has_write_permission(request):
-	    return True
+		return False
 
 	def has_object_write_permission(self, request):
 	    return False

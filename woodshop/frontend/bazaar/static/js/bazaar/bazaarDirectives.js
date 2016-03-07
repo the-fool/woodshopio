@@ -53,6 +53,28 @@
             };
         }]);
 
+        app.directive('reviewWriter', ['Review', function(Review) {
+            function ctrl() {
+                this.model = {author:'', title:''};
+                this.submit = function() {
+                    console.log(this.model);
+                }
+            }
+            function link(scope, element, attrs) {
+                scope.user = JSON.parse(attrs['user']);
+                scope.vm.model.author = scope.user.id;
+            }
+            
+            return {
+                restrict: 'E',
+                controller: ctrl,
+                controllerAs: 'vm',
+                bindToController: true,
+                templateUrl: partialUrl + 'write_review.html',
+                link: link
+            }
+
+        }]);
         app.directive('bazaarBanner', ['$route', '$rootScope', '$location', function($route, $rootScope, $location) {
             function ctrl() {
 
@@ -161,7 +183,11 @@
                 scope: {},
                 controller: ctrl,
                 controllerAs: 'summary',
-                bindToController: true
+                bindToController: true,
+                link: function(scope, element, attrs) {
+                    // passing user into isolate scope, and onward to child directives
+                    scope.user = attrs['user'];
+                }
             };
 
         }]);
