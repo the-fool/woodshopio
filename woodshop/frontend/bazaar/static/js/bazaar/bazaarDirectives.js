@@ -53,9 +53,10 @@
             };
         }]);
 
-        app.directive('reviewWriter', ['Review', function(Review) {
+        app.directive('reviewWriter', ['Review', 'DetailGemCache', function(Review, DetailGemCache) {
             function ctrl() {
-                this.model = {author:'', title:'',rating:''};
+                this.model = {author:'', title:'', rating:''};
+                
                 this.submit = function() {
                     Review.post(this.model);
                 }
@@ -63,6 +64,13 @@
             function link(scope, element, attrs) {
                 scope.user = JSON.parse(attrs['user']);
                 scope.vm.model.author = scope.user.id;
+                scope.vm.model.gem = attrs.gem;
+                scope.$watch(attrs.gem, function(value){
+                    if (value) {
+                        scope.vm.model.gem = value;
+                        console.log(scope.vm.model);
+                    }
+                });
             }
 
             return {
@@ -169,8 +177,9 @@
                 }
 
                 if (!Object.keys(this.gem).length) {
-                    Gem.query({id:$r.id}).$promise.then( function(data) {
+                    Gem.query({id:$r.id}).$promise.then(function(data) {
                         self.gem = data;
+                        cache.setGem(data);
                         populatePictures(self.gem.pictures);
                     });
                 } else {

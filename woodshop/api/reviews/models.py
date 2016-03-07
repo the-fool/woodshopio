@@ -58,28 +58,8 @@ class Review(TimeStampedModel):
 		return True
 
 	@staticmethod
-	def has_create_permission(request):
-		print('hit has create perm')
-		gem = request.POST.get('gem', None)
-		user = request.user.id
-		if not gem:
-			# bad POST request
-			return False
-		# check if a review already has been written
-		r = Review.objects.select_related('gem').select_related('author').filter(gem=gem, author=user).first()
-		if r:
-			# prexisting review 
-			return False
-		t = Transaction.objects.filter(gem__pk=gem, buyer=user).first()
-		if not t:
-			# user did not buy gem
-			return False
-		print(r, t)
-		return True
-
-	@staticmethod
 	def has_write_permission(request):
-		return False
+		return True
 
 	def has_object_write_permission(self, request):
 	    return False
