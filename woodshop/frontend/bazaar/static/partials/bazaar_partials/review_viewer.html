@@ -1,3 +1,25 @@
-<div>
-	<p ng-repeat="review in vm.reviews">{{review}}</p>
-</div>
+<section>
+	<div class="row">
+		<div class="col-md-12">
+			Buyer Reviews
+			</div>
+	</div>
+	<div ng-repeat="review in vm.reviews" class="review">
+		<div class="col-md-3">
+			<div class="row">
+				<i class="fa fa-user profile-pic"></i>
+			</div>
+			<div class="row">
+				<p class="username">{{review.author.username}}</p>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="row">
+				<p class="review-title">{{review.title}}</p>
+			</div>
+			<div class="row">
+				<p class="review-text">{{review.text}}</p>
+			</div>
+		</div>
+	</div>
+</section>
