@@ -27,8 +27,10 @@
 {% endblock %}
 
 {% block nav_sidebar %}
-<div class="navbar-befault sidebar" role="navigation" ng-controller="categories as cats">
-	<div class="sidebar-nav navbar-collapse" aria-expanded="false" style="height: 1px;">
+
+	<div ng-controller="categories as cats" 
+		class="sidebar sidebar-nav navbar-collapse" 
+		aria-expanded="false" style="height: 1px;">
 		<ul id="side-menu" class="nav in metismenu">
 			<!--<li class="sidebar-search">
 				<div class="input-group custom-search-form">
@@ -44,7 +46,7 @@
 			{% include 'cat_sidebar.html' %}
 		</ul>
 	</div>
-</div>
+
 {% endblock %}
 
 {% block page_content %}

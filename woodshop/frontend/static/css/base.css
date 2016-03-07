@@ -90,19 +90,18 @@ a.navbar-brand.fixed {
 @media(min-width:991px) {
     #page-wrapper {
         position: inherit;
-        margin: 0 175px 0 0;
         padding: 0 15px;
         border-right: 1px solid #e7e7e7;
     }
      #main-view {
-        padding-left: 120px;
+        padding-left: 5%;
     }
 }
 
 
 @media(min-width:1250px) {
     #main-view {
-        padding-left: 190px;
+        padding-left: 10%;
     }
 }
 
@@ -167,9 +166,11 @@ a.navbar-brand.fixed {
 
     .sidebar {
         z-index: 1;
+        /*
         right: 0;
         position: absolute;
-        width: 175px;
+        */
+        width: 200px;
         margin-top: 0px;
     }
 

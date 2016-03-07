@@ -31,7 +31,7 @@
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 <div id="wrapper">
-{% block banner %}{% endblock %}
+    {% block banner %}{% endblock %}
 
     <nav id="topnavbar" data-spy="affix" data-offset-top="0" class="navbar navbar-default navbar-static-top" style="margin-bottom: 0" role="navigation">
         <div class="navbar-header">
@@ -104,9 +104,7 @@
                 <user-dropdown user="user"></user-dropdown>
             </li>
         </ul>
-        {% block nav_sidebar %}
-            <!-- insert sidebar content here -->
-        {% endblock %}
+        
     </nav>
 
     
@@ -114,12 +112,22 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <div id="main-view">
-                        {% block page_content %}
+                    <div class="col-md-9">
+                        <div id="main-view">
+                            {% block page_content %}
 
-                        {% endblock %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <nav class="navbar navbar-default" role="navigation">
+                            {% block nav_sidebar %}
+                            <!-- insert sidebar content here -->
+                            {% endblock %}
+                        </nav>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
