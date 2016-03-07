@@ -91,21 +91,27 @@
                function setBanner () {
                     if ($location.path() === '/home') {
                        scope.vm.home = true;
+                       affixNav($('#banner').height());
                     } else {
                         scope.vm.home = false;
+                        affixNav('0');
+                        // $('#topnavbar').affix();
                     }
                };
+               function affixNav(height) {
+                    $('#topnavbar').affix({offset:{top:height}});
+               }
+               /*
+                I am having trouble with dynamically setting the affix, so skip it!
                scope.$on('$routeChangeStart', function(event, next) {
                    setBanner(); 
                 });
+                setBanner();
+                 */
+               // stand-in code
+               affixNav($('#banner').height());
+               scope.vm.home = true;
 
-               // init
-               $('#topnavbar').affix({
-                 offset: {
-                    top: $('#banner').height()
-                    }   
-                });
-               setBanner();
             }
             return {
                 restrict: 'AE',
