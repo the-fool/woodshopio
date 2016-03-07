@@ -28,24 +28,14 @@
 
 {% block nav_sidebar %}
 
-	<div ng-controller="categories as cats" 
-		class="sidebar sidebar-nav navbar-collapse" 
+	<div class="collapse navbar-collapse">
+		<ul id="side-menu" class="sidebar nav sidebar-nav  in metismenu" ng-controller="categories as cats" 
 		aria-expanded="false" style="height: 1px;">
-		<ul id="side-menu" class="nav in metismenu">
-			<!--<li class="sidebar-search">
-				<div class="input-group custom-search-form">
-					<input class="form-control" placeholder="Search..." type="text">
-					<span class="input-group-btn">
-						<button class="btn btn-default" type="button"> 
-							<i class="fa fa-search"></i>
-						</button>
-					</span>
-				</div>
-			</li>-->
 			<li><a href="#/" ng-click='cats.setCategory()'>Home</a></li>
 			{% include 'cat_sidebar.html' %}
 		</ul>
-	</div>
+		</div>
+
 
 {% endblock %}
 

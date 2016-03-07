@@ -96,6 +96,9 @@ a.navbar-brand.fixed {
      #main-view {
         padding-left: 5%;
     }
+    #side-nav.affix {
+        top: 55px;
+    }
 }
 
 

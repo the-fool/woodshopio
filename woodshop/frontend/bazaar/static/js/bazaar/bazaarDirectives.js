@@ -56,14 +56,13 @@
         app.directive('reviewWriter', ['Review', 'DetailGemCache', function(Review) {
             function ctrl() {
                 this.model = {author:'', title:'', rating:'', gem: '', text: ''};
-                
                 this.submit = function() {
+                    this.model.author = this.user.id;
+                    console.log(this.model);
                     Review.post(this.model);
                 }
             }
             function link(scope, element, attrs) {
-                scope.user = JSON.parse(attrs['user']);
-                scope.vm.model.author = scope.user.id;
                 scope.vm.model.gem = attrs.gem;
                 scope.$watch(attrs.gem, function(value){
                     if (value) {
@@ -74,6 +73,9 @@
 
             return {
                 restrict: 'E',
+                scope: {
+                    user: '='
+                },
                 controller: ctrl,
                 controllerAs: 'vm',
                 bindToController: true,
@@ -95,7 +97,6 @@
                     } else {
                         scope.vm.home = false;
                         affixNav('0');
-                        // $('#topnavbar').affix();
                     }
                };
                function affixNav(height) {
@@ -163,7 +164,7 @@
                             controlNav: false,
                             animationLoop: false,
                             slideshow: false,
-                            itemWidth: 210,
+                            itemWidth: 110,
                             itemMargin: 5,
                             asNavFor: '#slider'
                           });
@@ -194,14 +195,12 @@
             return {
                 templateUrl: partialUrl + 'detail_summary.html',
                 restrict: 'E',
-                scope: {},
+                scope: {
+                    user: '='
+                },
                 controller: ctrl,
                 controllerAs: 'summary',
-                bindToController: true,
-                link: function(scope, element, attrs) {
-                    // passing user into isolate scope, and onward to child directives
-                    scope.user = attrs['user'];
-                }
+                bindToController: true
             };
 
         }]);
