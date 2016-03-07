@@ -3,7 +3,7 @@ from rest_framework import permissions
 
 from dry_rest_permissions.generics import DRYPermissions
 
-from .permissions import CanCreateReview
+from .permissions import CanCreateReview, CanUpdateReview
 from .models import Review
 from .serializers import ReviewSerializer
 
@@ -25,5 +25,5 @@ class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Review
     serializer_class = ReviewSerializer
     permission_classes = [
-        permissions.AllowAny
+        CanUpdateReview
     ]

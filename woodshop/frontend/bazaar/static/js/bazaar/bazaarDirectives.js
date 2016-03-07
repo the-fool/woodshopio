@@ -53,9 +53,9 @@
             };
         }]);
 
-        app.directive('reviewWriter', ['Review', 'DetailGemCache', function(Review, DetailGemCache) {
+        app.directive('reviewWriter', ['Review', 'DetailGemCache', function(Review) {
             function ctrl() {
-                this.model = {author:'', title:'', rating:''};
+                this.model = {author:'', title:'', rating:'', gem: '', text: ''};
                 
                 this.submit = function() {
                     Review.post(this.model);
@@ -68,7 +68,6 @@
                 scope.$watch(attrs.gem, function(value){
                     if (value) {
                         scope.vm.model.gem = value;
-                        console.log(scope.vm.model);
                     }
                 });
             }
