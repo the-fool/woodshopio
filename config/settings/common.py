@@ -27,7 +27,7 @@ class Common(Configuration):
         'django_rq',                 # asynchronous queuing
         'versatileimagefield',       # image manipulation
         'djangobower',               # frontend asset manager
-        'storages',                  
+        'storages',                  # storage backend
         'corsheaders',               # allows requests from multiple ports
 
         # My apps
@@ -155,18 +155,19 @@ class Common(Configuration):
     )
 
     # Media files
-    #Toggle on for storing media on S3
-    """
-    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
-    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-    MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-    """
-    #Toggle on for storing media locally
-    MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
-    MEDIA_URL = '/media/'
+    USE_S3 = False #Toggle on for S3 storage
+    
+    if USE_S3:
+        AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+        AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+        AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+        AWS_QUERYSTRING_AUTH = False
+        S3_URL = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+        DEFAULT_FILE_STORAGE = 'woodshop.s3utils.MediaRootS3BotoStorage'
+        MEDIA_URL = S3_URL + '/media/'
+    else:
+        MEDIA_URL = '/media/'
+        MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 
     # Logging
     LOGGING = {
