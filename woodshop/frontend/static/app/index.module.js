@@ -6,7 +6,7 @@
      * Main module of the Fuse
      */
     angular
-        .module('fuse', [
+        .module('woodshop', [
 
             // Core
             'app.core',
@@ -21,6 +21,6 @@
             'app.quick-panel',
 
             // Sample
-            'app.sample'
+            'app.bazaar'
         ]);
 })();

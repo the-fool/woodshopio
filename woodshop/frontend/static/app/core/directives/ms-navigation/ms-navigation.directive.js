@@ -483,7 +483,7 @@
                 root  : '@'
             },
             controller : 'MsNavigationController as vm',
-            templateUrl: 'app/core/directives/ms-navigation/templates/vertical.html',
+            templateUrl: 'static/app/core/directives/ms-navigation/templates/vertical.html',
             transclude : true,
             compile    : function (tElement)
             {
@@ -1121,7 +1121,7 @@
                 root: '@'
             },
             controller : 'MsNavigationController as vm',
-            templateUrl: 'app/core/directives/ms-navigation/templates/horizontal.html',
+            templateUrl: 'static/app/core/directives/ms-navigation/templates/horizontal.html',
             transclude : true,
             compile    : function (tElement)
             {

@@ -3,5 +3,5 @@
     'use strict';
 
     angular
-        .module('fuse');
+        .module('woodshop');
 })();

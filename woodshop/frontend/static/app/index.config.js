@@ -3,13 +3,14 @@
     'use strict';
 
     angular
-        .module('fuse')
+        .module('woodshop')
         .config(config);
 
     /** @ngInject */
-    function config()
+    function config($httpProvider)
     {
-        // Put your custom configurations here
+      $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+      $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
     }
 
 })();

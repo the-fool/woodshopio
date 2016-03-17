@@ -12,7 +12,7 @@
         return {
             restrict   : 'E',
             scope      : true,
-            templateUrl: 'app/core/directives/ms-search-bar/ms-search-bar.html',
+            templateUrl: 'static/app/core/directives/ms-search-bar/ms-search-bar.html',
             compile    : function (tElement)
             {
                 // Add class

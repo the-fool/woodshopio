@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('fuse')
+        .module('woodshop')
         .controller('MainController', MainController);
 
     /** @ngInject */
