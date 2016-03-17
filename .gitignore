@@ -72,6 +72,10 @@ mailhog
 
 # Bower/NPM
 node_modules/
-components/
+bower_components/
 
 
+# Gulp & build
+.sass-cache/
+.tmp/
+dist/

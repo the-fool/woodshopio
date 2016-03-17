@@ -26,14 +26,13 @@ class Common(Configuration):
         'dry_rest_permissions',
         'django_rq',                 # asynchronous queuing
         'versatileimagefield',       # image manipulation
-        'djangobower',               # frontend asset manager
-        'storages',                  
+        'storages',
         'corsheaders',               # allows requests from multiple ports
 
         # My apps
-        'woodshop.api.authentication',  # helper auth 
+        'woodshop.api.authentication',  # helper auth
         'woodshop.frontend',
-        'woodshop.frontend.bazaar',     # main frontend app (i.e, not the interface to managing a store or viewing analytics) 
+        'woodshop.frontend.bazaar',     # main frontend app (i.e, not the interface to managing a store or viewing analytics)
         'woodshop.frontend.cubicle',    # dashboard management for vendors
         'woodshop.api.gems',            # manage gem assets
         'woodshop.api.reviews',         # reviews functionality
@@ -42,27 +41,6 @@ class Common(Configuration):
         'woodshop.api.users'            # eponymous
 
     )
-
-    BOWER_INSTALLED_APPS = ('croppie#2.0.0',
- 'angular#1.5.0',
- 'angular-animate#1.5.0',
- 'angular-bootstrap#1.1.2',
- 'angular-cookies#1.5.0',
- 'angular-mocks#1.5.0',
- 'angular-resource#1.5.0',
- 'angular-route#1.5.0',
- 'angular-sanitize#1.5.0',
- 'angular-xeditable#0.1.10',
- 'bootstrap#3.3.6',
- 'font-awesome#4.5.0',
- 'jasmine#2.4.1',
- 'jasmine-jquery#2.1.1',
- 'jquery#2.2.0',
- 'lodash#4.4.0',
- 'metisMenu#2.4.0',
- 'modernizr#3.3.1',
- 'underscore#1.8.3'
-        )
 
 
     # https://docs.djangoproject.com/en/1.8/topics/http/middleware/
@@ -81,15 +59,30 @@ class Common(Configuration):
     ROOT_URLCONF = 'config.urls'
     TEMPLATES = [
         {
+            # See: https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-TEMPLATES-BACKEND
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': [],
-            'APP_DIRS': True,
+            # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-dirs
+            'DIRS': [
+                os.path.join(APPS_DIR, 'frontend/templates'),
+            ],
             'OPTIONS': {
+                # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
+                # https://docs.djangoproject.com/en/dev/ref/templates/api/#loader-types
+                'loaders': [
+                    'django.template.loaders.filesystem.Loader',
+                    'django.template.loaders.app_directories.Loader',
+                ],
+                # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-context-processors
                 'context_processors': [
                     'django.template.context_processors.debug',
                     'django.template.context_processors.request',
                     'django.contrib.auth.context_processors.auth',
+                    'django.template.context_processors.i18n',
+                    'django.template.context_processors.media',
+                    'django.template.context_processors.static',
+                    'django.template.context_processors.tz',
                     'django.contrib.messages.context_processors.messages',
+                    # Your stuff: custom template context processors go here
                 ],
             },
         },
@@ -145,13 +138,14 @@ class Common(Configuration):
 
 
     # Static Files
-    BOWER_COMPONENTS_ROOT = os.path.join(PROJECT_ROOT, 'components')
     STATIC_ROOT = os.path.join(PROJECT_ROOT, '../static')
     STATIC_URL = '/static/'
     STATICFILES_FINDERS = (
         'django.contrib.staticfiles.finders.FileSystemFinder',
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-        'djangobower.finders.BowerFinder',
+    )
+    STATICFILES_DIRS = (
+        os.path.join(APPS_DIR, 'frontend/static'),
     )
 
     # Media files
@@ -226,10 +220,10 @@ class Common(Configuration):
     # Backend authentication
     ANONYMOUS_USER_ID = '813b2783-23e7-484d-b259-696c24076b0f'
     AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend', 
+    'django.contrib.auth.backends.ModelBackend',
     'guardian.backends.ObjectPermissionBackend',
     )
-   
+
     # Django Rest Framework
     REST_FRAMEWORK = {
         'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
