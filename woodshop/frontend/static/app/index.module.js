@@ -20,7 +20,7 @@
             // Quick panel
             'app.quick-panel',
 
-            // Sample
+            // Bazaar
             'app.bazaar'
         ]);
 })();

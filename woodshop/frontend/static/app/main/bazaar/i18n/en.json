@@ -1,5 +1,6 @@
 {
     "BAZAAR": {
-        "BAZAAR_NAV": "Sample!"
+        "BAZAAR_NAV": "Browse",
+        "CATEGORIES_NAV": "Categories"
     }
 }

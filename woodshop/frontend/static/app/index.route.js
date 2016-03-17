@@ -11,7 +11,7 @@
     {
         $locationProvider.html5Mode(false);
 
-        $urlRouterProvider.otherwise('/bazaar');
+        $urlRouterProvider.otherwise('/home');
 
         /**
          * Layout Style Switcher

@@ -7,8 +7,11 @@
         .config(config);
 
     /** @ngInject */
-    function config($ariaProvider, $logProvider, msScrollConfigProvider, $translateProvider, fuseConfigProvider)
+    function config($ariaProvider, $logProvider, msScrollConfigProvider, $translateProvider, fuseConfigProvider, $resourceProvider)
     {
+        // Leave those trailing slashes in the API calls
+        $resourceProvider.defaults.stripTrailingSlashes = false;
+
         // Enable debug logging
         $logProvider.debugEnabled(true);
 
