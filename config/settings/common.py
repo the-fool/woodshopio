@@ -26,12 +26,8 @@ class Common(Configuration):
         'dry_rest_permissions',
         'django_rq',                 # asynchronous queuing
         'versatileimagefield',       # image manipulation
-<<<<<<< HEAD
-        'djangobower',               # frontend asset manager
+
         'storages',                  # storage backend
-=======
-        'storages',
->>>>>>> ng_material
         'corsheaders',               # allows requests from multiple ports
 
         # My apps
@@ -167,7 +163,7 @@ class Common(Configuration):
 
     # Media files
     USE_S3 = False #Toggle on for S3 storage
-    
+
     if USE_S3:
         AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
         AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']

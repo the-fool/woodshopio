@@ -72,22 +72,18 @@ mailhog
 
 # Bower/NPM
 node_modules/
-<<<<<<< HEAD
 components/
 bower_components/
-.tmp/
 
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-=======
-bower_components/
+
 
 
 # Gulp & build
 .sass-cache/
 .tmp/
 dist/
->>>>>>> ng_material
