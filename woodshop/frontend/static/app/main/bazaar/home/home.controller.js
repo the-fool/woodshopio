@@ -7,7 +7,7 @@
         .controller('BazaarHomeController', BazaarHomeController);
 
     /** @ngInject */
-    function BazaarHomeController(BazaarHomeData, BrowseGemData, CATEGORIES)
+    function BazaarHomeController(BazaarHomeData, BrowseGemData, CATEGORIES, $state)
     {
         var vm = this;
         // Data
@@ -16,7 +16,7 @@
         vm.viewDetail = viewDetail;
 
         function viewDetail(id) {
-          console.log(id);
+          //$state.go('app.bazaar-detail')
         }
 
         //////////

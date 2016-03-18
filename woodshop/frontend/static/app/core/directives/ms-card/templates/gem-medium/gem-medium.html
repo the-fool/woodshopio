@@ -12,7 +12,7 @@
             {{card.subtitle}}
         </div>
         <div class="buttons pt-16">
-            <md-button class="m-0 md-accent" ng-click="vm.viewDetail(card.id)">DETAILS</md-button>
+            <md-button class="m-0 md-accent" ui-sref="app.bazaar-detail({gemId: card.id})">DETAILS</md-button>
         </div>
 
         <div class="text pt-16" ng-if="card.description">

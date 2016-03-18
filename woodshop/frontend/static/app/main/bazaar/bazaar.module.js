@@ -4,7 +4,8 @@
 
   angular
       .module('app.bazaar', [
-        'app.bazaar.home'
+        'app.bazaar.home',
+        'app.bazaar.detail'
       ])
       .config(config);
 
