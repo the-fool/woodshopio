@@ -123,8 +123,20 @@ class Common(Configuration):
         ("Author", 'sketchbang@gmail.com'),
     )
 
-    # Postgres
-    DATABASES = values.DatabaseURLValue('postgres://127.0.0.1/woodshop')
+    # Database
+    if 'RDS_DB_NAME' in os.environ:
+        DATABASES = {
+            'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+            }
+        }
+    else:
+        DATABASES = values.DatabaseURLValue('postgres://127.0.0.1/woodshop')
 
     # General
     APPEND_SLASH = False
