@@ -56,11 +56,11 @@ You can do this with:
 ```bash
 gulp inject
 ```
-And, while working on the frontend, just let gulp run in the background
+And, while working on the frontend, just let gulp run continuously:
 ```bash
 gulp watch
 ```
-Gulp will automatically update all relevant front-end files.
+Gulp will automatically take all updated frontend assets, recompile them, and adjust Django's templates.
 
 Finally:
 Run the development server: 
