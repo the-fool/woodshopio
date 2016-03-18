@@ -8,7 +8,7 @@
 
 
       function BazaarDetailController(GemDetailData, GemPhotos) {
-        console.log('ph', GemPhotos);
+
         var vm = this;
         vm.detail = GemDetailData;
       }

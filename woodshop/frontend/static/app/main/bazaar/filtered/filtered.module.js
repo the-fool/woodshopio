@@ -11,17 +11,28 @@
     // Translation
     $translatePartialLoaderProvider.addPart('static/app/main/bazaar/filtered');
 
-    msNavigationServiceProvider.saveItem('categories', {
-        title    : 'Categories',
-        group    : true,
-        icon     : 'icon-tile-four',
-        translate: 'BAZAAR.CATEGORIES_NAV',
-        weight   : 1
-    });
+    // State
+    $stateProvider
+        .state('app.bazaar-filtered', {
+            url    : '/assets/{category}/',
+            views  : {
+                'content@app': {
+                    templateUrl: 'static/app/main/bazaar/filtered/filtered.html',
+                    controller : 'BazaarFilteredController as vm'
+                }
+            },
+            resolve: {
+                GemData: function ($stateParams, msApi)
+                {
+                    return msApi.resolve('gem-browse@get', {category: $stateParams.category});
+                }
+            }
+        });
   }
 
   function runBlock(msNavigationService, CATEGORIES) {
-    console.log('working?');
+
+    // Add categories to the navbar
     CATEGORIES.forEach(function(category) {
       msNavigationService.saveItem('categories.'+category[0], {
         title:    category[0],
