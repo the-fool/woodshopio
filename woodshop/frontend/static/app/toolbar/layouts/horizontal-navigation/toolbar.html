@@ -22,25 +22,24 @@
 
         <ms-search-bar></ms-search-bar>
 
-        <md-menu-bar id="user-menu">
+        <md-menu-bar id="user-menu" ng-show="$root.authenticated">
             <md-menu md-position-mode="left bottom">
                 <md-button class="user-button" ng-click="$mdOpenMenu()"
                            aria-label="User settings"
                            translate translate-attr-aria-label="TOOLBAR.USER_SETTINGS">
                     <div layout="row" layout-align="space-between center">
                         <div class="avatar-wrapper">
-                            <img md-menu-align-target class="avatar" src="static/assets/images/avatars/profile.jpg">
+                            <img md-menu-align-target class="avatar" src="/static/assets/images/avatars/profile.jpg">
                             <md-icon md-font-icon ng-class="vm.userStatus.icon"
                                      ng-style="{'color': vm.userStatus.color }"
                                      class="icon status s16">
                             </md-icon>
                         </div>
-                        <span class="username" hide-xs>John Doe</span>
+                        <span class="username" hide-xs>{{$root.user.username}}</span>
                         <md-icon md-font-icon="icon-chevron-down"
                                  class="icon s16" hide-xs></md-icon>
                     </div>
                 </md-button>
-
                 <md-menu-content width="3">
                     <md-menu-item class="md-indent" ui-sref="app.pages_profile">
                         <md-icon md-font-icon="icon-account" class="icon"></md-icon>
@@ -82,6 +81,15 @@
                 </md-menu-content>
             </md-menu>
         </md-menu-bar>
+
+        <md-button  ng-hide="$root.authenticated" class="md-icon-button"
+                    ui-sref="app.pages-auth-login" aria-label="Login" translate translate-attr-aria-lable="TOOLBAR.LOGIN">
+            <md-icon md-font-icon="icon-account" class="icon">
+              <md-tooltip md-direction="bottom">
+                Login
+              </md-tooltip>
+            </md-icon>
+        </md-button>
 
         <md-menu id="language-menu" md-offset="0 72" md-position-mode="target-right target">
             <md-button class="language-button" ng-click="$mdOpenMenu()"

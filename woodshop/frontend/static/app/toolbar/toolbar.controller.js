@@ -7,7 +7,7 @@
         .controller('ToolbarController', ToolbarController);
 
     /** @ngInject */
-    function ToolbarController($rootScope, $mdSidenav, $translate, $mdToast)
+    function ToolbarController($rootScope, $mdSidenav, $translate, $mdToast, djangoAuth)
     {
         var vm = this;
 
@@ -113,7 +113,15 @@
          */
         function logout()
         {
-            // Do logout here..
+          djangoAuth.logout()
+            .then(
+              function (data) {
+                // success
+              },
+              function (err) {
+                // on error
+              }
+            );
         }
 
         /**

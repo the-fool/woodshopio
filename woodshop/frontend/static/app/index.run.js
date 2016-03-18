@@ -36,7 +36,8 @@
         // Auth
        $rootScope.authenticated = false;
        // Init the auth service
-       djangoAuth.authenticationStatus(false, false).then(function(data) {
+       djangoAuth.authenticationStatus(true, true).then(function(data) {
+         // only on successful resolve
          $rootScope.authenticated = true;
          djangoAuth.profile().then(function(data) {
            $rootScope.user = data;
@@ -45,7 +46,7 @@
        // Wait and respond to the logout event.
        $rootScope.$on('djangoAuth.logged_out', function() {
          $rootScope.authenticated = false;
-         $state.go('app.bazaar-home');
+         $state.go('app.bazaar-home', {}, {reload: true});
        });
        // Wait and respond to the log in event.
        $rootScope.$on('djangoAuth.logged_in', function() {

@@ -21,6 +21,10 @@
             'app.quick-panel',
 
             // Bazaar
-            'app.bazaar'
+            'app.bazaar',
+
+            // Speciality full pages
+            'app.pages'
+
         ]);
 })();
