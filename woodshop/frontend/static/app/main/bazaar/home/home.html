@@ -1,3 +1,9 @@
-<h1>
-    {{vm.helloText}}
-</h1>
+<div id="home" class="page-layout simple fullwidth doc-page">
+  <div class="content" md-background-bg>
+    <div class="layout-wrap layout-row" layout="row">
+      <ms-card ng-repeat="gem in vm.gems"
+             template="'static/app/core/directives/ms-card/templates/template-1/template-1.html'"
+             ng-model="gem"></ms-card>
+    </div>
+  </div>
+</div>

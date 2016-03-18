@@ -12,6 +12,7 @@
         var vm = this;
         // Data
         vm.helloText = BazaarHomeData.data.helloText;
+        vm.gems = BrowseGemData.results;
         console.log(BrowseGemData);
 
         // Methods
