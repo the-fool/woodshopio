@@ -73,7 +73,8 @@ mailhog
 # Bower/NPM
 node_modules/
 components/
-
+bower_components/
+.tmp/
 
 
 # Elastic Beanstalk Files
