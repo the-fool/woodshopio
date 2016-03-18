@@ -54,7 +54,11 @@ class Category(models.Model):
 				top_level[1] is a list of children
 			"""
 			name = top_level[0]
-			l.append({'name':top_level[0], 'is_leaf':False})
+			if name == 'Other':
+				l.append({'name':top_level[0], 'is_leaf':True})
+			else:
+				l.append({'name':top_level[0], 'is_leaf':False})
+
 			for sub in top_level[1]:
 				name = top_level[0] + "_" + sub
 				l.append({'name':name, 'is_leaf':True})
