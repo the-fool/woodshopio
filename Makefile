@@ -9,5 +9,4 @@ fixtures:
 	python ./manage.py categorize_gems
 	python ./manage.py create_pictures
 	python ./manage.py review_gems
-	python ./manage.py categories_to_html_nav
 	python ./manage.py create_transactions

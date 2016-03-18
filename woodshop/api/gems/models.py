@@ -5,67 +5,62 @@ from django.conf import settings
 
 
 class Category(models.Model):
-	
+	""" For now, a simple two-level system of categories
+		Hopefully keywords and search functionality can be a sufficient substitute for a crazy category schema
+	"""
+
 	CATS = [
-	('3D Models', [
-		('Characters', [
-			('Human', [
-				('Fantasy', ''),
-				('Sci-fi', ''),
-				('Miltary', ''),
-				('Other', '')
-				]
-				),
-			('Animal', [
-				('Land',''),
-				('Sea',''),
-				('Other', '')
-				]
-				),
-			('Robot', ''),
-			('Other', '')
+		('3D Models', [
+			'Characters',
+			'Vehicles',
+			'Weapons',
+			'Environment',
+			'Other'
 			]
-			),
-		('Vehicles', [
-			('Air',''),
-			('Land',''),
-			('Space', ''),
-			('Other', '')
-			]
-			)
-		]
 		),
-	('Shaders', [
-		('Landscape',''),
-		('Camera FX',''),
-		('Other', '')
-		]
-		)
+		('Shaders', [
+			'Landscape',
+			'Camera FX',
+			'Other'
+			]
+		),
+		('Full projects', [
+			'2D',
+			'3D',
+			'Other'
+			]
+		),
+		('2D Assets', [
+			'Sprites',
+			'Terrain',
+			'UI',
+			'Other'
+			]
+		),
+		('Other', [])
 	]
 
-	
+
 	@staticmethod
 	def get_category_names():
-		""" 
+		"""
 		Returns ordered list of every node on category tree.
 		Each item separated by '_', e.g. UrParent_sub1_subOfSub1
 		"""
 		l = []
 
-		def traverse(name, node):
-			for i in node:
-				name = name + '_' + i[0] if name else i[0]
-				if i[1]:
-					l.append({'name':name, 'leaf':False})
-					traverse(name, i[1])
-				else:
-					l.append({'name':name, 'leaf':True})
-				name = '_'.join(name.split('_')[:-1])
-
-		traverse('',Category.CATS)
+		for top_level in Category.CATS:
+			""" top_level[0] is a string
+				top_level[1] is a list of children
+			"""
+			name = top_level[0]
+			l.append({'name':name, 'is_leaf':False})
+			for sub in top_level[1]:
+				name += "_" + sub
+				l.append({'name':name, 'is_leaf':True})
 
 		return l
-	
+
 	@staticmethod
 	def generate_parent_names(full_name):
 		sub_names = full_name.split('_')
@@ -80,7 +75,7 @@ class Category(models.Model):
 
 	def __repr__(self):
 		return '<Category: {}>'.format('_'.join(self.full_name.split('_')[-2:]))
-	
+
 	def __str__(self):
 		return self.name
 
@@ -135,7 +130,7 @@ def picture_pre_delete(sender, instance, **kwargs):
 
 	if gem: # we have deleted main picture
 		pics = gem.pictures.all()
-		if pics[1]: 
+		if pics[1]:
 			gem.main_picture = pics[1]
 			gem.save()
 
@@ -145,12 +140,11 @@ def picture_delete(sender, instance, **kwargs):
 	"""Delete picture file"""
 	# Pass false so FileField doesn't save the model.
 	instance.image.delete(False)
-	
+
 
 @receiver(post_delete, sender=Gem)
 def gem_dir_delete(sender, instance, **kwargs):
 	"""Remove the gem's photo directory"""
 	if os.environ['DJANGO_CONFIGURATION'] == 'Local':
-		shutil.rmtree(os.path.join(settings.MEDIA_ROOT, 'gem_{}'.format(instance.id)), 
+		shutil.rmtree(os.path.join(settings.MEDIA_ROOT, 'gem_{}'.format(instance.id)),
 			ignore_errors=True)
-

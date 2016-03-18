@@ -6,16 +6,8 @@
         .module('woodshop')
         .constant({
           "CATEGORIES":
-          [
-            ["3D Models", [
-              ["Characters", [["Human", [["Fantasy", ""], ["Sci-fi", ""], ["Miltary", ""], ["Other", ""]]],
-              ["Animal", [["Land", ""], ["Sea", ""], ["Other", ""]]], ["Robot", ""], ["Other", ""]]],
-              ["Vehicles", [["Air", ""], ["Land", ""], ["Space", ""], ["Other", ""]]]
-              ]
-            ],
-            ["Shaders", [
-              ["Landscape", ""], ["Camera FX", ""], ["Other", ""]]
-            ],
-          ]
-        });
+          /** injectCategories */
+[["3D Models", ["Characters", "Vehicles", "Weapons", "Environment", "Other"]], ["Shaders", ["Landscape", "Camera FX", "Other"]], ["Full projects", ["2D", "3D", "Other"]], ["2D Assets", ["Sprites", "Terrain", "UI", "Other"]], ["Other", []]]
+
+        })
 })();
