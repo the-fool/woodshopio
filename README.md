@@ -19,12 +19,12 @@ Navigate into the woodshopio repository you just created:
 cd woodshopio
 ```
 
-Install dependencies (requires node):
+Install project dependencies (requires node):
 
 ```bash
 pip install -r requirements/local.txt
 npm install
-python manage.py bower install
+bower install
 ```
 
 Create the postgres database:
@@ -51,7 +51,18 @@ Test-it
 python manage.py test
 npm test
 ```
+Now, it gets tricky.  Frontend assets must be compiled and injected into the html templates before being served.
+You can do this with: 
+```bash
+gulp inject
+```
+And, while working on the frontend, just let gulp run in the background
+```bash
+gulp watch
+```
+Gulp will automatically update all relevant front-end files.
 
+Finally:
 Run the development server: 
 ```bash
 python manage.py runserver
