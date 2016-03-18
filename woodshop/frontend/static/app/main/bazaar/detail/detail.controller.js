@@ -11,6 +11,9 @@
 
         var vm = this;
         vm.detail = GemDetailData;
+        vm.images = GemPhotos.results.map(function(cv) {
+          return cv.image;
+        });
       }
 
 })();

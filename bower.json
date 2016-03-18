@@ -19,15 +19,16 @@
     "perfect-scrollbar": "0.6.10",
     "toastr": "2.1.2",
     "croppie": "2.0.0",
-   "angular-xeditable":"0.1.10",
-   "metisMenu":"2.4.0",
-   "modernizr":"3.3.1",
-   "underscore":"1.8.3"
+    "angular-xeditable": "0.1.10",
+    "metisMenu": "2.4.0",
+    "modernizr": "3.3.1",
+    "underscore": "1.8.3",
+    "flexslider": "^2.6.0"
   },
   "devDependencies": {
     "angular-mocks": "1.5.0",
-    "jasmine":"2.4.1",
-    "jasmine-jquery":"2.1.1"
+    "jasmine": "2.4.1",
+    "jasmine-jquery": "2.1.1"
   },
   "resolutions": {
     "angular": "1.5.0"

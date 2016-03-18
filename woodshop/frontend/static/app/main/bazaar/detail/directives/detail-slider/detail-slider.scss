@@ -1,0 +1,5 @@
+
+#carousel li {margin-right: 5px;}
+#carousel img {display: block; opacity: .5; cursor: pointer;}
+#carousel img:hover {opacity: 1;}
+#carousel .flex-active-slide img {opacity: 1; cursor: default;}
