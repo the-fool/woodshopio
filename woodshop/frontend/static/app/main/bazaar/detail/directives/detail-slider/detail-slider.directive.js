@@ -15,14 +15,14 @@
           images: '=images'
         },
         link: function(scope, element) {
-
+          var thumbnailWidth = $(window).width() < 600 ? 100 : 200;
           $timeout(function() {
             $('#carousel').flexslider({
               animation: "slide",
               controlNav: false,
               animationLoop: false,
               slideshow: false,
-              itemWidth: 210,
+              itemWidth: thumbnailWidth,
               itemMargin: 5,
               asNavFor: '#slider'
             });

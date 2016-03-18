@@ -10,7 +10,7 @@
       function BazaarDetailController(GemDetailData, GemPhotos) {
 
         var vm = this;
-        vm.detail = GemDetailData;
+        vm.gem = GemDetailData;
         vm.images = GemPhotos.results.map(function(cv) {
           return cv.image;
         });

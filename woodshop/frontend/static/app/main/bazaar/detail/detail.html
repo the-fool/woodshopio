@@ -1,9 +1,31 @@
-<div>
-  <section class="detail-title">
-    <h1>{{vm.detail}}</h1>
-  </section>
-  <section class="detail-slider">
-    <detail-slider images="vm.images"></detail-slider>
-  </section>
+<div id="detail-view" class="page-layout simple" flex ms-scroll>
 
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="column" layout-align="space-between">
+      <div layout="row" layout-align="space-between">
+        <div>
+          <span class="md-display-1 font-weight-300">{{vm.gem.title}}</span>
+        </div>
+      </div>
+    </div>
+    <!-- / HEADER -->
+
+    <div class="content-wrapper">
+      <!-- Top level content -->
+      <div layout="row" layout-sm="column" layout-xs="column">
+
+        <div flex="66" flex-sm="100" flex-xs="100" class="detail-slider" layout-margin>
+          <detail-slider images="vm.images"></detail-slider>
+        </div>
+
+        <div flex="33" flex-sm="100" flex-xs="100" class="detail-title" layout-margin>
+          <h1>Some info</h1>
+        </div>
+
+      </div>
+      <!-- / Top level content -->
+    </div>
+
+
+  </div>
 </div>
