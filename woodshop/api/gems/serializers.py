@@ -11,7 +11,7 @@ class PictureSerializer(serializers.ModelSerializer):
         fields = ('image', 'id')
 
 class CategorySerializer(serializers.ModelSerializer):
-    
+
     class Meta:
         model = Category
         fields= ('id',)
@@ -19,8 +19,6 @@ class CategorySerializer(serializers.ModelSerializer):
 class GemSerializer(serializers.ModelSerializer):
     author = UserSerializer(required=False)
     categories = CategorySerializer(many=True, required=False)
-    pictures = serializers.HyperlinkedIdentityField(view_name='gempicture-list')
-    reviews = serializers.HyperlinkedIdentityField(view_name='gemreview-list')
     main_picture = PictureSerializer()
 
     def get_validation_exclusions(self, *args, **kwargs):
