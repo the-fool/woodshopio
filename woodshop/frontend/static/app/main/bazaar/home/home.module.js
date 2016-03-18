@@ -31,22 +31,8 @@
                 }
             });
 
-        // Translation
-        $translatePartialLoaderProvider.addPart('static/app/main/bazaar');
-
         // Api
         msApiProvider.register('bazaar-home', ['static/app/data/bazaar/bazaar.json']);
 
-        // Navigation
-        msNavigationServiceProvider.saveItem('home', {
-            title    : 'Browse',
-            icon     : 'icon-tile-four',
-            state    : 'app.bazaar-home',
-            /*stateParams: {
-                'param1': 'page'
-             },*/
-            translate: 'BAZAAR.BAZAAR_NAV',
-            weight   : 1
-        });
     }
 })();
