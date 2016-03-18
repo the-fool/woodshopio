@@ -332,16 +332,34 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
                 min-height: $header-height;
                 max-height: $header-height;
                 padding: 24px;
-                background-image: url('/assets/images/backgrounds/header-bg.png');
+                background-image: url('static/assets/images/backgrounds/header-bg.png');
                 background-size: cover;
             }
 
             > .content {
                 padding: 24px;
-                width: 85%;
+                width: 90%;
                 margin: auto;
-                box-shadow: $whiteframe-shadow-7dp;
             }
+        }
+        &.narrowed {
+          min-height: 100%;
+
+          > .header {
+              height: $header-height;
+              min-height: $header-height;
+              max-height: $header-height;
+              padding: 24px;
+              background-image: url('static/assets/images/backgrounds/header-bg.png');
+              background-size: cover;
+          }
+
+          > .content {
+              padding: 24px;
+              width: 85%;
+              margin: auto;
+              box-shadow: $whiteframe-shadow-7dp;
+          }
         }
 
         // Left sidenav
@@ -592,7 +610,7 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
 @media screen and (max-width: $layout-breakpoint-sm) {
     .page-layout {
       &.simple {
-        &.fullwidth {
+        &.narrowed {
           > .content {
             max-width: 100%;
             box-shadow: none;
@@ -604,7 +622,7 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
 @media screen and (max-width: $layout-breakpoint-lg) {
     .page-layout {
       &.simple {
-        &.fullwidth {
+        &.narrowed {
           > .content {
             max-width: 90%;
 
