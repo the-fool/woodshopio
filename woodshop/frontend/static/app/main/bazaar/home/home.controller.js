@@ -13,9 +13,11 @@
         // Data
         vm.helloText = BazaarHomeData.data.helloText;
         vm.gems = BrowseGemData.results;
-        console.log(BrowseGemData);
+        vm.viewDetail = viewDetail;
 
-        // Methods
+        function viewDetail(id) {
+          console.log(id);
+        }
 
         //////////
     }

@@ -14,7 +14,7 @@
             scope   : {
                 templatePath: '=template',
                 card        : '=ngModel',
-                vm          : '=viewModel'
+                vm          : '=viewModel',
             },
             template: '<div class="ms-card-content-wrapper" ng-include="templatePath" onload="cardTemplateLoaded()"></div>',
             compile : function (tElement)
