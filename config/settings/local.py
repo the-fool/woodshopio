@@ -6,6 +6,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 APPS_DIR = os.path.join(BASE_DIR, 'woodshop')
 
 class Local(Common):
+    # Gulp injected tmp files (override)
+    # ------------------------------------------------------------------------------
+    Common.TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, '.tmp/serve')]
+    Common.STATICFILES_DIRS += (os.path.join(BASE_DIR, '.tmp/serve'),)
+
 
     DEBUG = values.BooleanValue(True)
     for config in Common.TEMPLATES:

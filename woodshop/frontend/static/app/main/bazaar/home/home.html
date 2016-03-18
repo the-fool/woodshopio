@@ -1,0 +1,9 @@
+<div id="home" class="page-layout simple fullwidth doc-page">
+  <div class="content" md-background-bg>
+    <div class="layout-wrap layout-row" layout="row">
+      <ms-card ng-repeat="gem in vm.gems"
+             template="'static/app/core/directives/ms-card/templates/gem-medium/gem-medium.html'"
+             ng-model="gem" view-model="vm"></ms-card>
+    </div>
+  </div>
+</div>
