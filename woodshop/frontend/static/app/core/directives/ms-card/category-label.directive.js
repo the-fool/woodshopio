@@ -23,7 +23,7 @@
               var cats = mainCat.split('_');
               var ret = '<a ui-sref="app.bazaar-filtered({category:\''+ cats[0] + '\'})">'+cats[0] + '</a>';
               if (cats[1]) {
-                ret += ' : <a ui-sref="app.bazaar-filtered({category:\'' + cats[1] + '\'})">' + cats[1] + '</a>';
+                ret += ' : <a ui-sref="app.bazaar-filtered({category:\'' + cats[0] + '_' + cats[1] + '\'})">' + cats[1] + '</a>';
               }
               element.html(ret);
               $compile(element)(scope);

@@ -1,0 +1,8 @@
+$medium-card-width: 250px;
+$medium-card-cols: 4;
+
+#filtered {
+  >.content {
+    max-width: ($medium-card-width + 20) * $medium-card-cols;
+  }
+}
