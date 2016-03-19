@@ -4,16 +4,15 @@
     </div>
 
     <div class="content pv-16 ph-16">
-        <div class="title h1" ng-if="card.title">
+        <a ui-sref="app.bazaar-detail({gemId: card.id})"> <div class="title h1">
             {{card.title}}
         </div>
+      </a>
 
-        <div class="subtitle secondary-text" ng-if="card.subtitle">
-            {{card.subtitle}}
+        <div class="subtitle secondary-text" ng-if="card.categories">
+            <category-label categories='card.categories'></category-label>
         </div>
-        <div class="buttons pt-8">
-            <md-button class="m-0 md-accent" ui-sref="app.bazaar-detail({gemId: card.id})">DETAILS</md-button>
-        </div>
+
 
         <div class="text pt-16" ng-if="card.description">
             {{card.description}}
