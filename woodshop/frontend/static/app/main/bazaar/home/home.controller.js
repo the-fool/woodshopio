@@ -13,11 +13,6 @@
         // Data
         vm.helloText = BazaarHomeData.data.helloText;
         vm.gems = BrowseGemData.results;
-        vm.viewDetail = viewDetail;
-
-        function viewDetail(id) {
-          //$state.go('app.bazaar-detail')
-        }
 
         //////////
     }
