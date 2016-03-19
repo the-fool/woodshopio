@@ -1,0 +1,21 @@
+<div class="gem-card-md">
+    <div class="media">
+        <img class="image" ng-src="{{gem.main_picture.image}}" alt="{{gem.media.image.alt}}" ng-show="gem.main_picture.image">
+    </div>
+
+    <div class="content pv-16 ph-16">
+        <a ui-sref="app.bazaar-detail({gemId: gem.id})"> <div class="title h1">
+            {{gem.title}}
+        </div>
+      </a>
+
+        <div class="subtitle secondary-text" ng-if="gem.categories">
+            <category-label categories='gem.categories'></category-label>
+        </div>
+
+
+        <div class="text pt-16" ng-if="gem.description">
+            {{gem.description}}
+        </div>
+    </div>
+</div>

@@ -3,9 +3,7 @@
 
     <md-grid-list md-cols="4" md-row-height="300px">
       <md-grid-tile ng-repeat="gem in vm.gems">
-        <ms-card
-             template="'static/app/core/directives/ms-card/templates/gem-medium/gem-medium.html'"
-             ng-model="gem" view-model="vm"></ms-card>
+        <gem-card-md gem="gem"></gem-card-md>
         </md-grid-tile>
       </md-grid-list>
     </div>
