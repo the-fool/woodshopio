@@ -33,7 +33,7 @@
    <!-- CONTENT -->
    <div class="content" flex>
      <md-tabs md-dynamic-height>
-       <md-tab ng-repeat="tab in vm.tabs" label="{{tab}}">
+       <md-tab ng-repeat="tab in vm.tabs" label="{{tab}}" md-active="tab===vm.activeTab">
          <md-content>
         <md-grid-list md-cols="4" md-row-height="300px">
           <md-grid-tile ng-repeat="gem in vm.gems">

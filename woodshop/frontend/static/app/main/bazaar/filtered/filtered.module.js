@@ -22,12 +22,12 @@
                 }
             },
             params: {
-              sub_category:""
+              subCategory:""
             },
             resolve: {
                 GemData: function ($stateParams, msApi)
                 {
-                    return msApi.resolve('gem-browse@get', {category: $stateParams.category, sub_category: $stateParams.sub_category});
+                    return msApi.resolve('gem-browse@get', {category: $stateParams.category, sub_category: $stateParams.subCategory});
                 }
             }
         });
