@@ -20,7 +20,7 @@
             break;
           }
         };
-        console.log(vm.tabs);
+        console.log($stateParams);
 
       }
 

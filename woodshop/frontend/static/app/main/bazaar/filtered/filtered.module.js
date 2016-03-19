@@ -14,12 +14,15 @@
     // State
     $stateProvider
         .state('app.bazaar-filtered', {
-            url    : '/assets/{category}/{sub_category}',
+            url    : '/assets/{category}/',
             views  : {
                 'content@app': {
                     templateUrl: 'static/app/main/bazaar/filtered/filtered.html',
                     controller : 'BazaarFilteredController as vm'
                 }
+            },
+            params: {
+              sub_category:""
             },
             resolve: {
                 GemData: function ($stateParams, msApi)
