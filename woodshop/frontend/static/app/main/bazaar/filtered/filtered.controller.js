@@ -7,13 +7,14 @@
       .controller('BazaarFilteredController', BazaarFilteredController);
 
       /** @ngInject */
-      function BazaarFilteredController(GemData, $stateParams, CATEGORIES) {
+      function BazaarFilteredController(GemData, $scope, $timeout, $stateParams, msApi, CATEGORIES) {
+        var initializing = true;
 
         var vm = this;
         vm.gems = GemData.results;
         vm.tabs = parseTabLabels();
         vm.activeTab = $stateParams.subCategory ? $stateParams.subCategory : $stateParams.category;
-        console.log(vm.activeTab); 
+
         function parseTabLabels() {
           var tabs = [$stateParams.category];
           for (var i in CATEGORIES) {
@@ -26,8 +27,30 @@
           };
           return tabs;
         }
+        console.log(vm.tabs);
 
-        console.log($stateParams);
+        $scope.$watch('selectedIndex', function(current, old) {
+          if (current !== undefined) {
+            // on initial load, this code fires with undefined current arg
+            if (initializing) {
+              $timeout(function() { initializing = false; });
+            } else {
+              vm.activeTab = vm.tabs[current];
+              $timeout(function() {
+                msApi.request('gem-browse@get', {category : $stateParams.category, sub_category : vm.activeTab},
+                    function(response)
+                    {
+                      vm.gems = response.results;
+                    },
+                    function (error)
+                    {
+                      console.log(error);
+                    }
+                );
+              });
+            }
+          }
+        });
 
       }
 

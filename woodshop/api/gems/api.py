@@ -29,8 +29,7 @@ class GemList(generics.ListCreateAPIView):
     if category is not None:
       queryset = queryset.filter(categories=category)
       sub_category = self.request.query_params.get('sub_category', None)
-      print(sub_category)
-      if sub_category:
+      if sub_category and sub_category != category:
           queryset = queryset.filter(categories="_".join([category, sub_category]))
 
     vendor = self.request.query_params.get('vendor', None)
