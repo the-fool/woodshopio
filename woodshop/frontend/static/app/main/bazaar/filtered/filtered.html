@@ -37,7 +37,7 @@
          <md-content>
         <md-grid-list md-cols="4" md-row-height="300px">
           <md-grid-tile ng-repeat="gem in vm.gemMap[tab].gems">
-            <gem-card-md gem="gem"></gem-card-md>
+            <filtered-gem-card-md gem="gem" vm="vm"></filtered-gem-card-md>
             </md-grid-tile>
           </md-grid-list>
         </md-content>

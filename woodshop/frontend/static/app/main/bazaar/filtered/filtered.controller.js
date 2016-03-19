@@ -35,6 +35,12 @@
           });
         }, 250);
 
+        /******************************************************* /
+        / Responds to clicks on category links on the gem cards  /
+        /********************************************************/
+        vm.selectTab = function(tab) {
+          vm.activeTab = tab;
+        };
 
         // on selection of tab, populate the tabbed content with fresh data
         $scope.$watch('selectedIndex', function(current, old) {
