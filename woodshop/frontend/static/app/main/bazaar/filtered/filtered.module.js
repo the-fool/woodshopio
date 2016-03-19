@@ -14,7 +14,7 @@
     // State
     $stateProvider
         .state('app.bazaar-filtered', {
-            url    : '/assets/{category}/',
+            url    : '/assets/{category}/{sub_category}',
             views  : {
                 'content@app': {
                     templateUrl: 'static/app/main/bazaar/filtered/filtered.html',
@@ -24,7 +24,7 @@
             resolve: {
                 GemData: function ($stateParams, msApi)
                 {
-                    return msApi.resolve('gem-browse@get', {category: $stateParams.category});
+                    return msApi.resolve('gem-browse@get', {category: $stateParams.category, sub_category: $stateParams.sub_category});
                 }
             }
         });

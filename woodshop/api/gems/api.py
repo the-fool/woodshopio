@@ -24,13 +24,17 @@ class GemList(generics.ListCreateAPIView):
                           .select_related('main_picture')\
                           .all()\
                           .prefetch_related('categories')
-    
+
     category = self.request.query_params.get('category', None)
     if category is not None:
       queryset = queryset.filter(categories=category)
+      sub_category = self.request.query_params.get('sub_category', None)
+      print(sub_category)
+      if sub_category:
+          queryset = queryset.filter(categories="_".join([category, sub_category]))
 
     vendor = self.request.query_params.get('vendor', None)
-    if vendor is not None:  
+    if vendor is not None:
       queryset = queryset.filter(vendor=vendor)
 
     return queryset

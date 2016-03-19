@@ -21,9 +21,11 @@
             {
               var mainCat = scope.categories[1] ? scope.categories[1].id : scope.categories[0].id;
               var cats = mainCat.split('_');
-              var ret = '<a ui-sref="app.bazaar-filtered({category:\''+ cats[0] + '\'})">'+cats[0] + '</a>';
+              // It seems a default empty value is required for subCategory,
+              // otherwise the ui-route $compile will fill it in with extra information
+              var ret = '<a ui-sref="app.bazaar-filtered({category:\'' + cats[0] + '\', sub_category: \'\'})">'+cats[0] + '</a>';
               if (cats[1]) {
-                ret += ' : <a ui-sref="app.bazaar-filtered({category:\'' + cats[0] + '_' + cats[1] + '\'})">' + cats[1] + '</a>';
+                ret += ' : <a ui-sref="app.bazaar-filtered({category:\'' + cats[0] + '\', sub_category: \'' + cats[1] + '\'})">' + cats[1] + '</a>';
               }
               element.html(ret);
               $compile(element)(scope);
