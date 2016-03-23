@@ -10,7 +10,6 @@ from django.views.generic import TemplateView
 from rest_framework.routers import DefaultRouter
 
 from woodshop.api import urls as api_urls
-from woodshop.frontend import urls as frontend_urls
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='index.html'), name="home"),
