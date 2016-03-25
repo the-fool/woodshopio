@@ -38,7 +38,14 @@
         <ms-splash-screen id="splash-screen">
             <div class="center">
                 <div class="logo">
-                    <span>W</span>
+                    <span>
+                      {% endverbatim %}
+                      <svg width="360px" height="360px" viewBox="0 0 360 360" >
+
+                        {% include "partials/logo_full.html" %}
+                      </svg>
+                      {% verbatim %}
+                    </span>
                 </div>
                 <!-- Material Design Spinner -->
                 <div class="spinner-wrapper">

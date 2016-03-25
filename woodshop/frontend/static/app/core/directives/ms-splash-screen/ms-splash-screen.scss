@@ -26,8 +26,8 @@
     }
 
     .logo {
-        width: 96px;
-        height: 96px;
+        width: 400px;
+        height: 340px;
         line-height: 96px;
         margin: 0 auto;
         font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -112,7 +112,7 @@
                 }
             }
         }
-        
+
         @keyframes outer-rotate {
             0% {
                 transform: rotate(0deg) scale(0.5);

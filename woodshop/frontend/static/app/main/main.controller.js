@@ -18,7 +18,7 @@
         {
             if ( event.targetScope.$id === $scope.$id )
             {
-                $rootScope.$broadcast('msSplashScreen::remove');
+              $rootScope.$broadcast('msSplashScreen::remove');
             }
         });
     }
