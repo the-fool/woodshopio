@@ -11,7 +11,6 @@ class Local(Common):
     Common.TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, '.tmp/serve')]
     Common.STATICFILES_DIRS += (os.path.join(BASE_DIR, '.tmp/serve'),)
 
-    Common.SECRET_KEY = env('SECRET_KEY')
     DEBUG = values.BooleanValue(True)
     for config in Common.TEMPLATES:
         config['OPTIONS']['debug'] = DEBUG
