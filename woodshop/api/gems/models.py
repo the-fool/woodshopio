@@ -21,6 +21,8 @@ class Category(models.Model):
 		('Shaders', [
 			'Landscape',
 			'Camera FX',
+			'Particles',
+			'Skins',
 			'Other'
 			]
 		),

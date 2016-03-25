@@ -8,7 +8,6 @@ APPS_DIR = os.path.join(BASE_DIR, 'woodshop')
 
 
 class Common(Configuration):
-
     INSTALLED_APPS = (
         'django.contrib.admin',
         'django.contrib.auth',

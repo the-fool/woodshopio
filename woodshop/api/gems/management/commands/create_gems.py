@@ -5,7 +5,7 @@ from django.core.management.base import BaseCommand
 from woodshop.api.users.models import User
 from woodshop.api.gems.models import Gem, Category
 
-descriptions = ['This is text', 
+descriptions = ['This is text',
                'Another thing I wanted to share',
                'Guns guns guns',
                'Particle effects',
@@ -17,8 +17,8 @@ descriptions = ['This is text',
                'Literary giants',
                'Oddly shaped coins',
                'Deep space RTS simulator 15',
-               'The entire cast of Fraiser', 
-               'This is more text', 
+               'The entire cast of Fraiser',
+               'This is more text',
                'Another other thing I wanted to share',
                'Guns guns guns babes and lemonade',
                'Particle affects',
@@ -37,8 +37,8 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         users = User.objects.filter(is_vendor__exact=True)
         Gem.objects.all().delete()
-        for i, d in enumerate(descriptions):
-            g = Gem.objects.create(vendor=users[i % users.count()], 
-                               title="Title #{}".format(i + 1), 
-                               description=d)
-
+        for q in range(1,4):
+            for i, d in enumerate(descriptions):
+                g = Gem.objects.create(vendor=users[i % users.count()],
+                                   title="Title #{0}{1}".format((i + 1),q),
+                                   description=d)
