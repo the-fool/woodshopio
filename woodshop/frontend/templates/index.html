@@ -38,30 +38,16 @@
         <ms-splash-screen id="splash-screen">
             <div class="center">
                 <div class="logo">
-                    <span>
-                      {% endverbatim %}
-                      <svg width="360px" height="360px" viewBox="0 0 360 360" >
 
-                        {% include "partials/logo_full.html" %}
-                      </svg>
+                      {% endverbatim %}
+
+
+                        {% include "partials/logo_spinning_splash.html" %}
+
                       {% verbatim %}
-                    </span>
+
                 </div>
-                <!-- Material Design Spinner -->
-                <div class="spinner-wrapper">
-                    <div class="spinner">
-                        <div class="inner">
-                            <div class="gap"></div>
-                            <div class="left">
-                                <div class="half-circle"></div>
-                            </div>
-                            <div class="right">
-                                <div class="half-circle"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- / Material Design Spinner -->
+
             </div>
         </ms-splash-screen>
         <!-- / SPLASH SCREEN -->
@@ -69,7 +55,7 @@
         <div id="main" class="animate-slide-up" ui-view="main" layout="column"></div>
 
         <ms-theme-options></ms-theme-options>
-
+        
         <!-- build:js(src) scripts/vendor.js -->
         <!-- bower:js -->
         <!-- run `gulp inject` to automatically populate bower script dependencies -->
