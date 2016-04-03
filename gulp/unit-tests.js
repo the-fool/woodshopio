@@ -16,7 +16,7 @@ var pathSrcJs = [
 
 function runTests(singleRun, done)
 {
-    var reporters = ['progress'];
+    var reporters = ['dots'];
     var preprocessors = {};
 
     pathSrcHtml.forEach(function (path)

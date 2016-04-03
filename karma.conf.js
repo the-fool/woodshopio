@@ -21,7 +21,7 @@ function listFiles() {
         path.join(conf.paths.src, '/app/**/*.module.js'),
         path.join(conf.paths.src, '/app/**/*.js'),
         path.join(conf.paths.src, '/app/**/*.spec.js'),
-        path.join(conf.paths.src, '/app/**/*.mock.js'),
+        //path.join(conf.paths.src, '/app/**/*.mock.js'),
       ])
       .concat(pathSrcHtml);
 
@@ -76,7 +76,7 @@ module.exports = function(config) {
       dir : 'coverage/'
     },
 
-    reporters: ['progress'],
+    reporters: ['super-dots'],
 
     proxies: {
       '/assets/': path.join('/base/', conf.paths.src, '/assets/')
