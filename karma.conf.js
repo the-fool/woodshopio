@@ -51,7 +51,8 @@ module.exports = function(config) {
 
     ngHtml2JsPreprocessor: {
       stripPrefix: conf.paths.src + '/',
-      moduleName: 'generatorGulpAngular'
+      prependPrefix: '/static/',
+      moduleName: 'templates'
     },
 
     logLevel: 'WARN',
@@ -62,7 +63,7 @@ module.exports = function(config) {
       whitelist: [path.join(conf.paths.src, '/**/!(*.html|*.spec|*.mock).js')]
     },
 
-    browsers : ['PhantomJS'],
+    browsers : ['Chrome'],
 
     plugins : [
       'karma-phantomjs-launcher',
@@ -70,7 +71,8 @@ module.exports = function(config) {
       'karma-coverage',
       'karma-jasmine',
       'karma-jasmine-jquery',
-      'karma-ng-html2js-preprocessor'
+      'karma-ng-html2js-preprocessor',
+      'karma-chrome-launcher'
     ],
 
     coverageReporter: {

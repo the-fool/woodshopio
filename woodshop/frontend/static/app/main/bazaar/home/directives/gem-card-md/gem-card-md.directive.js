@@ -17,9 +17,13 @@
             templateUrl: '/static/app/main/bazaar/home/directives/gem-card-md/gem-card-md.html',
             compile : function (tElement)
             {
-                // Add class
-                tElement.addClass('ms-card');
-
+                if (!scope.gem) {
+                  // hide the card if the data is non-existent
+                  tElement.addClass('hidden');
+                } else{
+                  // Add general card class
+                  tElement.addClass('ms-card');
+                }
                 return function postLink(scope, iElement)
                 {
                     // Methods
