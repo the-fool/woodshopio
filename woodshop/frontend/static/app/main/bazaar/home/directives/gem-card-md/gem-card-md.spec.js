@@ -14,7 +14,6 @@ describe("gemCardMd directive", function() {
     $compile = _$compile_;
     scope = $rootScope.$new();
     elm = angular.element('<gem-card-md gem="gem"></gem-card-md>');
-    console.log($templateCache.get('/static/app/main/bazaar/home/directives/gem-card-md/gem-card-md.html'));
     mockGem = {
       "id": "ZZZ",
       "categories": [
@@ -38,8 +37,15 @@ describe("gemCardMd directive", function() {
 
   it('should accept a gem data object, and add the card class to the element afterwards', function() {
     scope.gem = mockGem;
-    console.log($compile(elm)(scope));
-    console.log(elm);
+    $compile(elm)(scope);
+    scope.$digest();
+    expect(elm).toHaveClass('ms-card');
+  });
+
+  it('should hide itself in absence of gem data', function() {
+    $compile(elm)(scope);
+    scope.$digest();
+    expect(elm).toHaveClass('hidden');
   });
 
 
